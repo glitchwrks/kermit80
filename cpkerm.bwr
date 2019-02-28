@@ -1,0 +1,565 @@
+From: Vace Kundakci <VVVCU@CUVMB.columbia.edu>
+To: Frank da Cruz <fdc@cunixc.cc.columbia.edu>
+Subject: Something in my rdr
+
+Dear VVVCU AT CUVMBA
+
+Yesterday I tried to contact OBSchou@Loughborough.Multics
+on JANET, for this was the address I found in the file
+CPAAA TXT on KERMSRV AT CUVMBA. I wanted to report a bug
+in CP/M kermit and to ask him a question about two source
+files on KERMSRV. Would you please be so kind to forward
+this message below to the one who is responsible for the
+files CP???? ASM on KERMSRV AT CUVMBA. Thanks a lot.
+
+While assembling a new KERMIT 4.09 for my good old CP/M 3
+computer I found a bug in the system independent part of
+the KERMIT source. The routine PAUSIT in the file
+CPSUTL.ASM doesn't end with a ret. As a result of this the
+program enters the routine GETFIL and falls trough it every
+time PAUSIT is executed: the disk drive is activated.
+This ends in an error when PAUSIT is executed after a
+wildcard operation.
+The bug is fixed by placing a ret instruction at the end of
+the PAUSIT routine.
+
+After creating a new CPSKER.HEX it appeared, that the file
+CPSKER.HEX on KERMSRV AT CUVMA used the files CPSPK1.ASM
+update 12 of 1-feb-88 and CPSPK2.ASM update 5 of 1-feb-88.
+The file CPSPK1.ASM on KERMSRV AT CUVMA is update 11 of
+28-jul-87, whereas CPSPK2.ASM is update 4 of 27-oct-87.
+Would you please be so kind to get the two files updated
+on KERMSRV ON CUVMA, so I can build an updated version of
+my KERMIT without the bug in CPSUTL.ASM.
+
+Thank you in advance!               Hans Petri
+
+WINFPET AT HDETUD1 on EARN
+/Vace
+------
+
+Date: Sun, 12 Mar 89 03:22:57 EST
+From: Mark W. Eichin <eichin@athena.mit.edu>
+Subject: Bug report, CP/M kermit (and other notes)
+Keywords: CP/M Kermit
+
+The latest kermit from ~ftp/kermit/a/cp[sx]*.asm has a minor (but
+visible) bug. In cpspk2.asm, line 341 is
+
+	mvi	a,'$'		; dollar terminate string
+	call	prtstr
+
+(these are after the label gofi7g.)
+
+The problem is that the '$' has to be actually moved into the string
+to terminate it. Adding the line
+
+	stax	d
+
+between the above two solves the problem.
+
+The bug manifests itself when doing a "receive": as soon as the remote host
+sends the filename, it gets displayed on the local screen, followed by
+arbitrarily large amounts of garbage (whatever code followed the filename
+buffer up to the first '$', which for me tended to be about 4-5 lines of
+garbage...)
+
+On a related note: I have successfully ported kermit to TurboDOS (a CP/M-like
+operating system written by Software 2000) so that it uses the "T-functions",
+a set of standard extensions to CP/M, particularly a set of generic serial
+routines. I have only tested it on my personal system, a custom port of
+TurboDOS to the Radio Shack Model 4P, but it is likely to work on any TurboDOS
+system. Are you interested in adding this to your collection? Are there any
+stylistic constraints you require on submitted code? (I would like to see it
+included, if only because there have been "people working on" TurboDOS
+versions, according to your list, for at least 4 years now.)
+
+Also, I have patches to the Simtel20 PD2:<UNIX-C.CPM>XASM.SHAR[12], an 8080
+assembler which runs under UNIX, which add a LINK command, that enables it to
+assemble the entire CP/M Kermit release. I will be submitting them to the
+Simtel20 people, but I can send them to you as well if you are interested.
+
+Thanks for providing such a good *FREE* system!
+
+				Mark Eichin
+				<eichin@athena.mit.edu>
+
+
+------------------------------
+
+. From BPA
+. Postmark:30-Aug-89:09:32:15
+. To MAILER
+. Expires:29-Sep-89:09:31:49
+. Subject: bitnet%"fdccu@cuvma"
+Re:  Problems with CP/M Kermit Version 4.09
+
+Following is a list of problems and their solutions for CP/M Kermit
+Version 4.09.  Bear in mind that the latest version of CPSPK1.ASM I have is
+edit (4) and of CPSPK2.ASM is edit (11).
+
+Problem:  When the terminal is in "quiet" mode, initiation of file-transfers
+        causes lots of garbage to appear on the screen which is distracting
+        and which raises havoc with voice output devices.
+Diagnosis:  In the module CPXCOM.ASM, the routine "prtstr" has two flavors:
+        one for machines which cannot display control-characters via BDOS
+        function 9 and one which can display such characters via function 9.
+        In this latter case, only register pair BC is saved around the BDOS
+        call.  This is insufficient as BDOS also clobbers register pairs
+        DE and HL during the call.  In "quiet" mode, at least one of these
+        pairs is expected to remain constant.
+Solution:  Save register pairs DE and HL around the function 9 BDOS call.
+
+Problem:  When GETting a file, the initialization routine "init" is executed
+        twice.  This doesn't harm anything and may not be noticeeable in
+        print but is most annoying when using voice output as "init" types
+        out the Kermit version and screen initialization strings and thus
+        one hears them twice.
+Solution:  In the module CPSPK1.ASM, move the label "read0a" down one line
+        so that the common code for the "receive" and "get" commands starts
+        just *after* the call to "init" is made in "receive" mode.
+
+Problem:  With "auto-receive" set to "off", after a RECEIVE has completed,
+        Kermit waits for Console input; then looks for more data to receive
+        when there is none.
+Diagnosis:  In the module CPSPK1.ASM, when the status of "auto-receive" is
+        checked, the wrong label is branched to if "auto-receive" is OFF.
+Solution:  Change the instruction "jz read5c" to "jz read5b".
+
+Problem:  Files whose filenames are less then 8 characters in length have
+        ASCII zeros ("0") appended to them.
+Diagnosis:  In the module CPSPK2.ASM, after label "gofi7b", where the status
+        of "file-warning" is checked, the code for the appending of "&"
+        characters to filenames if the file already exists on disk has been
+        commented out and new code putting numeric suffixes on filenames
+        in this case has been substituted.  In the process, the code for
+        checking for a file's existence has been accidentally commented out.
+        Thus, if "file-warning" is "on", *every* file is assumed to have
+        a duplicate and a numeric suffix is added to each filename.  In
+        addition, no warning of this is given on-screen.
+Solution:  (1) Uncomment the code which checks for the existence of each file.
+        (2) Uncomment the code which prints the file-warning error message
+        and put a "lxi d,fnbuf" instruction between the "stax d" shown in
+        CPKERM.BWR and the call to "prtstr" so that routine can print the
+        filename of any file whose existence has been detected.
+
+Problem:  In the files CPXSY2.ASM and CPXSYS.ASM, various conditionals are
+        ignored.
+Diagnosis:  In many places, a semicolon is followed by a form-feed which is
+        immediately followed by an "IF" conditional.  My copy of LASM in-
+        terprets the "<FF>IF" as a comment.
+Solution:  Make the "<FF>IF" into "<FF>;<CR>IF".
+
+With these changes, Kermit-80 performs like a champ.
+Following are file comparisons showing the changes noted above.
+
+************
+File DISK$USER:[OGRFJMF.KERMIT.CPM]CPXCOM.ASM;1
+  418           push    b
+******
+File DISK$USER:[OGRFJMF.KERMIT.CPM.HP125]CPXCOM.ASM;1
+  418           PUSH    H
+  419           PUSH    D
+  420           push    b
+************
+************
+File DISK$USER:[OGRFJMF.KERMIT.CPM]CPXCOM.ASM;1
+  422           ret             ; all done for good machines
+******
+File DISK$USER:[OGRFJMF.KERMIT.CPM.HP125]CPXCOM.ASM;1
+  424           POP     D
+  425           POP     H
+  426           ret             ; all done for good machines
+************
+
+Number of difference sections found: 2
+Number of difference records found: 4
+
+DIFFERENCES /IGNORE=()/MERGED=1/OUTPUT=DISK$USER:[OGRFJMF.KERMIT.CPM.HP125]CPXCO
+M.DIF;1-
+    DISK$USER:[OGRFJMF.KERMIT.CPM]CPXCOM.ASM;1-
+    DISK$USER:[OGRFJMF.KERMIT.CPM.HP125]CPXCOM.ASM;1
+
+File 1) DSKE:CPSPK1.ASM[10,50,KERMIT,CPM]       created: 1940 26-Aug-89
+File 2) DSKE:CPSPK1.ASM[10,50,KERMIT,CPM,HP125] created: 2247 27-Aug-89
+
+1)1     read0a: call    init            ;clear line, initialise buffers
+1)              lxi     d,remnam        ;[gnn] save local name here
+1)              mvi     a,cmtxt         ;[gnn]
+****
+2)1             call    init            ;clear line, initialise buffers
+2)      read0a: lxi     d,remnam        ;[gnn] save local name here
+2)              mvi     a,cmtxt         ;[gnn]
+**************
+1)2             jz      read5c          ; no autoreceives, so drop out
+1)              lxi     d,anymes        ; load up Press any key to continue
+****
+2)2             jz      read5b          ; no autoreceives, so drop out
+2)              lxi     d,anymes        ; load up Press any key to continue
+**************
+
+File 1) DSKE:CPSPK2.ASM[10,50,KERMIT,CPM]       created: 0829 28-Aug-89
+File 2) DSKE:CPSPK2.ASM[10,50,KERMIT,CPM,HP125] created: 2259 27-Aug-89
+
+1)1     ;       mvi     c,openf         ;See if the file exists.
+1)      ;       lxi     d,fcb
+1)      ;       call    bdos
+1)      ;       cpi     0FFH            ;Does it exist?
+1)      ;       jz      gofil9          ;If not create it.
+1)      ;       lxi     d,infms5
+1)      ;       call    error3
+1)      ;       lda     temp2           ;Get the number of chars in the file nam
+e.
+****
+2)1             mvi     c,openf         ;See if the file exists.
+2)              lxi     d,fcb
+2)              call    bdos
+2)              cpi     0FFH            ;Does it exist?
+2)              jz      gofil9          ;If not create it.
+2)              lxi     d,infms5
+2)              call    error3
+2)      ;       lda     temp2           ;Get the number of chars in the file nam
+e.
+**************
+1)1             call    prtstr          ; write string to console
+****
+2)1             lxi     d,fnbuf         ;[MF]Point to string
+2)              call    prtstr          ; write string to console
+**************
+
+
+
+
+
+
+
+
+
+
+I may be reached on BITNET by E-mail to mailer@uwalocke with the subject-line
+containing the phrase <dec10%"bpa">.
+-- Mike Freeman; Bonneville Power Administration; Vancouver, Wa;
+Telephone (206)690-2307 --
+
+------------------------------
+
+Date:     Thu, 31 Aug 89 13:07 PST
+From:     <MAILER@UWALOCKE.BITNET>
+Subject:  Re:  Inconsistency in CP/M Kermit Version 4.09
+
+Problem:  Comments in the source-files indicate that the routine which
+        processes the "Set Port" command, "prtset" in CPSCOM.ASM, returns
+        the port value in the register pair DE for the system-dependent
+        routine to process.  In fact, the value is returned in the HL
+        register pair.
+Solution:  Either (1) put a "xchg" instruction after the "shld port"
+        instruction in "prtset" and modify all port-setting routines which
+        expect the port parameter in HL, e.g., that for those systems using
+        iobyte redirection, to get the value from DE (this would be, I
+        suppose, philosophically correct since this would correspond to
+        the way the baud-rate-setting routine handles things) or
+        (2) change the comments in CPSDAT.ASM and CPXLNK.ASM to show the
+        return value from "prtset" in HL and modify the "sysprt" routines
+        which expect the port value in DE to get it from HL.  I chose this
+        approach as it appeared that this would involve less code changes
+        (the only system I saw getting port values from DE was the Lobo).
+        Below are FILCOMs of the appropriate files showing these changes.
+
+File 1) DSKE:CPSDAT.ASM[10,50,KERMIT,CPM]       created: 1925 26-Aug-89
+File 2) DSKE:CPSDAT.ASM[10,50]                  created: 1202 31-Aug-89
+
+1)4                             ; called with value from table in DE
+1)      sysscr: jmp     $-$     ; screen setup for file transfer
+****
+2)4                             ; called with value from table in HL
+2)      sysscr: jmp     $-$     ; screen setup for file transfer
+**************
+
+File 1) DSKE:CPXLNK.ASM[10,50,KERMIT,CPM]       created: 1826 26-Aug-89
+File 2) DSKE:CPXLNK.ASM[10,50]                  created: 1157 31-Aug-89
+
+1)1                             ; called with value from table in DE
+1)              jmp     sysscr  ; screen setup for file transfer
+****
+2)1                             ; called with value from table in HL
+2)              jmp     sysscr  ; screen setup for file transfer
+**************
+
+File 1) DSKE:CPXSY2.ASM[10,50,KERMIT,CPM]       created: 0743 28-Aug-89
+File 2) DSKE:CPXSY2.ASM[10,50]                  created: 1210 31-Aug-89
+
+1)4             mov     a,e             ;[hh] get the data port value and store
+at
+1)              sta     outmd3+1        ;[hh] the two places we use...
+****
+2)4             mov     a,l             ;[hh] get the data port value and store
+at
+2)              sta     outmd3+1        ;[hh] the two places we use...
+**************
+1)4             mov     a,d             ;[hh] now get the baud rate port value
+1)              sta     getbd+1         ;[hh] store it in the two places we use.
+..
+****
+2)4             mov     a,h             ;[hh] now get the baud rate port value
+2)              sta     getbd+1         ;[hh] store it in the two places we use.
+..
+**************
+
+E-mail replies may be sent to me via Bitnet at mailer@uwalocke.
+Please place on the subject line the phrase <dec10%"bpa"> (less the angle-
+brackets).
+-- Mike Freeman (routing MORF); Bonneville Power Administration; P.O. Box
+491; Vancouver, Wa 98666; Telephone (206)690-2307 --
+
+------------------------------
+
+Date: Sat, 25 Nov 89 08:16:41 pst
+From: holmes@well.sf.ca.us (Tim Holmes)
+To: jrd@watsun.cc.columbia.edu
+Subject: Re: Kermit for Epson
+
+The Epson PX-8, also known as the Geneva, is a CP/M 2.2 machine.  It is
+a portable.  It is listed on the list of Kermit versions by machine as 
+Epson Px-8; program version 4.09.  This version I have never been able
+to do anything but get the machine to freeze up.  An earlier version,
+4.05, basically works, but with some problems, such as handshaking
+and flow control (I think).  The PX-4, better known as the HX-40, is
+a similar computer with an even smaller screen.
+
+The PX-8 version comes on the "A" tape.  By the way, I cannot get the
+"Generic"  kermit versions to work on the HX-40, whereas they basically
+work on the PX-8.
+
+Thanks again.
+
+------------------------------
+
+Date:     Thu,  1 Mar 90 16:48 PST
+From:     <MAILER@UWALOCKE>
+Subject:  dec10%"BPA" originated mail follows:-
+To:       fdccu@cuvma
+Original_To:  JNET%"fdccu@cuvma"
+
+. From BPA
+. Postmark:26-Feb-90:09:36:20
+. To MAILER
+. Expires:28-Mar-90:09:35:00
+. Subject: bitnet%"fdccu@cuvma"
+Re:  Problem with CP/M-80 Kermit
+
+     I have come up with a better, more general solution to the problem
+involving Kermit's interpretation of characters at the beggining of the CP/M
+command-line than the one I sent you a few days ago.  This more general
+solution and the description of the problem/diagnosis appear below:
+
+                                    PROBLEM
+
+B>A:KERMIT ;SET FI B;SET BL 3;SET TER Q
+Kermit-80 v4.09 configured for HP-125 Series 100
+
+For help, type ? at any point in a command
+Kermit-80   0B:>
+?Ambiguous
+Kermit-80   0B:>SET FI B
+Kermit-80   0B:>SET BL 3
+Kermit-80   0B:>SET TER Q
+B>
+
+                                   DIAGNOSIS
+
+
+     CP/M begins the buffer containing the tail to the command-line with
+the count of characters in the buffer, followed by the characters in the
+command- tail, beginning with the space(s) immediately following the
+transient program name (in this case, Kermit).  Kermit does not ignore
+leading spaces when reading command input from the CP/M command-line.
+Kermit therefore interprets the leading space(s) as part of the first
+command to be executed, leading to the "?Ambiguous" message.
+
+
+                                     SOLUTION
+
+
+        Rewrite Kermit so that leading spaces in input from the CP/M
+command-line are ignored.  This is done by adding code just prior to
+label CMINB1 in the module CPSCMD.ASM and adding a label a few lines
+following the label CMINB1 in the same module.  This gives, as a
+side-effect, the advantage that a leading semicolon is not required
+before the commands Kermit is to execute from the command-line, so that
+a command-line like:
+A>KERMIT SET FILE-MODE ASCII;SET TERMINAL QUIET;SET NO-EXIT
+executes without errors.  A Vax DIFFERENCES output showing the changes
+in CPSCMD.ASM follows:
+
+
+************
+File DISK$USER:[OGRFJMF]CPSCMD.ASM;1
+  981   cminb1: lxi     h,cmccnt        ;Increment the char count.
+******
+File DISK$USER:[OGRFJMF]CPSCMD.ASM;2
+  981           lda     takflg          ;[JMF]See if chars from file or command-
+line
+  982           ora     a               ;[JMF]...
+  983           jz      cminb1          ;[JMF]No
+  984           ani     1               ;[JMF]Yes, char from command-line?
+  985           jnz     cminb1          ;[JMF]No
+  986   cminb0: mvi     c,conin         ;[JMF]Yes, get a character
+  987           call    bdos            ;[JMF]...
+  988           cpi     40o             ;[JMF]If leading characters are spaces
+  989           jz      cminb0          ;[JMF]Ignore them, else
+  990           lxi     h,cmccnt        ;Increment the char count.
+  991           inr     m
+  992           jmp     cmin1a          ;[JMF]and proceed with command buffer
+  993   cminb1: lxi     h,cmccnt        ;Increment the char count.
+************
+************
+File DISK$USER:[OGRFJMF]CPSCMD.ASM;1
+  985           lhld    cmcptr          ;Get the pointer into the buffer.
+  986           mov     m,a             ;Put it in the buffer.
+******
+File DISK$USER:[OGRFJMF]CPSCMD.ASM;2
+  997   cmin1a: lhld    cmcptr          ;Get the pointer into the buffer.
+  998           mov     m,a             ;Put it in the buffer.
+************
+
+Number of difference sections found: 2
+Number of difference records found: 13
+
+DIFFERENCES /IGNORE=()/MERGED=1/OUTPUT=DISK$USER:[OGRFJMF]CPSCMD.DIF;1-
+    DISK$USER:[OGRFJMF]CPSCMD.ASM;1-
+    DISK$USER:[OGRFJMF]CPSCMD.ASM;2
+
+
+        I can be addressed via E-mail on Bitnet at address
+MAILER@UWALOCKE. Place the following as the subject of the message:
+<dec10%"bpa"> (less the angle-brackets). Thanks.
+Michael Freeman (Routing MORF)
+Bonneville Power Administration
+P.O. Box 491
+Vancouver, WA 98666
+Telephone (206)690-2307
+
+------------------------------
+
+Date: Mon, 14 May 90 10:26:54 EDT
+From: rochester!ames!claris!voder!nsc!thoreau.nsc.com!rtodd@columbia.edu
+  (Ron Todd)
+To: fdc@watsun.cc.columbia.edu
+Subject: My kermit problem( Kermit-80 to Kermit-32)
+
+Frank, 
+
+  I finally got my Kermit-80 (v4.09) on the Kaypro II to work with our
+Kermit-32 (v3.1.066) (the problem had to do with the protocol timing out
+during disk sector writes on the Kaypro).  The fix is some where in the
+combination of sets I am using, I tried your suggestion of turning off the
+timeouts on the mainframe.  The significant sets I am using are:
+
+Kermit-80
+  set flow on
+  
+Kermit-32
+  set server_time 0
+  set send time 0
+
+VMS
+  set term/readsync/ttsync
+
+DEC-Server
+  set session pasthru
+
+  So far I have only tried ascii file transfer but will be testing binary 
+soon, I have a feeling that that should work also.  I am mostly using the 
+GET command with Kermit-32 running in server so I may not need to do the 
+"set send time".  I am sure I need to use the "set session pasthru" on the 
+server and probably atleast one of the "sync" options on the "set term" 
+of the VMS side.  
+
+  Thanks for your help, I'll e-mail the final minimum set to you and also 
+post it to the net as a followup to help anyone else who may be running 
+into the same or similar problems.  
+
+Regards,
+  Ron Todd,   K3FR
+
+------------------------------
+
+Subject: Kermit-80 4.09 ported to new system, bug report
+From: Russell Lang <rjl@monu1.cc.monash.edu.au>
+Date: Tue, 19 Jun 90 11:04:47 +1000
+Sender: eln272v@monu1.cc.monash.edu.au
+
+Frank,
+   I have ported Kermit-80 4.09 to an Australian CP/M computer, 
+   the Microbee.  I have created a new system dependent file 
+   CPXBEE.ASM for this computer.
+   I sent some mail to Bertil Schou, but he informs me that he is 
+   no longer maintaining CP/M kermit.
+   Could you please tell me who is currently working on CP/M Kermit?
+
+
+   During the testing of kermit-80 on the Microbee, I found a bug
+   in the system independent part of kermit.
+
+Bug report for Kermit-80 4.09.
+
+Problem:   When receiving a file with WARNING ON, kermit-80 will avoid 
+   overwriting an existing file by creating a unique file name.  
+   This unique file will have the attributes of the file being avoided.  
+   If the created file is opened with Read-Only attribute, kermit-80 is 
+   unable to write to the file, and crashes with the message:
+   BDOS Err on A: File R/O
+
+Diagnosis:  Kermit checks for the existence of a file by attempting
+   to open it.  If the file exists, its directory entry is copied
+   into the FCB.  Kermit then modifies the file name in the FCB
+   in an attempt to find a unique name.  The name in the FCB has
+   the attributes of the previously existing file, so when kermit
+   eventually finds a unique name, it creates a file with the 
+   attributes of the most recently opened file! 
+
+Solution:
+   Clear bit 7 (attribute bit) of all file name and type characters
+   before opening/creating file.
+   A Unix context diff for CPSPK2.ASM (4)  27-Oct-87  is at the
+   end of this mail.
+
+
+-- 
+Russell Lang    Email: rjl@monu1.cc.monash.edu.au    Phone: (03) 565 3460
+Department of Electrical and Computer Systems Engineering
+Monash University, Australia
+
+diff -c cpspk2.asm cpxpk2.asm.new
+*** cpspk2.asm	Tue Jun 19 10:48:54 1990
+--- cpspk2.asm.new	Tue Jun 19 10:52:30 1990
+***************
+*** 299,305
+  ;
+  ; Part 2) open the file (if success, then it exists)
+  
+! gofi7d:	lxi	d,fcb
+  	mvi	c,openf
+  	call	BDOS
+  	inr	a		; if 0ffh returned, error (ie does not exist)
+
+--- 299,315 -----
+  ;
+  ; Part 2) open the file (if success, then it exists)
+  
+! gofi7d:
+! ;zero the attribute bits.  [rjl@monu1.cc.monash.edu.au]
+! 	lxi	h,fcb+1		;[rjl]
+! 	mvi	c,11		;[rjl]
+! gofi7z:	mov	a,m		;[rjl]
+! 	ani	07fh		;[rjl]
+! 	mov	m,a		;[rjl]
+! 	inx	h		;[rjl]
+! 	dcr	c		;[rjl]
+! 	jnz	gofi7z		;[rjl]
+! 	lxi	d,fcb
+  	mvi	c,openf
+  	call	BDOS
+  	inr	a		; if 0ffh returned, error (ie does not exist)
+
+------------------------------

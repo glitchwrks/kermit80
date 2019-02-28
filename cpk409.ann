@@ -1,0 +1,354 @@
+Following is the announcement of CP/M-80 Kermit version 4.09, the first
+new release of CP/M Kermit since 4.05 since February 1985.
+
+Kermit files may be obtained over networks and by mail order.  On the
+Internetwork, use FTP to log in to host CU20B, CU20B.COLUMBIA.EDU, or
+CU20B.CC.COLUMBIA.EDU (a DECSYSTEM-20), as user ANONYMOUS, using any password,
+and GET (or MULTIPLE GET, or MGET) the desired files from logical device KER:,
+e.g. MGET KER:CP*.* for the new CP/M files.  You can also get Kermit files over
+BITNET/EARN; to get started send a message with text HELP to KERMSRV, the
+Kermit file server, at host CUVMA.  For detailed instructions, read the file
+KER:AANETW.HLP (AANETW HLP on KERMSRV).  To order by mail, request a complete
+list of Kermit versions and an order form from Kermit Distribution, Columbia
+University Center for Computing Activities, 612 West 115th Street, New York, NY
+10025 USA.
+
+Date: 8 Jan 88 0:00:00
+From: Bertil Schou, Loughborough University, UK
+Via: SYSKERMIT%vax1.central.lancaster.ac.uk@NSS.Cs.Ucl.AC.UK
+Subject: Announcing Version 4.09 of Kermit-80 for CP/M-80
+Keywords: CP/M-80 Kermit 4.09
+
+After an incredibly long gestation period, here is hopefully an updated
+version of Kermit-80 V4.05. Kermit-80 V4.08 is issued for testing purposes
+only.  Version 4.09 is the release issue of version 4.08.  I still, however,
+want any feedback about problems generated in this revision, or others
+desperately want fixing.
+
+Superficially, there is little real change in operation of Kermit-80, version
+4.05, but there have been some major jobs tackled like trapping BDOS calls and
+multiple FCB buffering...
+
+New bits for this version include:
+     SET       {SEND/RECEIVE} START-OF-PACKET character
+     SET       DIRECTORY-FILE-SIZE (Shows or hides file sizes on 
+                 DIRectory displays)
+     SET       TERMINAL to OFF, VT52, DUMB, EXTERNAL, QUIET, REGULAR.
+     SET       USER to set other user spaces
+     RECEIVE   to collect a file from a remote SENDer
+     GET       to collect a file from a remote SERVER
+     SEND      {local filename} {remote filename}
+     TAKE      to take command files from disk (including other take files!)
+     FCOPY     Copy CP/M files from within Kermit (no wildcard)
+     TYPE      Type a file to the console from within Kermit
+     PRINT     Print a file to the printer from within Kermit
+     -         Updated  TRANSMIT command that waits for a string of characters
+                 from the host (default is CR).
+     -         Command line commands, eg:
+                    KERMIT ;SET FILE BINARY;SEND FOO.BAR
+     -         Automatic TAKE KERMIT.INI on default disk on
+                 loading KERMIT-80 (useful for SET BAUD etc.)
+     -         Much improved speed on DIRECTORY 
+     -         Automatic CLOSE-ing of a terminal connection if the line is
+                 DROP-ped (currently only for an Apple, and Torch has a dummy
+                 test for cntrl-] D in connect state)
+     -         Improved printer handling.
+
+On the negative side, only LASM and Microsoft M80 assemblers can be used to
+assemble the source files. I personally see no point in being able to support
+several assemblers if LASM can do the job, but then again, I have not used the
+MAC80 cross assembler...  Comments on assembler compatabilities, please!
+
+All source files have been renamed, and there are a few additions. All source
+files are named in the form CPaxxx.ASM, where:
+
+     a=A for general information
+     a=S for system independent source files and hex file
+     a=X for system dependent source files
+     a=V for system-dependent hex files
+
+The system dependent code has changed a litle too, hopefully bringing the
+CPXSYS.ASM (formerly CP4SYS.ASM) file a bit more toward a manageable size.
+There is now the possibility for FAMILIES of systems, like APPLE and NorthStar
+(also Comart), which contains code for computers of a single type.  I have
+immediately gone against all this by creating a family with the code for
+Torches, Cifers, Ithacas and Superbrains (this because we have these systems
+here at Loughborough.)
+
+Bertil Schou.
+
+[Ed. - Many thanks, Bertil!  And also to Alan Phillips and Steve Jenkins at
+Lancaster University for sending this new version to us via transoceanic
+magnetic tape, and to the many others in the UK who contributed to this new
+release.  This version supports all the systems supported by version 4.05,
+with the exception of the HP-125, and with the addition of many more, for a
+total of something like 52 systems.  The new files have been installed in
+KER:CP*.*, and the old ones moved (on CU20B, anyway) to KO:CP*.*.  CP/M
+users, please get this new version and try it out, so we can make sure it's
+safe to distribute.  And this is also the time to plead ONCE AGAIN for
+volunteers to distribute CP/M Kermit on 5.25-inch diskette for different
+kinds of systems, and also in "universal" 8-inch diskette format.  Please
+come forward if you can do it, or know of a user group that can!]
+
+
+CPKERM.MSG       08 Jan 1988
+**********
+
+After  an incredibly long gestation peroid,  here is hopefully an 
+updated version of Kermit-80 V4.05. Kermit-80 V4.08 is issued for 
+testing  purposes  only.  Version  4.09 is the release  issue  of 
+version 4.08.  I still, however, want any feedback about problems 
+generated in this revision, or others desperately want fixing. 
+
+Superficially,  there  is  little  real change  in  operation  of 
+Kermit-80,   version 4.05,   but there have been some major  jobs 
+tackled like trapping BDOS calls and multiple FCB buffering... 
+
+New bits for this version include:
+     SET       {SEND/RECEIVE} START-OF-PACKET character
+     SET       DIRECTORY-FILE-SIZE (Shows or hides file sizes  on 
+               DIRectory displays)
+     SET       TERMINAL to  OFF,  VT52,  DUMB,  EXTERNAL,  QUIET, 
+               REGULAR.   External  is for those wanting to write 
+               their  own  drivers,  DUMB  passes  only  printing 
+               characters and sone control characters (eg CR/LF).  
+               QUIET/REGULAR    permits   brief/verbose    screen 
+               displays during transfers.
+     SET       USER to set other user spaces
+     RECEIVE   to collect a file from a remote SENDer
+     GET       to collect a file from a remote SERVER
+     SEND      {local filename} {remote filename}
+     TAKE      to  take command files from disk (including  other 
+               takes files!)
+     FCOPY     Copy CP/M files from within Kermit (no wildcard)
+     TYPE      Type a file to the console from within Kermit
+     PRINT     Print a file to the printer from within Kermit
+     -         updated  TRANSMIT command that waits for a  string 
+               of characters from the host (default is CR)
+     -         Command line commands, eg:
+                    KERMIT ;SET FILE BINARY;SEND FOO.BAR
+     -         automatic  TAKE  KERMIT.INI  on  default  disk  on 
+               loading KERMIT-80 (useful for SET BAUD etc.)
+     -         much improved speed on DIRECTORY 
+     -         automatic  CLOSE-ing of a terminal  connection  if 
+               the line is DROP-ped (currently only for an Apple, 
+               and  Torch  has  a  dummy test for  cntrl-]  D  in 
+               connect state)
+     -         improved  printer  handling.  (Kermit-80 sends  an 
+               XOFF to the host if the characters are comming  in 
+               faster  than they are printed.  This does not work 
+               in  this version,  as another  option,  SET  FLOW-
+               CONTROL  has not been fully implemented - also,  I 
+               did  not  have  a printer to test this  out  on  a 
+               Torch...) 
+
+On the negative side,  only LASM and Microsoft M80 assemblers can 
+be used to assemble the source files. I personally see no pont in 
+being  able to support several assemblers if LASM can do the job, 
+but  then  again,  I have not used the MAC80  cross  assembler... 
+Comments on assembler compatabilities, please!
+
+All  source  files  have  been  renamed,  and  there  are  a  few 
+additions. All source files are named in the form:
+
+
+
+
+
+
+
+CPaxxx.ASM
+
+where:
+
+     a=A for general information
+     a=S for system independent source files and hex file
+     a=X for system dependent source files
+     a=V for system-dependent hex files
+
+The  system  dependent code has changed a  litle  too,  hopefully 
+bringing  the  CPXSYS.ASM (formerly CP4SYS.ASM) file a  bit  more 
+toward  a  manageable  size.  There is now  the  possibility  for 
+FAMILIES  of  systems,  like APPLE and NorthStar  (also  Comart), 
+which  contains  code  for computers of a  single  type.  I  have 
+immediately  gone against all this by creating a family with  the 
+code for Torches,  Cifers, Ithacas and Superbrains. (This because 
+we have these systems here at Loughborough) 
+
+CPXSYS.ASM  is the "left over" systems not having a family to  go 
+to  (poor  things),  but is very much smaller than  the  original 
+CP4SYS.ASM.
+
+All VDU and terminal information is now held in CPXVDU.ASM.  This 
+is really the last section in the older CP4SYS.ASM file.
+
+A quick "schematic" of what happens at assembly time... (assuming 
+LASM is being used)
+
+LASM CPXTYP... this then assembles the following:
+
+CPXTYP
+ |
+ v
+CPSDEF
+ |
+ v
+CPXLNK
+ |
+ v
+CPXCOM (Common code for most systems)
+ |
+ v
+CPXSWT-------+----------+-----------+-----------+---- File selector
+ |           |          |           |           |
+ v           v          v           v       CPXTOR     CPXAPP      CPXNOR      CPX???    one of
+ |           |          |           |           |      several
+ |           |          |           |           |      Families
+ +<----------+----------+-----------+-----------+----
+ |
+ v
+CPXVDU   (if a terminal is required)
+ |
+ |
+ v
+<END of assembly>
+
+
+
+Users  should  be  aware  of  the  change  both  to  the  linking 
+
+
+
+
+
+
+information and start of the overlay address. Since Version 4.05, 
+four new entries have been added to the overlay table.   First of 
+all,  family  (offset +6),  which is a two byte poiter to a text 
+string in the family file.   The remainder are two byte  pointers 
+(in  the usual JMP 0 format) to a print status  routne,  (lptstat 
+offset 20h),  an optional VDU driver, and a reverse entry back to 
+the  system independent BDOS routines (which does a lot more than 
+simply pass on the BDOS request to BDOS)
+
+There  have  also  been some bugs fixed in  some  of  the  system 
+dependent code, so you would be wise pulling all the source files 
+across. 
+
+The overlay address is now 6000h, and will probably change before 
+this  revision  is  complete.  The speeding up of  multiple  file 
+handling takes its toll on memory,  as there are now 64-ish  FCBs 
+buffered. This speeds up the DIRECTORY command no end. 
+
+With  the overlay address at 6000h there is still a lot of  space 
+free for more things to be added,  so unless there is a big  hash 
+made to Kermit, this will not change.
+
+Most  of  the  Version 4.05 documentation still  holds  for  this 
+version  of kermit-80.  Note however the changes in the number of 
+system dependent files used, and the use of FAMILY files. 
+
+The  new  commands are  (hopefully)  self-explanatory.  The  TAKE 
+command  requires  files  TAKE-n to be pure ASCII  text,  with  a 
+control-z as the end of file marker.  Most editors will  probably 
+do this for you. 
+
+LASM  and Microsoft M80 assembles are the only ones supported.  I 
+suggest LASM be used by default for all further development work, 
+though   I   DO  know  that  there  are  others   requestin   M80 
+comaptability.  
+
+How to get V4.09 onto your system.
+**********************************
+If you alread have a Kermit running on your system, you should be 
+able  to  pull the CPSKER.HEX and suitable system file  to  yopur 
+system,  then MLOAD the two together.   If you dont have  kermit, 
+see  if you cannot get a copy from somewhere - it saves a lot  of 
+frustrating work.  Failing that, refer to the REAL manuals!
+
+If  you  want  to assemble the sources from  scratch,  pull  all 
+CPS*.ASM  files,   and  CPX(TYP  LNK  COM  SWT).ASM  files,   and 
+CPXVDU.ASM  if you use a terminal.   You will have to  pluck 
+either  CPXSYS./ASM or another family file.   You will also  need 
+loads of disk space.   If you run short,  but have a handy IBM PC 
+or  clone  with a Mbyte or two free,  use the public  domain  Z80 
+emulator Z80MU to develop the .HEX files required.  Also aquire a 
+copy  of LASM.   Use LASM it to assemble CPSKER and CPXTYP  after 
+editing CPXTYP and selecting a suitable system.    This generates 
+CPSKER.HEX and CPXTYP.HEX.
+
+MLOAD the two .HEX files together, eg: 
+
+MLOAD NEWKER=CPSKER,CPXTYP
+
+After this,  you will hopefully have a runnable copy of KERMIT-80 
+
+
+
+
+
+
+Version 4.09 on your system. 
+
+Disclaimer:  No  responsibilty can be assumed by anyone as to the 
+suitabilty etc.etc.  In otherwords,  you are the one  responsible 
+for your implentation of Kermit-80, any version. I will give help 
+where I can,  but no guaranttes will be given.  Note that not all 
+systems  and  facilities  have  been tested (thats  why  you  are 
+getting  involved!) so make sure you have a copy of  4.05  Kermit 
+before trying this one! 
+
+Things yet to be done - lots!
+
+There have been moves trying to add other independent modules for 
+other terminal emulators other than the VT52. Demands for SERVER, 
+REMOTE HOST..., file compression, better TRANSMIT, % of file sent 
+and/or  Kbytes  sent/received  as  part  of  the  display  diring 
+transfers,  a  lot  of cosmetic tidying up as well as  even  more 
+systems  to be added.  CP/M-80 is a slowly dying DOS,  and I feel 
+inclined to leave some bits out, like SERVER (how many use really 
+large  Winchesters in CP/M-80 systems,  and want true  servers?). 
+Does  anyone have a burning desire for these facilities?  And  if 
+so, will YOU be willing to take on the job of implementing them? 
+
+If you have any comments,  please E-mail them to  OBSchou (me) at 
+Loughborough.  If you really must, try (0509) 222313, but I share 
+a phone, so use the phone only if you cannot mail me. 
+
+Best of luck, 
+
+Bertil Schou.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

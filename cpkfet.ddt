@@ -1,0 +1,61 @@
+-a100			;Begin assembling code at 100
+0100	LXI H,2FE	;Where to store in memory
+0103	SHLD 200	;Keep pointer there
+0106	MVI E,D		;Get a CR
+0108	MVI C,4		;Output to PUNCH {send to HOST}
+010A	CALL 5
+010D	MVI C,3		;Input from READER {read from HOST}
+010F	CALL 5
+0112	ANI 7F		;Strip parity bit
+0114	PUSH PSW	;save a and flags
+0115	MOV E,A		;move char to e for echo
+0116	MVI C,2		;Output to screen
+0118	CALL 5
+011B	POP PSW		;restore a and flags
+011C	CPI 40		;Is it our DEC-20 prompt?
+011E	JZ 127		;Yes, have whole file in memory
+0121	CALL 17A	;no , store another byte
+0124	JMP 10D		;read another byte
+0127	MVI A,1A	;Get a Control-Z {CP/M EOF mark}
+0129	CALL 17A	;store it in memory
+012C	LXI H,300	;Get memory pointer
+012F	SHLD 202	;Store as DMA pointer
+0132	LDA 201		;Get 'HI' byte of memory pointer
+0135	STA 200		;and store it as 'LO' one
+0138	XRA A
+0139	STA 201		;Zero 'HI' byte {slow *256}
+013C	MVI C,16	;Make NEW file
+013E	LXI D,5C	;With FCB1
+0141	CALL 5
+0144	CALL 15E	;Write 128 bytes {sector}
+0147	CALL 15E	;Write another sector
+014A	LXI H,FFFF	;Get a 16-bit Minus One
+014D	XCHG		;into DE
+014E	LHLD 200	;Get 256-byte counter
+0151	DAD D		;decrement
+0152	SHLD 200	;and store back
+0155	MVI A,2		;Check if
+0157	CMP L		; 256-byte counter down to offset
+0158	JZ 183		;Yes, wer'e done
+015B	JMP 144		;Keep writing..
+015E	LHLD 202	;Get file-pointer
+0161	XCHG		;into DE
+0162	MVI C,1A	;Set DMA-address
+0164	CALL 5
+0167	MVI C,15	;Write sector {128 bytes}
+0169	LXI D,5C	;using FCB1
+016C	CALL 5
+016F	LHLD 202	;Get file-pointer
+0172	LXI D,80	;128-bytes
+0175	DAD D		;added to file-pointer
+0176	SHLD 202	;and save
+0179	RET		;and return
+017A	LHLD 200	;Get Memory-pointer
+017D	MOV M,A		;store character
+017E	INX H		;Increment Pointer
+017F	SHLD 200	;and save
+0182	RET		;and return
+0183	MVI C,10	;CLOSE file
+0185	LXI D,5C	;using FCB1
+0188	CALL 5
+018B	JMP 0		;Force WARM BOOT

@@ -1,0 +1,50 @@
+Date: Tue, 14 May 91 11:46:47 EDT
+From: Mike Freeman <freeman@watsun.cc.columbia.edu>
+To: info-cpm@wsmr-simtel20.army.mil, fdc
+Subject: Kermit-80 Version 4.11
+
+Dear Mr. Mills:
+     In a recent Info-cpm digest, in article <26697@hydra.gatech.EDU>, 
+you asked how to get Kermit-80 version 4.11. going.  Lance 
+Tagliapietra's answer was a good one.  You also might want to get 
+cpaaaa.hlp from watsun's ~kermit/a/ directory; this gives the machines 
+that Kermit-80 currently supports along with the filenames of the Intel 
+hex files for those machines.  As Mr. Tagliapietra says, you probably 
+won't have to rebuild the system-independent part of Kermit-80.  If your 
+CP/M machine is one of those currently supported by Kermit-80, you need 
+only get the system-dependent hex file and combine them with MLOAD, DDT, 
+DDTZ or whatever (MLOAD and DDTZ are my preferences since they don't 
+require you to calculate image length for a CP/M SAVE).  If your system 
+is not supported, pick up cpxtyp.asm, cpxcom.asm, cpxlnk.asm and 
+cpxswt.asm.  Currently, systems are organized into "families", as, for 
+example, Amstrad machines.  If you were going to recompile Amstrad 
+Kermit's system-dependent file, you'd also get cpxpcw.asm.  Some systems 
+(as, for example, the HP-125) are in the files cpxsys.asm and 
+cpxsy2.asm, which you'd get.  In any case, if your system isn't 
+supported, get a "family" file that's close or create one yourself.  If 
+your system doesn't have a built-in terminal, you'll also need 
+cpxvdu.asm (which contains terminal drivers).  Set the appropriate 
+switch in cpxtyp.asm to true (or put one in for your system if it isn't 
+supported), set a terminal-switch to TRUE (or select Generic CRT if 
+nothing's listed for your terminal or put your terminal's codes into a 
+family file or cpxvdu.asm), get LASM or M80 and compile away. L80 can be 
+used to link the system-dependent file but you must be sure to do a 
+/P:7000 as the first part of the L80 command tail so the REL-file has 
+the proper absolute address.  You still need MLOAD, DDT, DDTZ or 
+whatever to combine the files, so why not get LASM and use it, too.  
+Hope this message along with Mr. Tagliapietra's message helps you.  Feel 
+free to ask either him or me any Kermit-80 queries you'd like.
+     By the way, I think you'll like Kermit-80 4.11.  It's got support 
+for many REMOTE commands (advanced server commands).  It's only drawback 
+is that it doesn't support repeat-prefixing or extended-length packets 
+yet -- get QTERM version 43E (along with my bug fix for it) to get those 
+features.
+     Cheers!
+     -- Mike Freeman K7UIJ --
+     301 N.E. 107th Street
+     Vancouver, WA 98685
+     (206)574-8221 (home)
+     (206)690-2307 (work)
+P.S. If your system isn't supported, you'll also need to (a) create a
+family switch in cpxtyp.asm or (b) set sysfam TRUE and put your code in
+cpxsys.asm/cpxsy2.asm.  Then compile and link. -- Mike Freeman K7UIJ --

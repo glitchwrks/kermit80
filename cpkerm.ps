@@ -1,0 +1,6971 @@
+%!PS-Adobe-2.0
+%%Title: cpkhdr.mss
+%%DocumentFonts: (atend)
+%%Creator: Frank da Cruz,718W,0000, and Scribe 7(1700)
+%%CreationDate: 25 May 1991 14:10
+%%Pages: (atend)
+%%EndComments
+% PostScript Prelude for Scribe.
+/BS {/SV save def 0.0 792.0 translate .01 -.01 scale} bind def
+/ES {showpage SV restore} bind def
+/SC {setrgbcolor} bind def
+/FMTX matrix def
+/RDF {WFT SLT 0.0 eq 
+  {SSZ 0.0 0.0 SSZ neg 0.0 0.0 FMTX astore}
+  {SSZ 0.0 SLT neg sin SLT cos div SSZ mul SSZ neg 0.0 0.0 FMTX astore}
+  ifelse makefont setfont} bind def
+/SLT 0.0 def
+/SI { /SLT exch cvr def RDF} bind def
+/WFT /Courier findfont def
+/SF { /WFT exch findfont def RDF} bind def
+/SSZ 1000.0 def
+/SS { /SSZ exch 100.0 mul def RDF} bind def
+/AF { /WFT exch findfont def /SSZ exch 100.0 mul def RDF} bind def
+/MT /moveto load def
+/XM {currentpoint exch pop moveto} bind def
+/UL {gsave newpath moveto dup 2.0 div 0.0 exch rmoveto
+   setlinewidth 0.0 rlineto stroke grestore} bind def
+/LH {gsave newpath moveto setlinewidth
+   0.0 rlineto
+   gsave stroke grestore} bind def
+/LV {gsave newpath moveto setlinewidth
+   0.0 exch rlineto
+   gsave stroke grestore} bind def
+/BX {gsave newpath moveto setlinewidth
+   exch
+   dup 0.0 rlineto
+   exch 0.0 exch neg rlineto
+   neg 0.0 rlineto
+   closepath
+   gsave stroke grestore} bind def
+/BX1 {grestore} bind def
+/BX2 {setlinewidth 1 setgray stroke grestore} bind def
+/PB {/PV save def newpath translate
+    100.0 -100.0 scale pop /showpage {} def} bind def
+/PE {PV restore} bind def
+/GB {/PV save def newpath translate rotate
+    div dup scale 100.0 -100.0 scale /showpage {} def} bind def
+/GE {PV restore} bind def
+/FB {dict dup /FontMapDict exch def begin} bind def
+/FM {cvn exch cvn exch def} bind def
+/FE {end /original-findfont /findfont load def  /findfont
+   {dup FontMapDict exch known{FontMapDict exch get} if
+   original-findfont} def} bind def
+/BC {gsave moveto dup 0 exch rlineto exch 0 rlineto neg 0 exch rlineto closepath clip} bind def
+/EC /grestore load def
+/SH /show load def
+/MX {exch show 0.0 rmoveto} bind def
+/W {0 32 4 -1 roll widthshow} bind def
+/WX {0 32 5 -1 roll widthshow 0.0 rmoveto} bind def
+/RC {100.0 -100.0 scale
+612.0 0.0 translate
+-90.0 rotate
+.01 -.01 scale} bind def
+/URC {100.0 -100.0 scale
+90.0 rotate
+-612.0 0.0 translate
+.01 -.01 scale} bind def
+/RCC {100.0 -100.0 scale
+0.0 -792.0 translate 90.0 rotate
+.01 -.01 scale} bind def
+/URCC {100.0 -100.0 scale
+-90.0 rotate 0.0 792.0 translate
+.01 -.01 scale} bind def
+%%EndProlog
+%%Page: 0 1
+BS
+0 SI
+15 /Times-Bold AF
+15510 28325 MT
+(CP/M-80 KERMIT VERSION 4.11 USER GUIDE)SH
+10 /Times-Roman AF
+29402 32237 MT
+(C. Gianone)SH
+20860 34629 MT
+(Columbia University Center for Computing Activities)SH
+25862 35825 MT
+(New York, New York 10027)SH
+/Times-Italic SF
+28777 39413 MT
+(April 23, 1991)SH
+/Times-Roman SF
+26610 44197 MT
+(Copyright \050C\051 1981,1991)SH
+20111 45393 MT
+(Trustees of Columbia University in the City of New York)SH
+/Times-Italic SF
+18429 47785 MT
+(Permission is granted to any individual or institution to use, copy,)SH
+18178 48981 MT
+(or redistribute this document so long as it is not sold for profit, and)SH
+23291 50177 MT
+(provided this copyright notice is retained.)SH
+ES
+%%Page: 1 2
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1. CP/M-80 KERMIT)SH
+10 /Times-Italic AF
+52275 XM
+(Page 1)SH
+46800 50 8280 5709 UL
+16 /Times-Bold AF
+8280 8272 MT
+(1. CP/M-80 KERMIT)SH
+10 /Times-Italic AF
+8280 10566 MT
+(Program:)SH
+/Times-Roman SF
+14280 XM
+(Mike Freeman, Bonneville Power Administration, Vancouver, WA, USA,)
+139 W( with contributions from)138 W
+14280 11671 MT
+(many others.)SH
+/Times-Italic SF
+8280 13881 MT
+(Language:)SH
+/Times-Roman SF
+14280 XM
+(8080 Assembler, LASM, M80, or MAC80)SH
+/Times-Italic SF
+8280 16091 MT
+(Version:)SH
+/Courier SF
+14280 XM
+(4.11)SH
+/Times-Italic SF
+8280 18301 MT
+(Date:)SH
+/Times-Roman SF
+14280 XM
+(April 1, 1991)SH
+/Times-Italic SF
+8280 20511 MT
+(Documentation:)SH
+/Times-Roman SF
+15279 XM
+(Christine Gianone, Columbia University, with contributions from many others.)SH
+/Times-Italic SF
+8280 22903 MT
+(KERMIT-80 Capabilities At A Glance:)SH
+/Times-Roman SF
+9280 24513 MT
+(Local operation:)SH
+34480 XM
+(Yes)SH
+9280 25618 MT
+(Remote operation:)SH
+34480 XM
+(Partial, Auto-receive only)SH
+9280 26723 MT
+(Login scipts:)SH
+34480 XM
+(Yes, limited)SH
+9280 27828 MT
+(Transfer text files:)SH
+34480 XM
+(Yes)SH
+9280 28933 MT
+(Transfer binary files:)SH
+34480 XM
+(Yes)SH
+9280 30038 MT
+(Wildcard send:)SH
+34480 XM
+(Yes)SH
+9280 31143 MT
+(File transfer interruption:)SH
+34480 XM
+(Yes)SH
+9280 32248 MT
+(Filename collision avoidance:)SH
+34480 XM
+(Yes)SH
+9280 33353 MT
+(Can time out:)SH
+34480 XM
+(Yes)SH
+9280 34458 MT
+(8th-bit prefixing:)SH
+34480 XM
+(Yes)SH
+9280 35563 MT
+(Repeat count prefixing:)SH
+34480 XM
+(No)SH
+9280 36668 MT
+(Alternate block checks:)SH
+34480 XM
+(Yes)SH
+9280 37773 MT
+(Terminal emulation:)SH
+34480 XM
+(Yes, VT52 and others)SH
+9280 38878 MT
+(Communication settings:)SH
+34480 XM
+(Yes)SH
+9280 39983 MT
+(Support for dial-out modems:)SH
+34480 XM
+(No)SH
+9280 41088 MT
+(Transmit BREAK:)SH
+34480 XM
+(Yes; most versions)SH
+9280 42193 MT
+(IBM communication:)SH
+34480 XM
+(Yes)SH
+9280 43298 MT
+(Transaction logging:)SH
+34480 XM
+(No)SH
+9280 44403 MT
+(Debug logging:)SH
+34480 XM
+(No)SH
+9280 45508 MT
+(Session logging:)SH
+34480 XM
+(Yes)SH
+9280 46613 MT
+(Raw file transmit:)SH
+34480 XM
+(Yes)SH
+9280 47718 MT
+(Act as server:)SH
+34480 XM
+(No)SH
+9280 48823 MT
+(Talk to server:)SH
+34480 XM
+(Yes)SH
+9280 49928 MT
+(Advanced commands for servers:)SH
+34480 XM
+(Yes)SH
+9280 51033 MT
+(Command/init files:)SH
+34480 XM
+(Yes)SH
+9280 52138 MT
+(Command macros:)SH
+34480 XM
+(No)SH
+9280 53243 MT
+(Local file management:)SH
+34480 XM
+(Yes)SH
+9280 54348 MT
+(Handle file attributes:)SH
+34480 XM
+(No)SH
+9280 55453 MT
+(Long packets:)SH
+34480 XM
+(No)SH
+9280 56558 MT
+(International Character Sets:)SH
+34480 XM
+(No)SH
+9280 57663 MT
+(Sliding Windows:)SH
+34480 XM
+(No)SH
+9280 58768 MT
+(Printer control:)SH
+34480 XM
+(Yes, limited)SH
+14 /Times-Bold AF
+8280 62370 MT
+(1.1. Credits)SH
+10 /Times-Roman AF
+8280 64488 MT
+(CP/M Kermit is the first)
+170 W( of all the Kermit programs.  It was originally written by Bill Catchings of Columbia)171 W
+8280 65684 MT
+(University in 1981.)
+119 W( Over)
+486 W( the years, contributions have been added by many people, including Charles Carvalho)118 W
+8280 66880 MT
+(\050ACC\051, Bernie Eiben \050DEC\051, Nick Bush \050Stevens Institute of Technology\051, John Bray)
+109 W( \050University of Tennessee\051,)110 W
+8280 68076 MT
+(Bruce Tanner \050Cerritos College\051, Greg Small \050University)
+99 W( of California at Berkeley\051, Kimmo Laaksonen \050Helskini)98 W
+8280 69272 MT
+(University of Technology\051, Bertil Schou \050Loughborough)
+391 W( University\051, Jon Warbrick \050Plymouth Polytechnic)392 W
+8280 70468 MT
+(University\051, Brian Robertson \050Aberdeen University\051, A.J. Cole)
+99 W( \050Leeds University\051, John Shearwood \050Birmingham)98 W
+8280 71664 MT
+(University\051, Tony Addyman \050Salford University\051,)
+180 W( Godfrey Nix and Martin Carter \050Nottingham University\051, Ian)181 W
+ES
+%%Page: 2 3
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 2)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.1)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+6120 7886 MT
+(Young \050Edinburgh University\051, Chris Miles \050Manchester University\051,)
+144 W( Richard Russell, Dave Roberts, and many,)143 W
+6120 9082 MT
+(many others.)SH
+6120 11474 MT
+(Version 4.11 is the work of Mike Freeman of the Bonneville Power Administration in Vancouver, WA, USA, with)49 W
+6120 12670 MT
+(assistance from Russell Lang of Monash University in Australia, Jay S Rouman of Mt Pleasant MI, and others.)SH
+14 /Times-Bold AF
+6120 16272 MT
+(1.2. What's New)SH
+10 /Times-Roman AF
+6120 18390 MT
+(Features added since version 4.09 include:)SH
+/Symbol SF
+7910 20295 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(SET COLLISION {BACKUP/DISCARD/OVERWRITE/RENAME})SH
+/Symbol SF
+7910 22284 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(SET INCOMPLETE-FILES {DISCARD/KEEP})SH
+/Symbol SF
+7910 24273 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Many REMOTE commands, including some REMOTE SET commands)SH
+/Symbol SF
+7910 26262 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(RENAME command to rename CP/M files from within Kermit-80)SH
+/Symbol SF
+7910 28251 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(SET RECEIVE/SEND PACKET-LENGTH nn \050nn <= 94\051)SH
+/Symbol SF
+7910 30240 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(SET AUTORECEIVE)
+122 W( ON now implies that Kermit-80 ALWAYS tries to receive more files when a)121 W
+8620 31345 MT
+(RECEIVE transaction has completed.  The user can cancel with ^C.)SH
+/Symbol SF
+7910 33334 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(QUIT is now a synonym for EXIT.)SH
+/Symbol SF
+7910 35323 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(STAY is now a synonym for SET NO-EXIT.)SH
+/Symbol SF
+7910 37312 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(CONNECT, RECEIVE and SEND may be abbreviated to C, R and S, respectively.)SH
+/Symbol SF
+7910 39301 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Cancellation of TAKE, TYPE, and PRINT commands from the keyboard.)SH
+/Symbol SF
+7910 41290 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Many bug fixes.)SH
+/Symbol SF
+7910 43279 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Kermit-80 Version 4.11 now supports the Microbee family)
+67 W( of computers \05056K, 64K, 128K and 256K\051)68 W
+8620 44384 MT
+(manufactured by Microbee Systems, Ltd, of Australia.)SH
+/Symbol SF
+7910 46373 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Kermit-80 now supports the Ampro Little Board system.)SH
+14 /Times-Bold AF
+6120 49975 MT
+(1.3. Overview of Kermit Operation)SH
+10 /Times-Roman AF
+6120 52093 MT
+(Use the SET command to)
+210 W( establish necessary communication parameters like SPEED and PARITY.  Use the)209 W
+6120 53289 MT
+(CONNECT to establish a terminal connection to the remote computer.  If you are dialing out with a modem, type)76 W
+6120 54485 MT
+(the necessary dialing commands to the modem first.  The dialing process can be automated to some extent)
+63 W( using a)62 W
+6120 55681 MT
+(TAKE command)
+17 W( file containing INPUT, OUTPUT, and PAUSE commands.  Then log in to the remote computer or)18 W
+6120 56877 MT
+(service and conduct a session.)SH
+6120 59269 MT
+(To transfer a text file, start the Kermit)
+137 W( program on the remote computer and tell it to SEND the desired file \050if)136 W
+6120 60465 MT
+(uploading\051 or to)
+49 W( RECEIVE \050if downloading\051.  "Escape back" to CP/M Kermit, usually by typing Ctrl-] \050hold down)50 W
+6120 61661 MT
+(the Control key and press the right bracket key\051 and then)
+181 W( type the letter C. At the CP/M Kermit prompt type)180 W
+6120 62857 MT
+(RECEIVE \050if you gave a SEND command to the remote Kermit\051 or SEND)3 W
+/Times-Italic SF
+36349 XM
+(filename)SH
+/Times-Roman SF
+40046 XM
+(\050if you gave a)
+3 W( receive command)4 W
+6120 64053 MT
+(to the remote Kermit\051.)SH
+6120 66445 MT
+(To transfer a binary file, give the command)
+13 W( SET FILE TYPE BINARY to the remote Kermit and SET FILE-MODE)12 W
+6120 67641 MT
+(BINARY to CP/M Kermit before issuing any SEND or RECEIVE commands.)SH
+6120 70033 MT
+(Multiple files of the same type \050text or binary\051)
+107 W( can be transferred in a single operation using "wildcard notation")108 W
+6120 71229 MT
+(\050including special characters like asterisk in the filename\051.)SH
+ES
+%%Page: 3 4
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.3. Overview of Kermit Operation)SH
+10 /Times-Italic AF
+52275 XM
+(Page 3)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+8280 7886 MT
+(When file transfer is complete, CONNECT back to the remote computer, use the)
+73 W( EXIT command to exit from the)72 W
+8280 9082 MT
+(remote Kermit program, finish your work on the remote computer, log out from it, escape back to)
+111 W( CP/M Kermit)112 W
+8280 10278 MT
+(again, and EXIT from CP/M Kermit.)SH
+8280 12670 MT
+(The remote Kermit may also be put into "server)
+57 W( mode" to simplify these operations.  Give the SERVER command)56 W
+8280 13866 MT
+(to the remote Kermit, escape back to CP/M Kermit, and)
+89 W( then issue SEND commands to send files \050upload\051, GET)90 W
+/Times-Italic SF
+8280 15062 MT
+(filename)SH
+/Times-Roman SF
+12233 XM
+(commands to receive \050download\051 files, REMOTE commands to request)
+259 W( various other services \050like)258 W
+8280 16258 MT
+(directory listings\051 from the remote Kermit.  When you are)
+103 W( done, give a BYE command to terminate your remote)104 W
+8280 17454 MT
+(session, or)
+87 W( a FINISH command to tell the remote Kermit to return to its prompt so you can CONNECT back and)86 W
+8280 18650 MT
+(conduct further business.)SH
+8280 21042 MT
+(That's all there is to it.)SH
+14 /Times-Bold AF
+8280 24644 MT
+(1.4. Summary of CP/M)SH
+10 /Times-Roman AF
+8280 26762 MT
+(There are essentially two versions of CP/M - Versions 2.2 and 3.0 \050sometimes also called CP/M PLUS.\051)SH
+8280 29154 MT
+(CP/M-80 Version 2)95 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2 is run in)
+95 W( a single 64 Kbyte "page", usually the largest amount of memory on Z80 or 8080)96 W
+8280 30350 MT
+(systems. The)
+682 W( BIOS \050Basic input/output system\051, BDOS \050Basic Disk Operating System\051 and)
+216 W( CCP \050Command)215 W
+8280 31546 MT
+(console processor\051 all share memory with)
+58 W( any transient program the user may wish to run.  Some basic commands)59 W
+8280 32742 MT
+(are available through the)
+38 W( CCP, like DIR, ERA etc,while others are loaded from disk into the transient program area)37 W
+8280 33938 MT
+(and run as a program, like PIP or STAT.)SH
+8280 36330 MT
+(CP/M Version 3)33 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(0 \050or CP/M PLUS\051 effectively removes the requirement of having the CCP and)
+33 W( BDOS along with)34 W
+8280 37526 MT
+(a chunk of the)
+54 W( BIOS code being resident in the single 64k byte page of memory.  This allows even more space for)53 W
+8280 38722 MT
+(programs in the)
+20 W( TPA, but still a little less than the maximum of 64k.  It is substantially different from CP/M version)21 W
+8280 39918 MT
+(2)SH
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2, with lots of added features.  Kermit-80)
+239 W( uses very few additional version 3)238 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(0 features, and only where)238 W
+8280 41114 MT
+(absolutely necessary.)SH
+8280 43506 MT
+(CP/M file specifications are of the form)SH
+/Courier SF
+24472 XM
+(DEV:XXXXXXXX.YYY)SH
+/Times-Roman SF
+(, where)SH
+/Courier SF
+8280 45297 MT
+(DEV:)SH
+/Times-Roman SF
+16280 XM
+(is a)125 W
+/Times-Italic SF
+18141 XM
+(device name)125 W
+/Times-Roman SF
+(, normally the A:)
+125 W( or)
+SH( B:)
+125 W( floppy.)
+SH( If)
+500 W( omitted, the device name defaults to your)125 W
+16280 46402 MT
+(connected diskette.)SH
+/Courier SF
+8280 47979 MT
+(XXXXXXXX)SH
+/Times-Roman SF
+16280 XM
+(is a)SH
+/Times-Italic SF
+17891 XM
+(filename)SH
+/Times-Roman SF
+21585 XM
+(of up to 8 characters.)SH
+/Courier SF
+8280 49556 MT
+(YYY)SH
+/Times-Roman SF
+16280 XM
+(is the)SH
+/Times-Italic SF
+18669 XM
+(file type)SH
+/Times-Roman SF
+(, up to 3 characters.)SH
+8280 51347 MT
+(File names and file types may contain letters, digits, and some special characters, including dash, dollar)
+90 W( sign, and)89 W
+8280 52543 MT
+(underscore, but no imbedded spaces.  Upper and lower case letters are equivalent.)SH
+8280 54935 MT
+("Wildcard" file-group specifications are)
+30 W( permitted in file names and file types \050but not device names\051 within certain)31 W
+8280 56131 MT
+(contexts; a ")134 W
+/Courier SF
+(*)SH
+/Times-Roman SF
+(" matches a whole field, a ")134 W
+/Courier SF
+(?)SH
+/Times-Roman SF
+(" matches)
+518 W( a single character, including space.)
+134 W( Examples:)
+517 W( ")133 W
+/Courier SF
+(*.F??)SH
+/Times-Roman SF
+(")SH
+8280 57327 MT
+(specifies all files whose)24 W
+/Times-Italic SF
+18152 XM
+(types)SH
+/Times-Roman SF
+20481 XM
+(start with F and are 1, 2, or 3 characters long; ")24 W
+/Courier SF
+(F?.*)SH
+/Times-Roman SF
+(" specifies all files whose names)25 W
+8280 58523 MT
+(start with F and are no more than two characters long \050before the trailing spaces\051.)SH
+8280 60915 MT
+(The five CP/M commands are:)SH
+8280 62706 MT
+(DIR)SH
+/Times-Italic SF
+10252 XM
+(file)SH
+/Times-Roman SF
+16280 XM
+(Lists the the names of)
+165 W( the specified files.  The default file specification is "*.*".  Example:)164 W
+16280 63811 MT
+(")SH
+/Courier SF
+(DIR B:*.FOR)SH
+/Times-Roman SF
+(".)SH
+8280 65388 MT
+(ERA)SH
+/Times-Italic SF
+10530 XM
+(file)SH
+/Times-Roman SF
+16280 XM
+(Erases \050deletes\051 the specified file\050s\051; wildcards allowed.)SH
+8280 66965 MT
+(REN)SH
+/Times-Italic SF
+10530 XM
+(new old)SH
+/Times-Roman SF
+16280 XM
+(Changes the name of a file from)SH
+/Times-Italic SF
+29416 XM
+(old)SH
+/Times-Roman SF
+30944 XM
+(to)SH
+/Times-Italic SF
+31972 XM
+(new)SH
+/Times-Roman SF
+(, e.g.)SH
+16280 68070 MT
+(")SH
+/Courier SF
+(REN NEW.FOR=OLD.FOR)SH
+/Times-Roman SF
+(".)SH
+8280 69647 MT
+(SAVE)SH
+16280 XM
+(Saves the specified number of memory blocks into a file.  \050Not on CP/M Plus systems\051)SH
+8280 71224 MT
+(TYPE)SH
+/Times-Italic SF
+11030 XM
+(file)SH
+/Times-Roman SF
+16280 XM
+(Types the specified file on the screen, e.g.  ")SH
+/Courier SF
+(TYPE FOO.TXT)SH
+/Times-Roman SF
+(".)SH
+ES
+%%Page: 4 5
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 4)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.4)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+6120 7886 MT
+(The most important programs are:)SH
+6120 9677 MT
+(STAT)SH
+14120 XM
+(Gives statistics on disk usage; sets and displays IOBYTE.  \050Not on CP/M Plus systems\051)SH
+6120 11254 MT
+(PIP)SH
+14120 XM
+(Peripheral Interchange)
+51 W( Program.  Copies files.  In response to the ")52 W
+/Courier SF
+(*)SH
+/Times-Roman SF
+(" prompt, give a command)52 W
+556 50 14120 11454 UL
+333 50 18531 11454 UL
+556 50 23553 11454 UL
+14120 12359 MT
+(of the form)SH
+/Courier SF
+16520 14014 MT
+(disk:outfile=disk:infile)SH
+/Times-Roman SF
+14120 15731 MT
+(Wildcards \050")71 W
+/Courier SF
+(*)SH
+/Times-Roman SF
+(" for a whole field or ")71 W
+/Courier SF
+(?)SH
+/Times-Roman SF
+(" for)
+392 W( a letter\051 can be used.  Examples:)
+71 W( ")70 W
+/Courier SF
+(A:=B:*.*)SH
+/Times-Roman SF
+(" to)70 W
+14120 16836 MT
+(copy a whole disk, ")56 W
+/Courier SF
+(A:=B:*.FOR)SH
+/Times-Roman SF
+(" to copy all the Fortran programs)
+56 W( from disk B to disk A. If)57 W
+14120 17941 MT
+(the disk specification is omitted, your "connected" disk is assumed.  Command line arguments)78 W
+14120 19046 MT
+(are also accepted, e.g. ")SH
+/Courier SF
+(PIP A:=B:*.*)SH
+/Times-Roman SF
+(".)SH
+6120 21438 MT
+(There are equivalent commands for CP/M Version 3.0, but are not loaded into memory in the same)
+4 W( way as for CP/M)5 W
+6120 22634 MT
+(Version 2.2.  For further information on CP/M, consult your microcomputer manual or a CP/M handbook.)SH
+14 /Times-Bold AF
+6120 26236 MT
+(1.5. Kermit-80 Description)SH
+10 /Times-Roman AF
+6120 28354 MT
+(Since Kermit-80 runs on a standalone micro, it is always in control of the screen --)
+47 W( it is always in ")46 W
+/Times-Italic SF
+(local)SH
+/Times-Roman SF
+48837 XM
+(mode". It)342 W
+6120 29550 MT
+(includes a terminal emulator for establishing)
+42 W( a connection to a remote computer or service, and during file transfer,)43 W
+6120 30746 MT
+(it keeps the screen updated with the file name and the packet number, whether sending or receiving.)SH
+6120 33138 MT
+(Kermit-80 is)
+12 W( capable of an imprecise or "fuzzy" timeout on an input request, and can break deadlocks automatically.)11 W
+6120 34334 MT
+(In most cases, this is not important, because the Kermit program on)
+55 W( the other side is most likely able to handle the)56 W
+6120 35530 MT
+(timeouts. The)
+372 W( timeouts)
+61 W( done by Kermit-80 are fuzzy because they depend on the speed of the processor and other)60 W
+6120 36726 MT
+(factors that can vary from system to system.)SH
+6120 39118 MT
+(If, despite the timeout capability, the transmission appears to be stuck \050and you)
+26 W( can tell that this has happened if the)27 W
+6120 40314 MT
+(screen fails to change for a while\051 you can type carriage return to have the micro do what it would)
+56 W( have done on a)55 W
+6120 41510 MT
+(timeout, namely NAK the expected packet to cause theforeign host to send it again \050or, if the micro is sending,)
+75 W( to)76 W
+6120 42706 MT
+(retransmit the last packet\051.  Micro/micro or micro/IBM-mainframe)
+207 W( transfers could require this kind of manual)206 W
+6120 43902 MT
+(intervention.)SH
+6120 46294 MT
+(File transfers may be interrupted in several ways.)SH
+6120 48085 MT
+(Control-C)SH
+14120 XM
+(This will return you to Kermit-80 command level immediately, so that you can)
+46 W( connect back to)47 W
+14120 49190 MT
+(the remote system, or take any other desired action.)SH
+6120 50767 MT
+(Control-X)SH
+14120 XM
+(When sending a file, this will)
+182 W( terminate the sending of the current file with a signal to the)181 W
+14120 51872 MT
+(KERMIT on the other side to discard what it got so far.  If there are more files to be sent,)157 W
+14120 52977 MT
+(KERMIT-80 will go on to)
+53 W( the next one.  When receiving a file, KERMIT-80 will send a signal)52 W
+14120 54082 MT
+(to the remote KERMIT to stop sending this file.  If the remote KERMIT understands this)
+31 W( signal)32 W
+14120 55187 MT
+(\050not all implementations of KERMIT do\051, it will comply, otherwise the file will keep coming.)91 W
+14120 56292 MT
+(In any case, the remote KERMIT will go on to the next file in the group, if any.)SH
+6120 57869 MT
+(Control-Z)SH
+14120 XM
+(Like Control-X, except if a file)
+39 W( group is being transmitted, this will stop the transmission of the)40 W
+14120 58974 MT
+(entire group.  If only a single file is being transmitted, it works exactly like Control-X.)SH
+6120 60551 MT
+(Carriage Return)SH
+14120 XM
+(If you type a carriage return Kermit-80 will resend the current packet.  You)
+233 W( may do this)232 W
+14120 61656 MT
+(repeatedly, up to the)
+142 W( packet retry limit \050somewhere between 5 and 16 times\051 for a particular)143 W
+14120 62761 MT
+(packet.)SH
+ES
+%%Page: 5 6
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.5. Kermit-80 Description)SH
+10 /Times-Italic AF
+52275 XM
+(Page 5)SH
+46800 50 8280 5709 UL
+13 /Times-Bold AF
+25451 8071 MT
+(Kermit-80 Commands)SH
+10 /Times-Roman AF
+8280 10444 MT
+(Kermit-80 is an interactive program.  It issues a prompt, you type a command.  The process repeats until you)
+64 W( give)63 W
+8280 11640 MT
+(the EXIT command to leave the program.)SH
+8280 14032 MT
+(Commands consist of keywords, filenames, and numbers.  Keywords)
+190 W( may be abbreviated to minumum unique)191 W
+8280 15228 MT
+(length. "?")
+296 W( may be typed to request a menu of the available options)
+23 W( for the current field at any point in a command.)22 W
+8280 16424 MT
+(ESC may be typed at any point in a command to fill out the current keyword or filename;)
+93 W( if sufficient characters)94 W
+8280 17620 MT
+(have not been typed to identify the current field uniquely, Kermit-80 will)
+75 W( sound a beep and allow you to continue)74 W
+8280 18816 MT
+(from that point.  Here are Kermit-80's commands:)SH
+8280 20607 MT
+(BREAK)SH
+12280 XM
+(Send a BREAK)
+144 W( condition to the remote computer.  This is only possible if your system is capable of)145 W
+12280 21712 MT
+(sending breaks.  It is intended to be used with PAUSE, OUTPUT, etc and)
+136 W( the TAKE command to do)135 W
+12280 22817 MT
+(wierd and wonderful things, like automatic logging on to a remote host.)SH
+8280 24394 MT
+(BYE)SH
+12280 XM
+(When talking to a remote Kermit Server, this command shuts down the server)
+103 W( and logs it out, and also)104 W
+12280 25499 MT
+(exits from Kermit-80 to CP/M command level.)SH
+8280 27076 MT
+(CONNECT)SH
+12280 28181 MT
+(Establish a terminal connection to the computer, service, or)
+135 W( device that is connected to the serial port,)136 W
+12280 29286 MT
+(i.e. pass)
+SH( all typein to the serial port)
+34 W( and display all input from the serial port on the screen.  Also, emulate)33 W
+12280 30391 MT
+(a DEC VT52 to allow)
+62 W( cursor control, screen clearing, etc., if VT52-EMULATION is ON \050see below\051, in)63 W
+12280 31496 MT
+(which case you should also set your terminal type on the remote host to VT52.)
+68 W( \050Some)
+385 W( versions emulate)67 W
+12280 32601 MT
+(other terminals.\051  The CONNECT command may be abbreviated by the single letter C.)SH
+12280 34178 MT
+(Warning: VT52 emulation is only successful if your system or its attached terminal can do the same)
+62 W( sort)63 W
+12280 35283 MT
+(of functions as)
+47 W( a genuine VT52.  Things to beware of are cursor addressing, clear to end of page and end)46 W
+12280 36388 MT
+(of line, clear screen, home)
+192 W( cursor, and clear-and-home functions.  The useability of VT52 emulation)193 W
+12280 37493 MT
+(depends entirely on how many of the VT52 functions can be emulated by your micro or terminal.)SH
+12280 39070 MT
+(The escape)
+103 W( character differs from micro to micro; when you issue the CONNECT command, the micro)102 W
+12280 40175 MT
+(will print)
+40 W( a message telling you how to get back.  The escape sequence is generally an uncommonly-used)41 W
+12280 41280 MT
+(control character, like CTRL-backslash or CTRL-rightbracket, followed by a single letter "command":)SH
+12280 43071 MT
+(C)SH
+14280 XM
+(Close Connection, return to)SH
+/Courier SF
+25585 XM
+(Kermit-80>)SH
+/Times-Roman SF
+31835 XM
+(command level.)SH
+12280 44176 MT
+(S)SH
+14280 XM
+(Display Status of connection, but maintain remote connection.)SH
+/Courier SF
+12280 45281 MT
+(?)SH
+/Times-Roman SF
+14280 XM
+(List available single-character commands.)SH
+12280 46386 MT
+(0)SH
+14280 XM
+(\050zero\051 Send a null \0500\051 character.)SH
+12280 47491 MT
+(B)SH
+14280 XM
+(Send a BREAK signal.  Most systems provide this function.)SH
+12280 48596 MT
+(D)SH
+14280 XM
+(Drop the line.  Used on)
+51 W( the Apple with modem.  Automatically closes the connection after dropping)50 W
+14280 49701 MT
+(the line.  The TORCH system acknowledges this command but does nothing.)SH
+12280 50806 MT
+(P)SH
+14280 XM
+(Toggle printer on or off.  Allows you to copy whatever goes to the screen to the printer.)SH
+12280 51911 MT
+(S)SH
+14280 XM
+(Temporarily suspend logging to the log file.)SH
+12280 53016 MT
+(Q)SH
+14280 XM
+(Restart logging to the log file)SH
+/Courier SF
+12280 54121 MT
+(^])SH
+/Times-Roman SF
+14280 XM
+(\050or whatever - a second copy of the escape character\051 Send the escape character itself)
+69 W( to the remote)70 W
+14280 55226 MT
+(host.)SH
+8280 57017 MT
+(COPY)SH
+/Times-Italic SF
+11197 XM
+(source destination)SH
+/Times-Roman SF
+12280 58122 MT
+(Copy a named file to another file, either on the same drive or another drive.)SH
+8280 59699 MT
+(DIRECTORY)SH
+12280 60804 MT
+(This provides a directory listing of the specified files.)
+27 W( If)
+303 W( no files are specified, all files on the default disk)26 W
+12280 61909 MT
+(are listed.  File sizes, in K, are included.  You may interrupt the listing)
+1 W( at any time by typing any character.)2 W
+12280 63014 MT
+(The listing \050even if interrupted\051 concludes with a display of the amount of free storage left)
+99 W( on the disk.)98 W
+12280 64119 MT
+(You can inhibit the display of file sizes by SET DIRECTORY OFF.)SH
+8280 65696 MT
+(ERASE)SH
+/Times-Italic SF
+11697 XM
+(filespec)SH
+/Times-Roman SF
+12280 66801 MT
+(This executes the CP/M ERA command on the specified file\050s\051.  The names of the files being erased)
+65 W( are)64 W
+12280 67906 MT
+(not displayed.)SH
+8280 69483 MT
+(EXIT)SH
+12280 XM
+(Quit back to CP/M.  The return is made by a JMP 0 \050Warmstart\051.  QUIT is a synonym for EXIT.)SH
+8280 71060 MT
+(FINISH)SH
+12280 XM
+(Like LOGOUT, but shuts down the remote server)
+199 W( without logging it out.  Leaves you at Kermit-80)200 W
+ES
+%%Page: 6 7
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 6)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.5)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+10120 7886 MT
+(command level; subsequent CONNECT commands will put you back at host system command level.)SH
+6120 9463 MT
+(GET)SH
+/Times-Italic SF
+8314 XM
+(filespec)SH
+/Times-Roman SF
+11619 XM
+([)SH
+/Times-Italic SF
+(local_filespec)SH
+/Times-Roman SF
+(])SH
+10120 10568 MT
+(When Kermit-80 is talking)
+67 W( to a Kermit Server on the host, you should use the GET command to request)68 W
+10120 11673 MT
+(the server to send files to you, for example:)SH
+/Courier SF
+12520 13328 MT
+(get hlp:k*.hlp)SH
+/Times-Roman SF
+10120 15045 MT
+(You may specify a local filename)
+264 W( if you want to save the remote file under a different filename.)263 W
+10120 16150 MT
+(Limitation: If you request an alternate block check type using)
+194 W( the SET BLOCK command, the GET)195 W
+10120 17255 MT
+(command will not communicate it to the remote server.  If you want to have)
+7 W( type 2 or 3 block checks done)6 W
+10120 18360 MT
+(when getting files from the server, you have to issue)
+11 W( the appropriate SET BLOCK command to the remote)12 W
+10120 19465 MT
+(KERMIT before putting it in server mode.)SH
+6120 21042 MT
+(HELP)SH
+10120 XM
+(List all these commands,)
+27 W( with a short description on what the commands do.  A question mark will do the)26 W
+10120 22147 MT
+(same. If)
+408 W( you have already typed a command but do not know)
+79 W( what the parameters are, type a space \050to)80 W
+10120 23252 MT
+(indicate the end of the command\051 and a question mark.)
+43 W( You)
+335 W( will be informed of what Kermit can expect)42 W
+10120 24357 MT
+(at that stage.)SH
+6120 25934 MT
+(INPUT)SH
+/Times-Italic SF
+9314 XM
+(seconds text)SH
+/Times-Roman SF
+10120 27039 MT
+(Setup a text)
+55 W( line and time delay for your CP/M system to expect from the host, then wait up to the given)54 W
+10120 28144 MT
+(number of seconds \050approximately\051 for text to be sent to your CP/M-80 system.)SH
+6120 29721 MT
+(LOG)SH
+/Times-Italic SF
+8425 XM
+(filespec)SH
+/Times-Roman SF
+10120 30826 MT
+(When CONNECTed to a foreign host as a terminal, log the terminal session to the specified diskette file.)49 W
+10120 31931 MT
+(This functionality depends to some extent)
+13 W( on the remote host's ability to do XON/XOFF flow control, and)14 W
+10120 33036 MT
+(does not guarantee a complete transcript \050after all, that's what the KERMIT protocol is for\051.  The log file)48 W
+10120 34141 MT
+(is closed when the connection is closed by typing the escape character followed by the single-character)104 W
+10120 35246 MT
+(command "C".)SH
+10120 36823 MT
+(It is possible to temporarily)
+98 W( suspend logging during connect state.  Typing an escape sequence can turn)97 W
+10120 37928 MT
+(file logging on \050<escape-character> R for Resume\051 or off \050<escape-character> Q for quiet\051.)SH
+10120 39505 MT
+(Re-entering connect state will re-open the previously opened log file and append to that file.)SH
+6120 41082 MT
+(LOGOUT)SH
+10120 42187 MT
+(Like BYE, but leaves you at Kermit-80 command level.)SH
+6120 43764 MT
+(OUTPUT)SH
+/Times-Italic SF
+10314 XM
+(text)SH
+/Times-Roman SF
+10120 44869 MT
+(Send the text to the remote computer as if you had typed it.)SH
+6120 46446 MT
+(PAUSE)SH
+/Times-Italic SF
+9537 XM
+(seconds)SH
+/Times-Roman SF
+10120 47551 MT
+(If this command is issued your CP/M system will wait)
+42 W( a while before proceeding with another command.)41 W
+10120 48656 MT
+(This is intended for use)
+21 W( in TAKE commands, where you may want to pause for a while before proceeding)22 W
+10120 49761 MT
+(with the rest of the TAKE file.  The actual delay)
+62 W( is very variable between systems, and values should be)61 W
+10120 50866 MT
+(determined on a trial and error basis.)SH
+6120 52443 MT
+(PRINT)SH
+10120 XM
+(Print a file to)
+64 W( the console and printer.  Output to the printer is buffered by the Kermit-maintained printer)65 W
+10120 53548 MT
+(buffer. This)
+338 W( routine is identical)
+44 W( to TYPE but characters are echoed to the printer as well as to the screen.)43 W
+10120 54653 MT
+(Suspending and canceling output is as described in TYPE.)SH
+6120 56230 MT
+(QUIT)SH
+10120 XM
+(Synonym for EXIT.)SH
+6120 57807 MT
+(RECEIVE)SH
+/Times-Italic SF
+10592 XM
+(filespec)SH
+/Times-Roman SF
+10120 58912 MT
+(Receive file\050s\051 from the remote)
+185 W( Kermit, and save them under the names provided in the file headers)184 W
+10120 60017 MT
+(supplied by)
+37 W( the remote host.  If a local filespec is given, the file is saved under the given filename.  If the)38 W
+10120 61122 MT
+(names aren't legal, use)
+104 W( as many legal characters from the name as possible \050see the description of SET)103 W
+10120 62227 MT
+(FILE-WARNING below\051.  If there's)
+128 W( a conflict, and FILE-WARNING is ON, warn the user and try to)129 W
+10120 63332 MT
+(build a unique name for the file by)
+71 W( adding ")70 W
+/Courier SF
+(&)SH
+/Times-Roman SF
+(" characters to the name.  RECEIVE can be abbreviated to)70 W
+10120 64437 MT
+(the single letter R.)SH
+6120 66014 MT
+(REMOTE)SH
+/Times-Italic SF
+10481 XM
+(command)SH
+/Times-Roman SF
+10120 67119 MT
+(Send a command to a remote Kermit server.)
+66 W( The)
+381 W( results are sent back to your CP/M screen.  When two)65 W
+10120 68224 MT
+(arguments are required and specify less than two in)
+73 W( the command, you will be prompted for the missing)74 W
+10120 69329 MT
+(arguments. REMOTE)
+250 W( commands include:)SH
+10120 71120 MT
+(REMOTE CD [directory])SH
+ES
+%%Page: 7 8
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.5. Kermit-80 Description)SH
+10 /Times-Italic AF
+52275 XM
+(Page 7)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+14280 7886 MT
+(Ask the remote server to change its default directory.  If no directory is)
+36 W( specified, the server changes)37 W
+14280 8991 MT
+(to its login directory.)SH
+12280 10568 MT
+(REMOTE COPY file1 file2)SH
+14280 11673 MT
+(Ask the remote server to copy file1 to file2.)SH
+12280 13250 MT
+(REMOTE RENAME file1 file2)SH
+14280 14355 MT
+(Ask the remote server to rename file1 to file2.)SH
+12280 15932 MT
+(REMOTE DELETE filespec)SH
+14280 17037 MT
+(Ask the remote server to delete the named file or files.)SH
+12280 18614 MT
+(REMOTE DIRECTORY [filespec])SH
+14280 19719 MT
+(Ask the remote server to display a directory listing of the given files or, if the filespec is)
+41 W( omitted, all)40 W
+14280 20824 MT
+(the files in the current device or directory.)SH
+12280 22401 MT
+(REMOTE DISK-USAGE)SH
+14280 23506 MT
+(Ask the remote server to display information about its disk usage \050such as free or used space\051.)SH
+12280 25083 MT
+(REMOTE ERASE filespec)SH
+14280 26188 MT
+(Same as REMOTE DELETE.)SH
+12280 27765 MT
+(REMOTE FINISH)SH
+14280 28870 MT
+(Same as FINISH.)SH
+12280 30447 MT
+(REMOTE HELP)SH
+14280 31552 MT
+(Ask the remote server to display a list of the commands it can respond to.)SH
+12280 33129 MT
+(REMOTE HOST command)SH
+14280 34234 MT
+(Ask the remote server to have its operating system execute the given command.)SH
+12280 35811 MT
+(REMOTE KERMIT command)SH
+14280 36916 MT
+(Ask the remote server to execute the given Kermit command, given)
+35 W( in the server Kermit's command)36 W
+14280 38021 MT
+(syntax.)SH
+12280 39598 MT
+(REMOTE LOGIN user password)SH
+14280 40703 MT
+(Log in to a remote Kermit server which has been set up to require a username and password.)SH
+12280 42280 MT
+(REMOTE MESSAGE text)SH
+14280 43385 MT
+(Send the text to the remote server for display on its screen \050useful with MS-DOS Kermit servers\051.)SH
+12280 44962 MT
+(REMOTE SET parameter value)SH
+14280 46067 MT
+(Ask the)
+145 W( remote server to set the given parameter to the given value, for example REMOTE SET)146 W
+14280 47172 MT
+(FILE TYPE BINARY.  Type REMOTE SET ? to see a list of the REMOTE SET options.)SH
+12280 48749 MT
+(REMOTE SPACE)SH
+14280 49854 MT
+(Same as REMOTE DISK-USAGE.)SH
+12280 51431 MT
+(REMOTE STATUS)SH
+14280 52536 MT
+(Ask the remote server to provide a status report.)SH
+12280 54113 MT
+(REMOTE TYPE file)SH
+14280 55218 MT
+(Ask the remote server to display the named file on the micro's screen.)SH
+12280 56795 MT
+(REMOTE WHO [user])SH
+14280 57900 MT
+(Ask the remote server for a list)
+13 W( of users who are logged in, or if a user is specified, for a report on the)12 W
+14280 59005 MT
+(named user.)SH
+8280 60796 MT
+(RENAME file1 file2)SH
+12280 61901 MT
+(Rename local CP/M file1 to file2.)SH
+8280 63478 MT
+(SEND)SH
+/Times-Italic SF
+11141 XM
+(filespec)SH
+/Times-Roman SF
+12280 64583 MT
+(Send file\050s\051 specified by)13 W
+/Times-Italic SF
+22330 XM
+(filespec)SH
+/Times-Roman SF
+25648 XM
+(to the remote Kermit.  The)13 W
+/Times-Italic SF
+36641 XM
+(filespec)SH
+/Times-Roman SF
+39959 XM
+(may contain CP/M wildcards.)
+13 W( SEND)277 W
+12280 65688 MT
+(may be abbreviated to the single letter S.)SH
+8280 67265 MT
+(SET)SH
+/Times-Italic SF
+10308 XM
+(parameter)SH
+/Times-Roman SF
+14724 XM
+([)SH
+/Times-Italic SF
+(value)SH
+/Times-Roman SF
+(])SH
+12280 68370 MT
+(Set the specified parameter to the specified value.  Possible parameter settings:)SH
+12280 70161 MT
+(AUTORECEIVE)SH
+16280 71266 MT
+(ON \050or OFF\051.)
+157 W( Allows)
+563 W( several files to be received without having to type RECEIVE on the)156 W
+ES
+%%Page: 8 9
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 8)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.5)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+14120 7886 MT
+(receiving machine.  The routine simply looks for activity on)
+91 W( the serial line, and if so fudges a)92 W
+14120 8991 MT
+(RECEIVE command.  The packet sent by the sender will be lost.)SH
+10120 10568 MT
+(BLOCK-CHECK-TYPE)SH
+/Times-Italic SF
+20314 XM
+(option)SH
+/Times-Roman SF
+14120 11673 MT
+(The options are:)SH
+14120 13464 MT
+(1-CHARACTER-CHECKSUM)SH
+18120 14569 MT
+(Normal, default, standard 6-bit checksum.)SH
+14120 15674 MT
+(2-CHARACTER-CHECKSUM)SH
+18120 16779 MT
+(A 12-bit checksum encoded as two characters.)SH
+14120 17884 MT
+(3-CHARACTER-CRC-CCITT)SH
+18120 18989 MT
+(A 16-bit CCITT-format Cyclic Redundancy Check, encoded as 3 characters.)SH
+10120 20780 MT
+(BUFFER-SIZE)SH
+/Times-Italic SF
+16593 XM
+(value)SH
+/Times-Roman SF
+14120 21885 MT
+(This allows you to set a buffer size during transfer of data.  On some systems)
+86 W( it takes so long)87 W
+14120 22990 MT
+(that the remote end times)
+9 W( out while the local system is reading or writing to disk.  The size is the)8 W
+14120 24095 MT
+(number of 128 disk sectors \050nominal\051 and can be from 1 \050128 bytes\051 to 64 \0508 kbytes\051.)SH
+14120 25672 MT
+(CP/M-80 filenames will still be mapped to uppercase characters.)SH
+10120 27249 MT
+(COLLISION value)SH
+14120 28354 MT
+(What to do when a file arrives that has the same name as an existing file.)
+66 W( BACKUP)
+380 W( means to)65 W
+14120 29459 MT
+(rename the existing file.  DISCARD means to discard)
+444 W( and reject the incoming file.)445 W
+14120 30564 MT
+(OVERWRITE means to overwrite the existing file.  RENAME means to rename the existing)126 W
+14120 31669 MT
+(file.)SH
+10120 33246 MT
+(DEBUG)SH
+14120 XM
+(ON \050or OFF\051.  Enables/disables displaying of packets on the screen during)
+122 W( file transfer.  Not)123 W
+14120 34351 MT
+(performed if the QUIET option has been set for the terminal \050SET TERMINAL QUIET\051)SH
+10120 35928 MT
+(DEFAULT-DISK)SH
+/Times-Italic SF
+17591 XM
+(drive letter)SH
+/Times-Roman SF
+14120 37033 MT
+(This allows you to set the)
+94 W( default disk as source and destination of file transfers.  In addition,)95 W
+14120 38138 MT
+(issuing this command)
+134 W( causes you to switch to the specified disk and log it in, write-enabled.)133 W
+14120 39243 MT
+(The colon must be included in the disk name \050A:\051.  The selected disk appears in)
+302 W( your)303 W
+14120 40348 MT
+(KERMIT-80 prompt, for instance)SH
+/Courier SF
+16520 42003 MT
+(Kermit-80 14A:>)SH
+/Times-Roman SF
+10120 43720 MT
+(DIRECTORY-FILE-SIZE ON \050or OFF\051.)SH
+14120 45297 MT
+(By setting DIRECTORY-FILE-SIZE OFF you)
+71 W( can get an abreviated listing of your disk drive.)70 W
+14120 46402 MT
+(File sizes are not)
+2 W( calculated, and five files are shown on a line.  Setting this option ON will show)3 W
+14120 47507 MT
+(file sizes of each file.)SH
+14120 49084 MT
+(Both options will list the free space remaining.)SH
+10120 50661 MT
+(ESCAPE)SH
+14120 XM
+(Change the escape)
+5 W( character for virtual terminal connections.  Kermit-80 will prompt you for the)4 W
+14120 51766 MT
+(new escape character, which you enter literally.)SH
+10120 53343 MT
+(FILE-MODE)SH
+/Times-Italic SF
+15758 XM
+(option)SH
+/Times-Roman SF
+14120 54448 MT
+(Tells KERMIT-80 what kind of file it is)
+69 W( sending, so that KERMIT can correctly determine the)68 W
+14120 55553 MT
+(end of the file.  SET FILE BINARY means to send all the 128-byte blocks \050ie)
+119 W( logical CP/M)120 W
+14120 56658 MT
+(sectors\051 of the file, including the last block in its entirety; SET FILE ASCII)
+14 W( is used for text files,)13 W
+14120 57763 MT
+(and transmission stops when the first Control-Z is encountered anywhere in the)
+70 W( file \050this is the)71 W
+14120 58868 MT
+(CP/M convention for marking the end of a text file\051.)SH
+14120 60445 MT
+(SET FILE-MODE)
+99 W( DEFAULT tells Kermit to attempt to determine the file type by examining)98 W
+14120 61550 MT
+(the file)
+50 W( being transmitted.  If a Control-Z appears before the last block of the file, it is assumed)51 W
+14120 62655 MT
+(to be BINARY; if, when the first Control-Z is encountered, the remainder)
+104 W( of the file contains)103 W
+14120 63760 MT
+(only control-Z's, it is assumed to be a text file.  Unfortunately,)
+253 W( not all programs fill the)254 W
+14120 64865 MT
+(remainder of the last record of a text file with Control-Z's, so this algorithm is not)
+184 W( always)183 W
+14120 65970 MT
+(successful.)SH
+14120 67547 MT
+(If binary transmission is used on a text)
+238 W( file, or a compressed file \050eg a .DQC file\051 some)239 W
+14120 68652 MT
+(extraneous characters \050up to 127 of them\051 may appear at the end of the file on the target system.)SH
+14120 70229 MT
+(If ASCII transmission is used on a binary file, any 8th)
+96 W( bits set will be stripped and a warning)95 W
+14120 71334 MT
+(sent to the console.  When the first control-Z is encountered, the file is assumed to be at)
+16 W( the end,)17 W
+ES
+%%Page: 9 10
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.5. Kermit-80 Description)SH
+10 /Times-Italic AF
+52275 XM
+(Page 9)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+16280 7886 MT
+(even if it is not.)SH
+12280 9463 MT
+(FLOW-CONTROL ON \050or OFF\051)SH
+16280 10568 MT
+(Sets XON/XOFF flow control on or off.  If set ON the host is expected to respond)
+48 W( to an XOFF)49 W
+16280 11673 MT
+(or XON sent by Kermit-80.  If set)
+177 W( off, no flow control is assumed and any XON/XOFF is)176 W
+16280 12778 MT
+(ignored.)SH
+12280 14355 MT
+(IBM ON \050or OFF\051)SH
+16280 15460 MT
+(Allow the transfer)
+125 W( of files to and from an IBM mainframe computer.  This makes Kermit-80)124 W
+16280 16565 MT
+(wait for the IBM turnaround)
+61 W( character \050XON\051, ignore parity on input, add appropriate parity to)62 W
+16280 17670 MT
+(output, and use local echoing during)
+167 W( CONNECT.  As distributed, KERMIT-80 uses MARK)166 W
+16280 18775 MT
+(parity for IBM communication.  If you)
+4 W( don't give this command, IBM mode is OFF.  Since IBM)5 W
+16280 19880 MT
+(VM/CMS KERMIT does not have timeout capability,)
+118 W( SET IBM ON also turns on the "fuzzy)117 W
+16280 20985 MT
+(timer" automatically.)SH
+12280 22562 MT
+(LOCAL-ECHO ON \050or OFF\051)SH
+16280 23667 MT
+(When you CONNECT to a)
+136 W( remote host, you must set LOCAL-ECHO ON if the host is half)135 W
+16280 24772 MT
+(duplex, OFF if full duplex.  OFF by default.)SH
+12280 26349 MT
+(LOGGING ON \050or OFF\051)SH
+16280 27454 MT
+(Cease or resume logging whenever)
+25 W( connect mode is entered.  This is really only applicable after)24 W
+16280 28559 MT
+(a LOG command is no longer required.)SH
+12280 30136 MT
+(NO-EXIT)SH
+16280 31241 MT
+(This command is applicable only)
+145 W( for Kermit initiated with a command tail.  For example, if)144 W
+16280 32346 MT
+(Kermit was initiated by:)SH
+16280 33923 MT
+(KERMIT ;SEND HELLO;NO-EXIT)SH
+16280 35500 MT
+(Kermit would first seek out and execute the KERMIT.INI file \050if present\051, then)
+248 W( send file)249 W
+16280 36605 MT
+(HELLO to a remote system.)
+8 W( Usually)
+265 W( Kermit would exit back to CP/M, but NO-EXIT over-rides)7 W
+16280 37710 MT
+(this. STAY)
+250 W( is a synonym for NO-EXIT.)SH
+16280 39287 MT
+(Note the leading semicolon.  This clears leading spaces from the first command.)SH
+12280 40864 MT
+(OUTPUT)SH
+/Times-Italic SF
+16474 XM
+(text-line)SH
+/Times-Roman SF
+16280 41969 MT
+(Send a line of text)
+121 W( to the remote computer \050or modem\051.  This simply copies the string to the)120 W
+16280 43074 MT
+(correct line, and assumes all appropriate parameters have been set to be used, e.g. speed, parity)54 W
+16280 44179 MT
+(etc. It)
+250 W( is intended for use in TAKE command files.)SH
+12280 45756 MT
+(PARITY)SH
+/Times-Italic SF
+16141 XM
+(option)SH
+/Times-Roman SF
+16280 46861 MT
+(Sets parity for outgoing characters to one of)
+49 W( the following: NONE, SPACE, MARK, EVEN, or)50 W
+16280 47966 MT
+(ODD. On)
+286 W( input, if parity is NONE, then the 8th bit is kept \050as data\051, otherwise it is stripped)
+18 W( and)17 W
+16280 49071 MT
+(ignored. The)
+558 W( parity setting applies to both terminal)
+154 W( connection and file transfer.  If you set)155 W
+16280 50176 MT
+(parity to)
+236 W( anything other than none, KERMIT-80 will attempt to use "8th bit prefixing" to)235 W
+16280 51281 MT
+(transfer binary files.)
+45 W( If)
+341 W( the other KERMIT is also capable of 8th bit prefixing, then binary files)46 W
+16280 52386 MT
+(can be transferred successfully; if not, the 8th bit of each data byte)
+75 W( will be lost \050you will see a)74 W
+16280 53491 MT
+(warning on your screen if this happens\051.)SH
+12280 55068 MT
+(PORT)SH
+/Times-Italic SF
+15086 XM
+(port name)SH
+/Times-Roman SF
+16280 56173 MT
+(Allows you to switch between different communication ports.  This command is not available)96 W
+16280 57278 MT
+(on all systems.  Type)56 W
+/Courier SF
+25283 XM
+(SET PORT ?)57 W
+/Times-Roman SF
+31704 XM
+(for a list of valid options for your system. \050Note:  If your)57 W
+16280 58383 MT
+(system does not support several)
+105 W( ports, this command will return a "Not implemented" error if)104 W
+16280 59488 MT
+(you try to set a port.\051)SH
+12280 61065 MT
+(PRINTER)SH
+16280 62170 MT
+(ON \050or OFF\051)SH
+16280 63275 MT
+(Turns copying of CONNECT session)
+151 W( to printer on and off.  It is also possible to toggle the)152 W
+16280 64380 MT
+(printer on/off from the connect state, by typing <escape character> followed by P.)SH
+12280 65957 MT
+(RECEIVE)SH
+/Times-Italic SF
+16752 XM
+(parameter)SH
+/Times-Roman SF
+21168 XM
+([)SH
+/Times-Italic SF
+(value)SH
+/Times-Roman SF
+(])SH
+16280 67062 MT
+(Set a RECEIVE parameter.)SH
+16280 68853 MT
+(PAD-CHAR)SH
+20280 69958 MT
+(Set the PAD character to use while receiving files.  Currently a dummy, as for SET)100 W
+20280 71063 MT
+(SEND PAD-CHAR.)SH
+ES
+%%Page: 10 11
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 10)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.5)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+14120 7886 MT
+(PADDING [value])SH
+18120 8991 MT
+(Set the number of PAD characters to use while receiving files.  Same as SET)
+76 W( SEND)75 W
+18120 10096 MT
+(PADDING.)SH
+14120 11201 MT
+(START-OF-PACKET [value])SH
+18120 12306 MT
+(Set the default start of Packet character for receiving files.)
+58 W( Apply)
+364 W( the same rules and)57 W
+18120 13411 MT
+(considerations as for SET SEND START-OF-PACKET.)SH
+14120 14516 MT
+(PACKET-LENGTH number)SH
+18120 15621 MT
+(Tell the other Kermit the longest packet length CP/M Kermit)
+171 W( is willing to receive)170 W
+18120 16726 MT
+(during file transfer.  The maximum length is 94, which is also the default length.)SH
+10120 18517 MT
+(SEND)SH
+/Times-Italic SF
+12981 XM
+(parameter)SH
+/Times-Roman SF
+17397 XM
+([)SH
+/Times-Italic SF
+(value)SH
+/Times-Roman SF
+(])SH
+14120 19622 MT
+(Set a SEND parameter.)SH
+14120 21413 MT
+(PAD-CHAR)SH
+18120 22518 MT
+(Set the)
+98 W( Pad character to be used while sending files.  It is currently a dummy entry,)99 W
+18120 23623 MT
+(and does not do anything.)SH
+14120 24728 MT
+(PADDING [value])SH
+18120 25833 MT
+(Set the number of PAD-CHARS)
+249 W( to be used while sending files.  This too does)250 W
+18120 26938 MT
+(nothing.)SH
+14120 28043 MT
+(START-OF-PACKET)SH
+18120 29148 MT
+(Set the default start of packet character to another character than control-A.  This)
+28 W( may)29 W
+18120 30253 MT
+(be necessary on)
+439 W( systems \050including intervening networks\051 that trap control-A)438 W
+18120 31358 MT
+(characters. Choose)
+272 W( a control character not otherwise used, ie not carriage return)
+11 W( \05013D,)12 W
+18120 32463 MT
+(ODH\051, line feed)
+108 W( \05010D, OAN\051, tabs \05009D, 09H\051, backspace \05008H\051, and bell \05007H\051 or)107 W
+18120 33568 MT
+(any other used between you and your remote system.)SH
+10120 35359 MT
+(SPEED)SH
+/Times-Italic SF
+13426 XM
+(value)SH
+/Times-Roman SF
+14120 36464 MT
+(Change the)
+23 W( baud rate of the communications port.  This command only works on some systems.)22 W
+/Times-Italic SF
+14120 37569 MT
+(value)SH
+/Times-Roman SF
+16718 XM
+(is the numeric baud rate \050300, 9600, etc.\051 desired.  Type)
+182 W( SET SPEED followed by a)183 W
+14120 38674 MT
+(question mark for a list of supported baud rates.  On systems that do)
+36 W( not support this command,)35 W
+14120 39779 MT
+(you must set the port baud rate from CP/M or other setup mechanism outside of KERMIT-80.)SH
+10120 41356 MT
+(TACTRAP)SH
+14120 42461 MT
+(Set the TAC intercept character.  If you are attached to a TAC it will)
+149 W( swallow the intercept)148 W
+14120 43566 MT
+(character \050commercial AT sign by default\051 so Kermit sends)
+94 W( it twice.  With this command you)95 W
+14120 44671 MT
+(can set the intercept character \050ie the one to send twice\051 to another character.)SH
+10120 46248 MT
+(TERMINAL)SH
+/Times-Italic SF
+15536 XM
+(option)SH
+/Times-Roman SF
+14120 47353 MT
+(Select one of the following terminal characteristics:)SH
+14120 49144 MT
+(OFF)SH
+18120 XM
+(sets emulation off, and its up to the)
+63 W( attached terminal to respond to escape sequences)64 W
+18120 50249 MT
+(sent from the remote host system.)SH
+14120 51907 MT
+(DUMB)SH
+18120 XM
+(Like off, but carriage return)
+123 W( and line feed characters are the only control characters)122 W
+18120 53012 MT
+(accepted. All)
+250 W( other control characters are simply ignored. \050Really a "Glass TTY"\051.)SH
+14120 54670 MT
+(EXTERNAL)SH
+18120 55775 MT
+(Emulation is provided for by a)
+259 W( routine in the system dependent part of Kermit.)258 W
+18120 56880 MT
+(Attempting to set)
+236 W( this option without having and externally supplied routine will)237 W
+18120 57985 MT
+(returna "Not Implemented" error.)SH
+14120 59643 MT
+(OFF)SH
+18120 XM
+(All characters are passed directly to the terminal without any interpretation by Kermit.)SH
+14120 61301 MT
+(VT52)SH
+18120 XM
+(When connected)
+101 W( as a terminal to a foreign host, the micro emulates a VT52.  VT52)100 W
+18120 62406 MT
+(emulation is set by default, except on micros that already have terminal functionality)74 W
+18120 63511 MT
+(built in, such)
+35 W( as the DEC VT180 and DECmate \050these act as VT100-series terminals\051.)34 W
+18120 64616 MT
+(Some systems emulate other terminals, like the ADM3A; see table 1-5.)SH
+14120 66274 MT
+(QUIET)SH
+18120 XM
+(Do not display any file transfer information onto the console.  This mode is useful)
+72 W( if)73 W
+18120 67379 MT
+(you console takes)
+58 W( a long time to update the display.  Only the file name is displayed.)57 W
+18120 68484 MT
+(DEBUGging information is not displayed even if selected.)SH
+14120 70142 MT
+(REGULAR)SH
+18120 71247 MT
+(Inverse of QUIET.  All packets etc displayed, as ususal.)SH
+ES
+%%Page: 11 12
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.5. Kermit-80 Description)SH
+10 /Times-Italic AF
+51775 XM
+(Page 11)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+12280 7886 MT
+(TIMER ON \050or OFF\051)SH
+16280 8991 MT
+(Enable or disable)
+131 W( the "fuzzy timer".  The timer is off by default, because in the normal case)132 W
+16280 10096 MT
+(KERMIT-80 is communicating with a mainframe KERMIT that has its own timer.)
+62 W( Mainframe)372 W
+16280 11201 MT
+(KERMIT timers tend to be more precise or adaptable to changing conditions.)
+46 W( You)
+343 W( should SET)47 W
+16280 12306 MT
+(TIMER ON if you are communicating with a KERMIT that does not have a)
+41 W( timer.  You should)40 W
+16280 13411 MT
+(SET TIMER OFF if you are communicating over a network with long delays.)SH
+12280 14988 MT
+(USER)SH
+/Times-Italic SF
+15086 XM
+(user-number)SH
+/Times-Roman SF
+16280 16093 MT
+(Sets another user number to be active.  Acceptable user numbers are)
+203 W( 0 to 31, though it is)202 W
+16280 17198 MT
+(recommended to use user numbers 0 to 15 only.  This is really only useful for Winchester)184 W
+16280 18303 MT
+(Systems with high disk capacities.)SH
+12280 19880 MT
+(WARNING ON \050or OFF\051)SH
+16280 20985 MT
+(Warn user of filename)
+5 W( conflicts when receiving files from remote host, and attempt to generate a)6 W
+16280 22090 MT
+(unique name)
+19 W( by adding ")18 W
+/Courier SF
+(&)SH
+/Times-Roman SF
+(" characters to the given name.  ON by default, which is equivalent to)18 W
+16280 23195 MT
+(SET COLLISION RENAME.)SH
+8280 24986 MT
+(SHOW)SH
+12280 XM
+(Display all settable parameters.  You will get a page or so)
+83 W( of the status af all parameters that can be set)84 W
+12280 26091 MT
+(using the SET command.)SH
+8280 27668 MT
+(STATUS)SH
+12280 XM
+(The same function as Show.)SH
+8280 29245 MT
+(STAY)SH
+12280 XM
+(Equivalent to SET NO-EXIT.)SH
+8280 30822 MT
+(TAKE)SH
+/Times-Italic SF
+11196 XM
+(filespec)SH
+/Times-Roman SF
+12280 31927 MT
+(Take characters and commands from the specified file as if they)
+40 W( were entered from the keyboard.  This is)41 W
+12280 33032 MT
+(useful if you want to set up a batch job.  A command file can send, get,)
+210 W( receive, set functions etc)209 W
+12280 34137 MT
+(automatically. A)
+250 W( TAKE command can be interrupted with ^C.)SH
+12280 35714 MT
+(An automatic)
+67 W( "TAKE KERMIT.INI" is executed from the default drive when Kermit-80 is loaded.  This)68 W
+12280 36819 MT
+(can be used to set defaults of band rate, parity, filetype, default drive etc.)SH
+12280 38396 MT
+(If KERMIT.INI does not exist, control is given directly to the user.)SH
+8280 39973 MT
+(TRANSMIT)SH
+/Times-Italic SF
+13641 XM
+(filespec turnaround)SH
+/Times-Roman SF
+12280 41078 MT
+(Send the specified file)
+70 W( to the system on the other end of the connection as though it were being typed at)71 W
+12280 42183 MT
+(the terminal, one line at a time.  Each line sent is terminated with a carriage return, and any line)
+36 W( feeds are)35 W
+12280 43288 MT
+(stripped from the file sent.)
+30 W( After)
+311 W( each line has been sent Kermit waits for a character string from the host)31 W
+12280 44393 MT
+(\050eg a acrriage return\051.  If not specified, a carriage return is assumed.  No KERMIT protocol)
+76 W( is involved.)75 W
+12280 45498 MT
+(An asterisk \050star\051 is sent to the console for every line sent,)
+1 W( to indicate how the transfer is progressing.  This)2 W
+12280 46603 MT
+(is useful for sending files to systems)
+43 W( that don't have a KERMIT program.  During transmission, you may)42 W
+12280 47708 MT
+(type one of these single-character commands:)SH
+12280 49499 MT
+(Control-C)SH
+14280 50604 MT
+(Cease transmission, and drop into terminal emulation mode.)SH
+12280 51709 MT
+(CR)SH
+14280 XM
+(\050carriage return\051 Re-transmit the previous line.)SH
+8280 53500 MT
+(TYPE filespec)SH
+12280 54605 MT
+(Type a)
+49 W( local CP/M file or files on the CP/M screen.  A Control-C will cancel the command and return to)50 W
+12280 55710 MT
+(the Kermit prompt.  A Ctrl-X will cancel the current file and go on to the next one, if)
+81 W( any.  Typing any)80 W
+12280 56815 MT
+(other character)
+86 W( while the file is being displayed will suspend the output.  Another character will resume)87 W
+12280 57920 MT
+(output.)SH
+8280 59497 MT
+(VERSION)SH
+12280 60602 MT
+(Show the name, edit number, and edit date of several of the modules that make up Kermit-80.)SH
+ES
+%%Page: 12 13
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 12)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.6)SH
+46800 50 6120 5709 UL
+14 SS 
+6120 8138 MT
+(1.6. Kermit-80 Flavors)SH
+10 /Times-Roman AF
+6120 10256 MT
+(Many of the)
+152 W( systems supported use an external terminal, rather than a built-in console.  Kermit may be further)153 W
+6120 11452 MT
+(customized for these systems by)
+98 W( defining \050at assembly time\051 the terminal type to be used.  If the terminal type is)97 W
+6120 12648 MT
+(unknown or)
+29 W( does not match any of the existing terminal options, the generic "CRT" option may be selected.  In this)30 W
+6120 13844 MT
+(case, Kermit cannot do fancy screen control during file transfer; it simply types the file names, packet)
+25 W( numbers, and)24 W
+6120 15040 MT
+(messages in sequence across and down the screen.  This works best)
+183 W( if you can put your micro or terminal in)184 W
+6120 16236 MT
+("autowrap" mode; otherwise the packet numbers will pile up in the rightmost column;)
+69 W( the filenames and messages)68 W
+6120 17432 MT
+(will always appear on)
+150 W( a new line, however.  If no specific terminal has been selected, Kermit cannot do VT52)151 W
+6120 18628 MT
+(emulation; it can act as a "dumb terminal" \050sometimes called a "glass TTY"\051, or else its own built in)
+167 W( terminal)166 W
+6120 19824 MT
+(firmware provides cursor control functions independent of the Kermit program.)SH
+12 /Times-Bold AF
+6120 22940 MT
+(1.6.1. Generic Kermit-80)SH
+10 /Times-Roman AF
+6120 24882 MT
+("Generic Kermit-80" is an implementation of Kermit that should run on any)
+11 W( 8080-compatible CP/M 2.2 system with)12 W
+6120 26078 MT
+(no modification)
+7 W( at all, or perhaps only a minor one.  Unlike other Kermit-80 implementations, it contains no system-)6 W
+6120 27274 MT
+(dependent manipulation of the serial port.  All)
+87 W( I/O is done with standard CP/M BIOS calls, and I/O redirection is)88 W
+6120 28470 MT
+(done using the CP/M IOBYTE function, which, according to the Digital Research)24 W
+/Times-Italic SF
+39460 XM
+(CP/M Operating System Manual)24 W
+/Times-Roman SF
+(,)SH
+6120 29666 MT
+(is an optional feature of any particular CP/M implementation.)
+207 W( If)
+665 W( your system does not provide the IOBYTE)208 W
+6120 30862 MT
+(function, Generic Kermit-80 will not work; furthermore, not all systems that implement IOBYTE do so in)
+36 W( the same)35 W
+6120 32058 MT
+(way. The)
+360 W( SET PORT command may be used to select the)
+55 W( devices to be used for input and output.  Table 1-1 lists)56 W
+6120 33254 MT
+(the options to the SET PORT command and their effects.)SH
+46800 50 6120 35171 UL
+/Courier SF
+17220 37252 MT
+(SET PORT)SH
+/Courier-Oblique SF
+22620 XM
+(xxx)SH
+/Courier SF
+26820 XM
+(input from)
+SH( output)
+3000 W( to)SH
+7200 50 17220 37452 UL
+6000 50 26820 37452 UL
+5400 50 36420 37452 UL
+20220 38283 MT
+(CRT CRT: CRT:)6600 W
+20220 39314 MT
+(PTR PTR: PTP:)6600 W
+20220 40345 MT
+(TTY TTY: TTY:)6600 W
+20220 41376 MT
+(UC1 UC1: UC1:)6600 W
+20220 42407 MT
+(UR1 UR1: UP1:)6600 W
+20220 43438 MT
+(UR2 UR2: UP2:)6600 W
+/Times-Bold SF
+20881 45048 MT
+(Table 1-1:)SH
+/Times-Roman SF
+25742 XM
+(Kermit-80 SET PORT Options)SH
+46800 50 6120 46858 UL
+6120 49050 MT
+(The default is SET PORT)
+105 W( PTR.  In all cases, the console \050CON:\051 and list \050LST:\051 devices used are those selected)104 W
+6120 50246 MT
+(when Kermit is started.)SH
+6120 52638 MT
+(The reason all Kermit-80 implementations aren't generic is that a good deal of speed is)
+128 W( sacrificed by getting all)129 W
+6120 53834 MT
+(services from the operating system.  While a specific implementation of Kermit-80 may be able to operate)
+45 W( at 4800,)44 W
+6120 55030 MT
+(9600, or even 56 Kilo baud, generic Kermit will fail to work on some systems at speeds in excess)
+30 W( of 1200 baud.  In)31 W
+6120 56226 MT
+(addition, many features of Kermit require more specific knowledge of the hardware)
+171 W( involved.  Generic Kermit)170 W
+6120 57422 MT
+(cannot send a BREAK signal, or change the baud rate, for example.)SH
+12 /Times-Bold AF
+6120 60538 MT
+(1.6.2. CP/M 3 Kermit)SH
+10 /Times-Roman AF
+6120 62480 MT
+(CP/M-3 Kermit \050also known as CP/M-Plus Kermit\051 is)
+161 W( a version of generic Kermit-80, and should run on most)162 W
+6120 63676 MT
+(CP/M-3 \050CP/M-Plus\051 systems.  It uses the auxilliary port \050AUX:\051 to communicate to the remote Kermit.  The SET)60 W
+6120 64872 MT
+(BAUD and SET PORT commands are not supported; nor can a BREAK be sent.  Like generic Kermit-80, a terminal)3 W
+6120 66068 MT
+(may be selected at assembly time.)SH
+ES
+%%Page: 13 14
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.6.3. System-Specific Versions)SH
+10 /Times-Italic AF
+51775 XM
+(Page 13)SH
+46800 50 8280 5709 UL
+12 /Times-Bold AF
+8280 8004 MT
+(1.6.3. System-Specific Versions)SH
+10 /Times-Roman AF
+8280 9946 MT
+(There are also many versions of Kermit-80 tailored to specific systems.  Most)
+39 W( of these operate uniformly, but some)38 W
+8280 11142 MT
+(of them take advantage \050or suffer limitations\051 of the specific system.  Here are some of the special features)
+145 W( for)146 W
+8280 12338 MT
+(particular systems:)SH
+8280 14129 MT
+(Amstrad: -- Two versions:)SH
+3444 50 8280 14329 UL
+10280 15920 MT
+(PCW 8256)SH
+12280 17025 MT
+(The PCW 8256/8512 with the serial inerafce attached.)SH
+10280 18602 MT
+(CPC 6128)SH
+12280 19707 MT
+(The 664 with add on memory and 6128 are both)
+10 W( supported.  Both systems must run CP/M Plus, so the 664)9 W
+12280 20812 MT
+(will need an add on RAM pack and CP/M upgrade.  A high speed transfer rate of)
+70 W( 38k baud can be used)71 W
+12280 21917 MT
+(between Amstrad computers.)SH
+8280 23708 MT
+(ACCESS:)SH
+3779 50 8280 23908 UL
+10280 24813 MT
+(Access Matrix computer using port J5.  Supports SET BAUD-RATE for rates of 300-9600 baud.)SH
+8280 26390 MT
+(Apple II -- four variations:)SH
+3360 50 8280 26590 UL
+10280 28181 MT
+(APMMDM:)SH
+12280 29286 MT
+(Apple with Z80 Softcard and Micromodem II in slot 2 Dialout capability provided in)
+63 W( connect command;)62 W
+12280 30391 MT
+(user is prompted for phone number)
+124 W( if carrier is not present.  During connect mode,)125 W
+/Courier SF
+47449 XM
+(^]D)SH
+/Times-Roman SF
+49624 XM
+(drops carrier.)125 W
+12280 31496 MT
+(BYE command also causes carrier to be dropped.)SH
+10280 33073 MT
+(AP6551:)SH
+12280 34178 MT
+(Apple with Z80 Softcard, and one of several 6551-based communication cards; the slot)
+198 W( number is a)199 W
+12280 35283 MT
+(compile-time parameter \050default is slot 2\051.  SET BAUD-RATE supported; speeds are 110-19200 baud.)SH
+10280 36860 MT
+(APCPS:)SH
+12280 37965 MT
+(Apple with Z80 Softcard and CP Multi-Function Card.  The)
+279 W( slot number is again a compile-time)280 W
+12280 39070 MT
+(parameter. SET)
+250 W( BAUD-RATE is supported for baud rates from 50 baud to 19200 baud.)SH
+10280 40647 MT
+(AP6850:)SH
+12280 41752 MT
+(Apple II)
+72 W( with Z80 Softcard and a 6850-based USART in slot 2-the slot being a compile-time parameter.)73 W
+12280 42857 MT
+(SET BAUD-RATE is not supported.)SH
+8280 44648 MT
+(BBC:)SH
+2001 50 8280 44848 UL
+10280 45753 MT
+(Acorn Computers BBC Computer with Acorn Z80 second processor running CP/M-80.)
+288 W( Supports)
+827 W( SET)289 W
+10280 46858 MT
+(BAUD-RATE and can send breaks.)SH
+8280 48435 MT
+(BigBoard II:)SH
+4805 50 8280 48635 UL
+10280 49540 MT
+(Uses serial)
+47 W( port A. To use port B, change mnport, mnprts, and baudrt and reassemble.  Can generate BREAK.)48 W
+10280 50645 MT
+(SET SPEED supported; speeds are 300-38400 baud.)SH
+8280 52222 MT
+(Cifer:)SH
+2055 50 8280 52422 UL
+10280 53327 MT
+(Originally coded for Cifer 1886)
+81 W( using the VL: port set as TTYI: and TTYO: but works successfully on 18xx)82 W
+10280 54432 MT
+(and 28xx series machines.)SH
+10280 56009 MT
+(There are now two versions, each with two variations: Either running)
+2 W( CP/M Version 2.2 or 3.0, and either using)1 W
+10280 57114 MT
+(the VL: or)
+61 W( AUX: ports.  The VL:  port version can only use seven bits of data, so parity prefixing is required)62 W
+10280 58219 MT
+(for binary file transfers.  This restriction is removed by using the AUX: port.  For those interested, the)
+22 W( problem)21 W
+10280 59324 MT
+(is due to the interprocessor link between the video and CPU \050!\051 boards.  The VL:)
+1 W( port is on the video board, and)2 W
+10280 60429 MT
+(the AUX: port on the CPU board, and the inter processor link can only transfer seven bits of data.)SH
+10280 62006 MT
+(Supports SET SPEED, and can generate breaks on some models with a BREAK key.)SH
+8280 63583 MT
+(Comart:)SH
+3000 50 8280 63783 UL
+10280 64688 MT
+(Comart Communicator-Similar to Northstar equipment.  Can generate BREAK.)SH
+8280 66265 MT
+(Compupro:)SH
+4278 50 8280 66465 UL
+10280 67370 MT
+(Based on Kermit 3.x, and has been merged into V4.09)SH
+8280 68947 MT
+(CPT-85xx word processors:)SH
+10943 50 8280 69147 UL
+10280 70052 MT
+(Can generate BREAK.  SET SPEED supported; speeds are 50-9600 baud.)SH
+8280 71629 MT
+(Cromemco:)SH
+4444 50 8280 71829 UL
+ES
+%%Page: 14 15
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 14)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.6.3)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+8120 7886 MT
+(Cromemco computers with TU-ART card.  Supports SET BAUD-RATE \050110-9600 baud\051.)SH
+6120 9463 MT
+(DEC DECmate II word processor \050with Z80 card\051:)SH
+20023 50 6120 9663 UL
+8120 10568 MT
+(Can generate BREAK.)SH
+6120 12145 MT
+(DEC VT180 \050Robin\051:)SH
+8444 50 6120 12345 UL
+8120 13250 MT
+(Three output ports, referred to as COMMUNICATIONS, GENERAL, and PRINTER.  Can generate BREAK.)SH
+6120 14827 MT
+(Digicomp Delphi 100:)SH
+8722 50 6120 15027 UL
+8120 15932 MT
+(SET SPEED supported; speeds are 50-19200 baud.)SH
+6120 17509 MT
+(Discovery:)SH
+4110 50 6120 17709 UL
+8120 18614 MT
+(Action Computer Enterprises "Discovery" Multi-user Computer.  Uses Port)
+31 W( B on an 83U user board.  Supports)30 W
+8120 19719 MT
+(SET SPEED for 50-19200 baud.  Can generate BREAK.)SH
+6120 21296 MT
+(Epson:)SH
+2500 50 6120 21496 UL
+8120 22401 MT
+(Epson PX-8 with LCD display.  Although it is quite different in displaying of Packet Information, it)
+57 W( works as)56 W
+8120 23506 MT
+(any other CP/M-80 Kermit.  Supports SET SPEED and can generate BREAK.)SH
+6120 25083 MT
+(Generic Kermit:)SH
+6248 50 6120 25283 UL
+8120 26188 MT
+(Two versions, one for CP/M version 2)46 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2 and version 3.  These systems use IOBYTE flipping \050V2)46 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2\051 and)
+46 W( the)45 W
+8120 27293 MT
+(AUX: device)
+306 W( to communicate to the serial line.  You may have to SET PORT)
+28 W( xxx before the version 2)29 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2 will)29 W
+8120 28398 MT
+(work, as Kermit needs to know what device is the serial line.)SH
+6120 29975 MT
+(Genie:)SH
+2388 50 6120 30175 UL
+8120 31080 MT
+(Eaca Video Genie.)SH
+6120 32657 MT
+(Heath: Three Versions:)SH
+2388 50 6120 32857 UL
+8120 34448 MT
+(H8QUAD)SH
+10120 35553 MT
+(for Heath-8 systems with the quad io board.  This system has been derived from V3.x code.  Note)
+14 W( that this)13 W
+10120 36658 MT
+(version will not run "as is" on H89 systems.)SH
+8120 38235 MT
+(H89)SH
+10120 XM
+(For Heath-89 machines suports baud rates from 50 to 56,000 baud.)SH
+8120 39812 MT
+(Z100)SH
+10120 40917 MT
+(For Z-100 running CP/M-85.  This version does not support setting of baud rates.)SH
+6120 42708 MT
+(Intertec Superbrain: Two Versions:)SH
+7692 50 6120 42908 UL
+8120 44499 MT
+(BRAINA)SH
+10120 45604 MT
+(For superbrain using AUX port.  Breaks and SET BAUD both supported)SH
+8120 47181 MT
+(BRAINM)SH
+10120 48286 MT
+(As above, but using the MAIN port.)SH
+6120 50077 MT
+(Ithaca:)SH
+2443 50 6120 50277 UL
+8120 51182 MT
+(Ithaca Intersystems based computer using the VIO card for all IO to the outside world.  The system is strictly)60 W
+8120 52287 MT
+(speaking a home-brew variant of the Ithaca machine, using an S100 cardcage without)
+24 W( a front panel.  It uses the)23 W
+8120 53392 MT
+(Extended BIOS by EuroMicro of London.  However, I see no reason for this version not running on)
+38 W( a genuine)39 W
+8120 54497 MT
+(Ithaca Intersystems machine.  There are patches needed to the EuroMicro BIOS to make this version work.)SH
+6120 56074 MT
+(Kaypro:)SH
+3277 50 6120 56274 UL
+8120 57179 MT
+(Should work on most Kaypro models, as well)
+24 W( as some related systems \050Ferguson BigBoard I, Xerox 820\051.  For)25 W
+8120 58284 MT
+(the newer Kaypros with multiple ports, Kermit uses)
+14 W( the one labeled "serial data"; it cannot use the serial printer)13 W
+8120 59389 MT
+(or internal modem ports \050but it should)
+81 W( be possible to modify the values for mnport, mnprts, and baudrt to do)82 W
+8120 60494 MT
+(this\051. Can)
+250 W( generate BREAK.  SET SPEED supported; speeds are 50-19200 baud.)SH
+6120 62071 MT
+(Lobo:)SH
+2111 50 6120 62271 UL
+8120 63176 MT
+(Lobo MAX-80.  Supports SET SPEED and can generate BREAKS.)SH
+6120 64753 MT
+(Merlin:)SH
+2722 50 6120 64953 UL
+8120 65858 MT
+(British Telecom Merlin M2215 \050also Rair Black Box, possibly also the ICL PC?\051.  Requires a terminal.)SH
+6120 67435 MT
+(Microbee:)SH
+3832 50 6120 67635 UL
+8120 68540 MT
+(Microbee Systems computer made in Australia.  Works on Microbee 56K \050Series 2 APC\051, 64K)
+26 W( \050Computer in a)27 W
+8120 69645 MT
+(Book\051, 128K \050Dynamic\051, and 256K)
+94 W( \050256TC\051.  Can generate BREAK.  SET BAUD-RATE supported; speeds)93 W
+8120 70750 MT
+(are 75-9600.  All serial I/O is via software, not)
+86 W( hardware.  Simultaneous transmit and receive possible on all)87 W
+8120 71855 MT
+(speeds except 75/1200, 1200/75, 4800, and 9600.)SH
+ES
+%%Page: 15 16
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.6.3. System-Specific Versions)SH
+10 /Times-Italic AF
+51775 XM
+(Page 15)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+8280 7886 MT
+(Micromate:)SH
+4388 50 8280 8086 UL
+10280 8991 MT
+(PMC 101 Micromate.  Supports SET SPEED and can generate BREAK.)SH
+8280 10568 MT
+(Micromint: Two versions)SH
+4278 50 8280 10768 UL
+10280 12359 MT
+(S6)SH
+12280 XM
+(The Ciarcia/Micromint sb-180 board with a 6Mhz procoessor.  System requires a terminal.)SH
+10280 13936 MT
+(S9)SH
+12280 XM
+(As above, but with a 9Mhz processor.)SH
+8280 15727 MT
+(NCR:)SH
+2056 50 8280 15927 UL
+10280 16832 MT
+(Decisionmate 5.  Uses the 2651 and is largely the same as the Ithaca Intersystems machine implementation.)SH
+8280 18409 MT
+(Northstar: -- There are four versions available:)SH
+3777 50 8280 18609 UL
+10280 20200 MT
+(NORTHS:)SH
+12280 21305 MT
+(Northstar Horizon with HS10-4 board.  Supports SET SPEED and SET PORT.)SH
+10280 22882 MT
+(HORIZON:)SH
+12280 23987 MT
+(Northstar Horizon using the serial ports on the Mother board.  Can generate BREAK.)SH
+10280 25564 MT
+(BASICNS:)SH
+12280 26669 MT
+(Basic Northstar Horizon using the printer port.  Can generate BREAK.)SH
+10280 28246 MT
+(ADVANT:)SH
+12280 29351 MT
+(Northstar Advantage.  Supports SET SPEED and can generate BREAK.  Traps Control-0 in the)
+100 W( system)99 W
+12280 30456 MT
+(filter.)SH
+8280 32247 MT
+(Morrow Decision I:)SH
+7665 50 8280 32447 UL
+10280 33352 MT
+(Uses the Multi-I/O board.  Port 1 is the console, port 3 is the communications line.  SET SPEED)
+89 W( supported;)88 W
+10280 34457 MT
+(speeds are 75-56000 baud.)SH
+8280 36034 MT
+(Morrow Micro Decision I:)SH
+10359 50 8280 36234 UL
+8280 37611 MT
+(Nokia MicroMikko:)SH
+7805 50 8280 37811 UL
+10280 38716 MT
+(Will not echo control-O \050which locks keyboard\051.  SET SPEED supported; speeds are 75-9600 baud.)SH
+8280 40293 MT
+(Ohio Scientific:)SH
+6083 50 8280 40493 UL
+10280 41398 MT
+(Doesn't have screen control.)SH
+8280 42975 MT
+(Osborne 1:)SH
+4138 50 8280 43175 UL
+10280 44080 MT
+(Uses serial line, not internal modem.  Left-arrow key generates)
+39 W( <DEL> \050"delete" or "rubout" character\051 during)38 W
+10280 45185 MT
+(connect mode.  SET SPEED supported; speeds are 300 and 1200 baud.  Now supports multi-sector buffering.)SH
+8280 46762 MT
+(Research Machines: Two Versions:)SH
+7803 50 8280 46962 UL
+10280 48553 MT
+(RM380ZM:)SH
+12280 49658 MT
+(380Z and 5.25" disks supports SET BAUD.RATE)SH
+10280 51235 MT
+(RM380ZF:)SH
+12280 52340 MT
+(380Z and 8" disks, otherwise as above.)SH
+8280 54131 MT
+(Sanyo:)SH
+2500 50 8280 54331 UL
+10280 55236 MT
+(Sanyo MBC-1100.  This version derived from Kermit V3.x)SH
+8280 56813 MT
+(ScreenTyper:)SH
+5109 50 8280 57013 UL
+10280 57918 MT
+(Details unkown.)SH
+8280 59495 MT
+(TRS-80: Three versions:)SH
+3167 50 8280 59695 UL
+10280 61286 MT
+(TRS80LB:)SH
+12280 62391 MT
+(TRS-80 with Lifeboat CP/M)SH
+10280 63968 MT
+(TRS80PT:)SH
+12280 65073 MT
+(TRS-80 with Pickles and Trout CP/M)SH
+10280 66650 MT
+(TRSM4:)SH
+12280 67755 MT
+(TRS-80 Model 4 with Montezuma CP/M)SH
+8280 69546 MT
+(Teletek:)SH
+2999 50 8280 69746 UL
+10280 70651 MT
+(Teletek Systemaster. Supports SET BAUD.)SH
+ES
+%%Page: 16 17
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 16)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.6.3)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+6120 7886 MT
+(Telcon:)SH
+2777 50 6120 8086 UL
+8120 8991 MT
+(TELCON ZOBRA portable computer.)SH
+6120 10568 MT
+(Torch:)SH
+2388 50 6120 10768 UL
+8120 11673 MT
+(Torch Unicorn 5 initially, but the code runs on other Z80 based CP/N \050as in Nut!\051 systems.)
+79 W( It)
+410 W( uses the BBC)80 W
+8120 12778 MT
+(Computer as a "Base processor", and is similar to the BBC version.  The base processors RS423)
+77 W( port is used)76 W
+8120 13883 MT
+(rather than any built in Modem.  \050UK telecoms legislation effectively)
+109 W( makes modem control software tricky)110 W
+8120 14988 MT
+(business...\051. Two)
+591 W( potential versions exist-one using cursor positioning codes for a MCP and CCCP ROM)170 W
+8120 16093 MT
+(combination of revision less than 1.00, the other version uses the additional facility MCP/CCCP)
+196 W( versions)197 W
+8120 17198 MT
+(greater than 1.  Supports SET SPEED and can generate BREAKs.)SH
+8120 18775 MT
+(Note that binary files must be transferred using SET PARITY to anything other than)
+45 W( NONE!  Parity is neither)44 W
+8120 19880 MT
+(generated nor checked.)SH
+6120 21457 MT
+(US Micro Sales:)SH
+6333 50 6120 21657 UL
+8120 22562 MT
+(S-100-8 based computer.)SH
+6120 24139 MT
+(Vector Graphics:)SH
+6581 50 6120 24339 UL
+8120 25244 MT
+(Vector)SH
+6120 26821 MT
+(Xerox:)SH
+2499 50 6120 27021 UL
+8120 27926 MT
+(Xerox 820.)SH
+6120 29503 MT
+(Z80MU:)SH
+3222 50 6120 29703 UL
+8120 30608 MT
+(Development Kermit on a PC running the)
+298 W( Z80MU Z80 and CP/M 2)299 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2 development system.  Allows)299 W
+8120 31713 MT
+(development of the system independent modules to be done on an IBM)
+241 W( PC or clone.  Also allows the)240 W
+8120 32818 MT
+(generation of new .HEX files, that may then be KERMITed to the target system.  Note:)
+54 W( Not)
+359 W( all the BDOS or)55 W
+8120 33923 MT
+(BIOS routines are supported, so avoid "unusual" BIOS/BDOS calls.  \050For example,)
+92 W( DIR from within Kermit)91 W
+8120 35028 MT
+(will fail as one of the BIOS routines returning disk parameters is not supported.\051)SH
+14 /Times-Bold AF
+6120 38630 MT
+(1.7. Installation of Kermit-80)SH
+10 /Times-Roman AF
+6120 40748 MT
+(Kermit-80 was written originally for the Intertec SuperBrain in lowest-common-denominator)
+97 W( 8080)
+445 W( code with the)98 W
+6120 41944 MT
+(standard assembler, ASM \050single source module, no macros, no advanced)
+293 W( instructions\051, so that it could be)292 W
+6120 43140 MT
+(assembled on any CP/M-80 system \050the 8080 assembler is distributed as a standard)
+83 W( part of CP/M-80, whereas the)84 W
+6120 44336 MT
+(fancier Z80 or macro assemblers are normally commercial products\051.  It has since been modified to run on many)99 W
+6120 45532 MT
+(other systems as well.  Kermit-80 should be able)
+106 W( to run on any 8080-, 8085- or Z80-based microcomputer under)107 W
+6120 46728 MT
+(CP/M with appropriate minor changes to reflect the port I/O and screen control for the system \050see below\051.)SH
+6120 49120 MT
+(The proliferation of new systems supported by Kermit-80 made)
+66 W( the program grow so large and complicated that it)65 W
+6120 50316 MT
+(had to be)
+138 W( broken up into system-independent and system-dependent modules, as of version 4 \050this was done by)139 W
+6120 51512 MT
+(Charles Carvalho of ACC\051.  Each module is composed of multiple files.  This has reduced the time and disk)
+57 W( space)56 W
+6120 52708 MT
+(necessary for assembly; Kermit-80 may)
+126 W( once again be assembled on a CP/M system with roughly 250Kbytes of)127 W
+6120 53904 MT
+(space. The)
+302 W( majority of the code does not)
+26 W( need to be reassembled to support a new system.  Unfortunately, it can no)25 W
+6120 55100 MT
+(longer be assembled with ASM, since ASM does not support multiple input files.)
+73 W( To)
+398 W( allow it to be assembled on)74 W
+6120 56296 MT
+(any CP/M system,)
+103 W( the public-domain assembler LASM is included in the distribution kit. Kermit-80 may also be)102 W
+6120 57492 MT
+(assembled with Microsoft's M80 \050not supplied\051.  In theory, any 8080)
+33 W( assembler supporting the INCLUDE directive)34 W
+6120 58688 MT
+(ought to work, as well.)SH
+6120 61080 MT
+(All versions of Kermit-80 are)
+72 W( assembled from the same set of sources, with system dependencies taken care of by)71 W
+6120 62276 MT
+(assembly-time conditionals within the system-dependent module \050eventually, the system-dependent module)
+183 W( will)184 W
+6120 63472 MT
+(itself be broken up into multiple files, one for each system\051.  The most important)
+45 W( system dependencies are terminal)44 W
+6120 64668 MT
+(emulation \050when CONNECTed to)
+153 W( the remote host\051 and screen handling, which are dependent on the individual)154 W
+6120 65864 MT
+(micro's escape codes \050these features are table driven and easily modified for other CP/M)
+74 W( systems\051, and the lowest)73 W
+6120 67060 MT
+(level I/O routines for the serial communications port.  The)
+93 W( port routines are best done only with BDOS calls, but)94 W
+6120 68256 MT
+(some systems do not allow this, primarily because the BDOS)
+91 W( routines strip the parity bit during port I/O, and the)90 W
+6120 69452 MT
+(parity bit is used for data when transmitting binary files.)SH
+6120 71844 MT
+(Kermit-80's I/O routines must check the port status and go elsewhere if no input is available; this allows for virtual)38 W
+ES
+%%Page: 17 18
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.7. Installation of Kermit-80)SH
+10 /Times-Italic AF
+51775 XM
+(Page 17)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+8280 7886 MT
+(terminal connection, keyboard interruption of stuck transmissions, etc.  On systems that fully)
+246 W( implement I/O)245 W
+8280 9082 MT
+(redirection via the optional CP/M IOBYTE facility, this may be done by switching)
+127 W( the IOBYTE definition.  On)128 W
+8280 10278 MT
+(others, however, IN/OUT instructions explicitly referencing the port device registers must be used.)SH
+8280 12670 MT
+(CP/M-80 KERMIT)
+110 W( versions 3.8 and later include a "fuzzy timer" that allows a timeout to occur after an interval)109 W
+8280 13866 MT
+(ranging from 5 to 20 seconds \050depending upon the speed)
+32 W( of the processor and the operating system routines\051 during)33 W
+8280 15062 MT
+(which expected input does not appear at the port.  In this)
+2 W( case, retransmission occurs automatically.  In any case, you)1 W
+8280 16258 MT
+(may type a carriage return during transmission to simulate a timeout when the transfer appears to be stuck.)SH
+12 /Times-Bold AF
+8280 19374 MT
+(1.7.1. Organization of Kermit-80)SH
+10 /Times-Roman AF
+8280 21316 MT
+(Kermit-80 consists of two modules, each of which is generated from multiple source files.)
+209 W( The)
+669 W( first module)210 W
+8280 22512 MT
+(contains the system-independent code;)
+27 W( the second module is configured for a particular system and merged with the)26 W
+8280 23708 MT
+(system-independent module to produce a customized Kermit-80.)SH
+8280 26100 MT
+(The distribution kit contains:)SH
+/Symbol SF
+10070 28005 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(the system-independent module,)SH
+/Courier SF
+24001 XM
+(CPSKER.HEX)SH
+/Times-Roman SF
+(;)SH
+/Symbol SF
+10070 29110 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(the system-dependent modules,)SH
+/Courier SF
+23612 XM
+(CPV*.HEX)SH
+/Times-Roman SF
+28662 XM
+(\050see table 1-2 and 1-3\051;)SH
+/Symbol SF
+10070 30215 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(the source files,)SH
+/Courier SF
+17334 XM
+(CPS*.ASM)SH
+/Times-Roman SF
+22384 XM
+(and)SH
+/Courier SF
+24078 XM
+(CPX*.ASM)SH
+/Times-Roman SF
+(,)SH
+/Symbol SF
+10070 31320 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(the public-domain CP/M assembler,)SH
+/Courier SF
+25474 XM
+(LASM.*)SH
+/Times-Roman SF
+(,)SH
+/Symbol SF
+10070 32425 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(the public-domain CP/M load/patch utility,)SH
+/Courier SF
+28281 XM
+(MLOAD.*)SH
+ES
+%%Page: 18 19
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 18)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.7.1)SH
+46800 50 6120 5709 UL
+46800 50 6120 8086 UL
+10 /Courier AF
+6120 10167 MT
+(Symbol Filename)
+600 W( System)SH
+3600 50 6120 10367 UL
+4800 50 10920 10367 UL
+3600 50 16320 10367 UL
+6120 11854 MT
+(ACCESS CPVACC)600 W
+/Times-Roman SF
+15720 XM
+(Access Matrix)SH
+/Courier SF
+6120 12885 MT
+(ADVANT CPVADV)600 W
+/Times-Roman SF
+15720 XM
+(Northstar Advantage)SH
+/Courier SF
+6120 13916 MT
+(AP6551 CPVAPL)600 W
+/Times-Roman SF
+15720 XM
+(Apple II, Z80 Softcard, 6551 ACIA in serial interface)SH
+/Courier SF
+6120 14947 MT
+(AP6850 CPVA65)600 W
+/Times-Roman SF
+15720 XM
+(Apple II, Z80 Softcard, 6850 ACIA in Serial Iiterface)SH
+/Courier SF
+6120 15978 MT
+(APMMDM CPVAPM)600 W
+/Times-Roman SF
+15720 XM
+(Apple II, Z80 Softcard, Micromodem II in slot 2)SH
+/Courier SF
+6120 17009 MT
+(APCPS CPVCPS)1200 W
+/Times-Roman SF
+15720 XM
+(Apple II, Z80 Softcard, with CPS multifunction card)SH
+/Courier SF
+6120 18040 MT
+(BASICNS CPVBNS)SH
+/Times-Roman SF
+15720 XM
+(Northstar Horizon \050terminal required\051)SH
+/Courier SF
+6120 19071 MT
+(BBC CPVBBC)2400 W
+/Times-Roman SF
+15720 XM
+(Acorn "BBC" computer with Acorn Z80 second processor)SH
+/Courier SF
+6120 20102 MT
+(BBII CPVBB2)1800 W
+/Times-Roman SF
+15720 XM
+(BigBoard II \050terminal required\051)SH
+/Courier SF
+6120 21133 MT
+(BRAINM CPVBRM)600 W
+/Times-Roman SF
+15720 XM
+(Intertec Superbrain using the main port)SH
+/Courier SF
+6120 22164 MT
+(BRAINA CPVBRA)600 W
+/Times-Roman SF
+15720 XM
+(Intertec Superbrain using the Aux port)SH
+/Courier SF
+6120 23195 MT
+(CIFER2 CPVCIF)600 W
+/Times-Roman SF
+15720 XM
+(Cifer 1886 using the VL: Serial port and CP/M V2.2)SH
+/Courier SF
+6120 24226 MT
+(CIFER3 CPVCI3)600 W
+/Times-Roman SF
+15720 XM
+(Cifer 1886 using the VL: Serial port and CP/M V3.0)SH
+/Courier SF
+6120 25257 MT
+(CIFER2 CPVCA2)600 W
+/Times-Roman SF
+15720 XM
+(Cifer 1886 using the AUX: Serial port and CP/M V2.2)SH
+/Courier SF
+6120 26288 MT
+(CIFER3 CPVCA3)600 W
+/Times-Roman SF
+15720 XM
+(Cifer 1886 using the AUX: Serial port and CP/M V3.0)SH
+/Courier SF
+6120 27319 MT
+(CMEMCO CPVCRO)600 W
+/Times-Roman SF
+15720 XM
+(Cromemco with TU-ART card. Terminal required\051)SH
+/Courier SF
+6120 28350 MT
+(COMART CPVCOM)600 W
+/Times-Roman SF
+15720 XM
+(Comart Communicator \050terminal required\051)SH
+/Courier SF
+6120 29381 MT
+(COMPRO CPVPRO)600 W
+/Times-Roman SF
+15720 XM
+(Compupro with Interfacer 4 \050or 3\051.  Terminal required.)SH
+/Courier SF
+6120 30412 MT
+(CPC CPVCPC)2400 W
+/Times-Roman SF
+15720 XM
+(Amstrad CPC 664 and 6128 and CP/M 3)SH
+/Courier SF
+6120 31443 MT
+(CPM3 CPVCP3)1800 W
+/Times-Roman SF
+15720 XM
+("Generic": CP/M 3.0 \050CP/M Plus\051 systems \050terminal req'd\051)SH
+/Courier SF
+6120 32474 MT
+(CPT85XX CPVCPT)SH
+/Times-Roman SF
+15720 XM
+(CPT-85xx wordprocessor with CP/M)SH
+/Courier SF
+6120 33505 MT
+(DELPHI CPVDEL)600 W
+/Times-Roman SF
+15720 XM
+(Digicomp Delphi 100 \050terminal required\051)SH
+/Courier SF
+6120 34536 MT
+(DISC CPVDIS)1800 W
+/Times-Roman SF
+15720 XM
+(Action Computer Enterprises "Discovery" \050terminal req'd\051)SH
+/Courier SF
+6120 35567 MT
+(DMII CPVDM2)1800 W
+/Times-Roman SF
+15720 XM
+(DECmate II with CP/M option)SH
+/Courier SF
+6120 36598 MT
+(GENER CPVGEN)1200 W
+/Times-Roman SF
+15720 XM
+("Generic": CPM 2.2 systems with IOBYTE \050terminal req'd\051)SH
+/Courier SF
+6120 37629 MT
+(GENIE CPVGNI)1200 W
+/Times-Roman SF
+15720 XM
+(Video Genie)SH
+/Courier SF
+6120 38660 MT
+(H8QUAD CPVH8Q)600 W
+/Times-Roman SF
+15720 XM
+(Heath-8 with Quad 8 i/o board)SH
+/Courier SF
+6120 39691 MT
+(HEATH CPVH89)1200 W
+/Times-Roman SF
+15720 XM
+(Heath/Zenith H89)SH
+/Courier SF
+6120 40722 MT
+(HORIZON CPVHOR)SH
+/Times-Roman SF
+15720 XM
+(Northstar Horizon \050terminal required\051)SH
+/Courier SF
+6120 41753 MT
+(KPII CPVKPR)1800 W
+/Times-Roman SF
+15720 XM
+(Kaypro-II \050and 4; probably supports all Kaypro systems\051)SH
+/Courier SF
+6120 42784 MT
+(LOBO CPVLBO)1800 W
+/Times-Roman SF
+15720 XM
+(Lobo Max-80)SH
+6120 44575 MT
+("symbol" is the symbol used to select the target system, in)SH
+/Courier SF
+29658 XM
+(CPVTYP.ASM)SH
+/Times-Roman SF
+(;)SH
+6120 46802 MT
+("filename" is the name under which the module is supplied in the distribution.)SH
+/Times-Bold SF
+18854 48412 MT
+(Table 1-2:)SH
+/Times-Roman SF
+23715 XM
+(Systems supported by Kermit-80 \050Part 1\051)SH
+46800 50 6120 50222 UL
+ES
+%%Page: 19 20
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.7.1. Organization of Kermit-80)SH
+10 /Times-Italic AF
+51775 XM
+(Page 19)SH
+46800 50 8280 5709 UL
+46800 50 8280 8086 UL
+/Courier SF
+8280 10167 MT
+(Symbol Filename)
+600 W( System)SH
+3600 50 8280 10367 UL
+4800 50 13080 10367 UL
+3600 50 18480 10367 UL
+8280 11854 MT
+(M2215 CPVMRL)1200 W
+/Times-Roman SF
+17880 XM
+(British Telecom Merlin/Rair Black Box \050terminal required\051)SH
+/Courier SF
+8280 12885 MT
+(MBEE CPVBEE)1800 W
+/Times-Roman SF
+17880 XM
+(Microbee)SH
+/Courier SF
+8280 13916 MT
+(MDI CPVMDI)2400 W
+/Times-Roman SF
+17880 XM
+(Morrow Decision I \050terminal required\051)SH
+/Courier SF
+8280 14947 MT
+(MIKKO CPVMIK)1200 W
+/Times-Roman SF
+17880 XM
+(MikroMikko)SH
+/Courier SF
+8280 15978 MT
+(MMATE CPVMM)1200 W
+/Times-Roman SF
+17880 XM
+(PMC 101 Micromate \050terminal required\051)SH
+/Courier SF
+8280 17009 MT
+(MMDI CPVUD)1800 W
+/Times-Roman SF
+17880 XM
+(Morrow Micro Decision I \050terminal required\051)SH
+/Courier SF
+8280 18040 MT
+(NCRDMV CPVDMV)600 W
+/Times-Roman SF
+17880 XM
+(NCR Decision Mate V.  \050Terminal required?\051)SH
+/Courier SF
+8280 19071 MT
+(NORTHS CPVNS)600 W
+/Times-Roman SF
+17880 XM
+(Northstar Horizon with HSIO-4 card \050terminal req'd\051)SH
+/Courier SF
+8280 20102 MT
+(OSBRN1 CPVOSB)600 W
+/Times-Roman SF
+17880 XM
+(Osborne 1)SH
+/Courier SF
+8280 21133 MT
+(OSI CPVOSI)2400 W
+/Times-Roman SF
+17880 XM
+(Ohio Scientific)SH
+/Courier SF
+8280 22164 MT
+(PCI2651 CPVPCI)SH
+/Times-Roman SF
+17880 XM
+(Ithaca Intersystems with VI0 card \050terminal required\051)SH
+/Courier SF
+8280 23195 MT
+(PCW CPVPCW)2400 W
+/Times-Roman SF
+17880 XM
+(Amstrad PCW 8256/8512 with serial interface)SH
+/Courier SF
+8280 24226 MT
+(PX8 CPVPX8)2400 W
+/Times-Roman SF
+17880 XM
+(Epson PX-8)SH
+/Courier SF
+8280 25257 MT
+(RM380ZM CPVRMM)SH
+/Times-Roman SF
+17880 XM
+(Research Machines 380Z with MDS \0505.25" discs\051)SH
+/Courier SF
+8280 26288 MT
+(RM380ZF CPVRMF)SH
+/Times-Roman SF
+17880 XM
+(Research Machines 380Z with FDS \0508" discs\051)SH
+/Courier SF
+8280 27319 MT
+(ROBIN CPVROB)1200 W
+/Times-Roman SF
+17880 XM
+(DEC VT180)SH
+/Courier SF
+8280 28350 MT
+(S1008 CPVUSM)1200 W
+/Times-Roman SF
+17880 XM
+(US Microsales S-100-8 \050terminal required\051)SH
+/Courier SF
+8280 29381 MT
+(SANYO CPVSAN)1200 W
+/Times-Roman SF
+17880 XM
+(Sanyo MBC-1100)SH
+/Courier SF
+8280 30412 MT
+(SB6 CPVSB6)2400 W
+/Times-Roman SF
+17880 XM
+(Micromint SB-180 with 6Mhz CPU \050terminal required\051)SH
+/Courier SF
+8280 31443 MT
+(SB9 CPVSB9)2400 W
+/Times-Roman SF
+17880 XM
+(Micromint SB-180 with 9Mhz CPU \050terminal required\051)SH
+/Courier SF
+8280 32474 MT
+(SCNTPR CPVSCN)600 W
+/Times-Roman SF
+17880 XM
+(Screentyper)SH
+/Courier SF
+8280 33505 MT
+(TELCON CPVTEL)600 W
+/Times-Roman SF
+17880 XM
+(TELCON Zobra portable)SH
+/Courier SF
+8280 34536 MT
+(TELETEK CPVTET)SH
+/Times-Roman SF
+17880 XM
+(Teletek Systemaster)SH
+/Courier SF
+8280 35567 MT
+(TORCH CPVTRC)1200 W
+/Times-Roman SF
+17880 XM
+(Torch computers BBC-B with Z80 second processors)SH
+/Courier SF
+8280 36598 MT
+(TRS80LB CPVTLB)SH
+/Times-Roman SF
+17880 XM
+(TRS-80 model II with Lifeboat 2.25C CP/M Display)SH
+/Courier SF
+8280 37629 MT
+(TRS80PT CPVTPT)SH
+/Times-Roman SF
+17880 XM
+(TRS-80 model II with Pickles + Trout CP/M Display)SH
+/Courier SF
+8280 38660 MT
+(TRSM4 CPVTM4)1200 W
+/Times-Roman SF
+17880 XM
+(TRS-80 model IV)SH
+/Courier SF
+8280 39691 MT
+(VECTOR CPVVEC)600 W
+/Times-Roman SF
+17880 XM
+(Vector Graphics)SH
+/Courier SF
+8280 40722 MT
+(XER820 CPVXER)600 W
+/Times-Roman SF
+17880 XM
+(Xerox 820)SH
+/Courier SF
+8280 41753 MT
+(Z100 CPVZ00)1800 W
+/Times-Roman SF
+17880 XM
+(Z-100 under CP/M-85)SH
+/Courier SF
+8280 42784 MT
+(Z80MU CPVZ80)1200 W
+/Times-Roman SF
+17880 XM
+(Z80MU development system on a PC)SH
+8280 44575 MT
+("symbol" is the symbol used to select the target system, in)SH
+/Courier SF
+31818 XM
+(CPXTYP.ASM)SH
+/Times-Roman SF
+(;)SH
+8280 46802 MT
+("filename" is the name under which the module is supplied in the distribution.)SH
+/Times-Bold SF
+21014 48412 MT
+(Table 1-3:)SH
+/Times-Roman SF
+25875 XM
+(Systems supported by Kermit-80 \050Part 2\051)SH
+46800 50 8280 50222 UL
+ES
+%%Page: 20 21
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 20)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.7.1)SH
+46800 50 6120 5709 UL
+46800 50 6120 8086 UL
+10 /Courier AF
+6120 10167 MT
+(Symbol Terminal)
+600 W( type)SH
+3600 50 6120 10367 UL
+4800 50 10920 10367 UL
+2400 50 16320 10367 UL
+6120 11854 MT
+(CRT)SH
+/Times-Roman SF
+10920 XM
+(Dumb terminal type.  Does not do cursor addressing)SH
+/Courier SF
+6120 12885 MT
+(ADM3A)SH
+/Times-Roman SF
+10920 XM
+(Lear Seigler ADM 3A)SH
+/Courier SF
+6120 13916 MT
+(ADM22)SH
+/Times-Roman SF
+10920 XM
+(Lear Seigler ADM 22)SH
+/Courier SF
+6120 14947 MT
+(AM230)SH
+/Times-Roman SF
+10920 XM
+(Ampro 230)SH
+/Courier SF
+6120 15978 MT
+(H1500)SH
+/Times-Roman SF
+10920 XM
+(Hazeltine 1500)SH
+/Courier SF
+6120 17009 MT
+(SMRTVD)SH
+/Times-Roman SF
+10920 XM
+(Netronics Smartvid)SH
+/Courier SF
+6120 18040 MT
+(SOROQ)SH
+/Times-Roman SF
+10920 XM
+(Soroq IQ-120)SH
+/Courier SF
+6120 19071 MT
+(TVI912)SH
+/Times-Roman SF
+10920 XM
+(Televideo 912)SH
+/Courier SF
+6120 20102 MT
+(TVI925)SH
+/Times-Roman SF
+10920 XM
+(Televideo 925 or Freedom 100)SH
+/Courier SF
+6120 21133 MT
+(VT52)SH
+/Times-Roman SF
+10920 XM
+(Dec VT52 or equivalent \050H19\051)SH
+/Courier SF
+6120 22164 MT
+(VT100)SH
+/Times-Roman SF
+10920 XM
+(Dec VT100 or equivalent)SH
+/Courier SF
+6120 23195 MT
+(WYSE)SH
+/Times-Roman SF
+10920 XM
+(Wyse 100)SH
+6120 24986 MT
+("symbol" is the symbol used to select the target system, in)SH
+/Courier SF
+29658 XM
+(CPXTYP.ASM)SH
+/Times-Roman SF
+(;)SH
+6120 27213 MT
+("Terminal type" is the type of terminal "symbol" selects.)SH
+/Times-Bold SF
+20132 28823 MT
+(Table 1-4:)SH
+/Times-Roman SF
+24993 XM
+(Terminals supported by Kermit-80)SH
+46800 50 6120 30633 UL
+12 /Times-Bold AF
+6120 33549 MT
+(1.7.2. Downloading Kermit-80)SH
+10 /Times-Roman AF
+6120 35491 MT
+(You'll need either a pre-configured)4 W
+/Courier SF
+20552 XM
+(.COM)SH
+/Times-Roman SF
+23207 XM
+(file or the system-independent module,)5 W
+/Courier SF
+39119 XM
+(CPSKER)SH
+/Times-Roman SF
+(, in binary \050)5 W
+/Courier SF
+(.COM)SH
+/Times-Roman SF
+(\051 or hex)5 W
+6120 36687 MT
+(\050)SH
+/Courier SF
+(.HEX)SH
+/Times-Roman SF
+(\051 format and the system-dependent overlay for your system \050from Tables 1-2 and 1-3\051.  If your system is)
+42 W( not)41 W
+6120 37883 MT
+(listed in the table, get the generic CP/M 2)12 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2 Kermit)
+12 W( or the generic CP/M 3 Kermit.  If you already have a version of)13 W
+6120 39079 MT
+(Kermit on)
+75 W( your micro and you want to install a new version, simply use your present version to get the new files.)74 W
+6120 40275 MT
+(Transfer the files to your system and skip ahead to "merging the modules".)SH
+6120 42667 MT
+(If you do)
+27 W( not have a copy of Kermit on your micro, and you cannot borrow a Kermit floppy but you do have access)28 W
+6120 43863 MT
+(to a mainframe computer with a copy of the Kermit-80 distribution, you should read this section.)SH
+6120 46255 MT
+(There are several ways to get CP/M Kermit)
+106 W( from a host system to your micro.  The easiest is to "download" the)105 W
+6120 47451 MT
+(necessary "hex" files into your micro's memory and then save them on the disk.)
+84 W( If)
+419 W( you have a terminal emulator)85 W
+6120 48647 MT
+(program on your micro which can save a copy of the session to disk, connect to your host, and type)
+69 W( the necessary)68 W
+6120 49843 MT
+(files. Exit)
+316 W( from the emulator, saving)
+33 W( the session log, and edit the session log to extract the hex files.  Skip ahead to)34 W
+6120 51039 MT
+("merging the files".)SH
+6120 53431 MT
+(The following is a procedure which, though far from foolproof, should allow you to get a version of Kermit to your)32 W
+6120 54627 MT
+(CP/M based micro.  It depends upon the host prompt, or at least the first character of the host)
+62 W( prompt, being some)63 W
+6120 55823 MT
+(character that cannot appear in a hex)
+58 W( file \050the valid characters for hex files are the digits 0-9, the upper case letters)57 W
+6120 57019 MT
+(A-F, the colon ``)55 W
+/Courier SF
+(:)SH
+/Times-Roman SF
+('', carriage return, and line feed\051.  As soon the prompt character is encountered, the transfer)
+55 W( will)56 W
+6120 58215 MT
+(terminate. If)
+288 W( your host)
+19 W( does not issue a prompt that will accommodate this scheme, you can achieve the same effect)18 W
+6120 59411 MT
+(by adding an atsign ``@'' to the very end of the hex file before sending it from the host.  The)
+36 W( program below looks)37 W
+6120 60607 MT
+(for an atsign \050the normal DEC-20 prompt, hex 40\051.  DECSYSTEM-10 users would)
+241 W( look for a dot, hex 2E;)240 W
+6120 61803 MT
+(VAX/VMS or UNIX users would look for a dollar sign, hex 24; UNIX C-Shell users would look)
+29 W( for a percent sign,)30 W
+6120 62999 MT
+(hex 26.)SH
+8120 64790 MT
+(1.)SH
+9120 XM
+(For CP/M 2)44 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(2 systems, connect to a floppy disk with plenty)
+44 W( of free space.  Run DDT and type in the)43 W
+9120 65895 MT
+(following \050the comments should not be typed in; they are there just to tell you what's happening\051:)137 W
+9120 67000 MT
+(\050Note that this wont work for CP/M Plus or 3)SH
+/Courier SF
+(.)SH
+/Times-Roman SF
+(0 systems!\051)SH
+ES
+%%Page: 21 22
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.7.2. Downloading Kermit-80)SH
+10 /Times-Italic AF
+51775 XM
+(Page 21)SH
+46800 50 8280 5709 UL
+46800 50 8280 8086 UL
+/Courier SF
+8280 9585 MT
+(-a100 ;Begin)
+10800 W( assembling code at 100)SH
+11280 10616 MT
+(0100 LXI)
+1800 W( H,2FE)
+SH( ;Where)
+3600 W( to store in memory)SH
+11280 11647 MT
+(0103 SHLD)
+1800 W( 200)
+SH( ;Keep)
+4200 W( pointer there)SH
+11280 12678 MT
+(0106 MVI)
+1800 W( E,D)
+SH( ;Get)
+4800 W( a CR)SH
+11280 13709 MT
+(0108 MVI)
+1800 W( C,4)
+SH( ;Output)
+4800 W( to PUNCH \050send to HOST\051)SH
+11280 14740 MT
+(010A CALL)
+1800 W( 5)SH
+11280 15771 MT
+(010D MVI)
+1800 W( C,3)
+SH( ;Input)
+4800 W( from READER \050read from HOST\051)SH
+11280 16802 MT
+(010F CALL)
+1800 W( 5)SH
+11280 17833 MT
+(0112 ANI)
+1800 W( 7F)
+SH( ;Strip)
+5400 W( parity bit)SH
+11280 18864 MT
+(0114 PUSH)
+1800 W( PSW)
+SH( ;Save)
+4200 W( a and flags)SH
+11280 19895 MT
+(0115 MOV)
+1800 W( E,A)
+SH( ;Move)
+4800 W( char to E for echo)SH
+11280 20926 MT
+(0116 MVI)
+1800 W( C,2)
+SH( ;Output)
+4800 W( to screen)SH
+11280 21957 MT
+(0118 CALL)
+1800 W( 5)SH
+11280 22988 MT
+(011B POP)
+1800 W( PSW)
+SH( ;Restore)
+4800 W( A and flags)SH
+11280 24019 MT
+(011C CPI)
+1800 W( 40)
+SH( ;\050or)
+5400 W( 4E,24,26,etc\051 System prompt?)SH
+11280 25050 MT
+(011E JZ)
+1800 W( 127)
+SH( ;Yes,)
+5400 W( have whole file in memory)SH
+11280 26081 MT
+(0121 CALL)
+1800 W( 17A)
+SH( ;No,)
+4200 W( store another byte)SH
+11280 27112 MT
+(0124 JMP)
+1800 W( 10D)
+SH( ;Read)
+4800 W( another byte)SH
+11280 28143 MT
+(0127 MVI)
+1800 W( A,1A)
+SH( ;Get)
+4200 W( a Control-Z \050CP/M EOF mark\051)SH
+11280 29174 MT
+(0129 CALL)
+1800 W( 17A)
+SH( ;Store)
+4200 W( it in memory)SH
+11280 30205 MT
+(012C LXI)
+1800 W( H,300)
+SH( ;Get)
+3600 W( memory pointer)SH
+11280 31236 MT
+(012F SHLD)
+1800 W( 202)
+SH( ;Store)
+4200 W( as DMA pointer)SH
+11280 32267 MT
+(0132 LDA)
+1800 W( 201)
+SH( ;Get)
+4800 W( 'HI' byte of memory pointer)SH
+11280 33298 MT
+(0135 STA)
+1800 W( 200)
+SH( ;and)
+4800 W( store it as 'LO' one)SH
+11280 34329 MT
+(0138 XRA)
+1800 W( A)SH
+11280 35360 MT
+(0139 STA)
+1800 W( 201)
+SH( ;Zero)
+4800 W( 'HI' byte \050slow *256\051)SH
+11280 36391 MT
+(013C MVI)
+1800 W( C,16)
+SH( ;Make)
+4200 W( NEW file)SH
+11280 37422 MT
+(013E LXI)
+1800 W( D,5C)
+SH( ;With)
+4200 W( FCB1)SH
+11280 38453 MT
+(0141 CALL)
+1800 W( 5)SH
+11280 39484 MT
+(0144 CALL)
+1800 W( 15E)
+SH( ;Write)
+4200 W( 128 bytes \050sector\051)SH
+11280 40515 MT
+(0147 CALL)
+1800 W( 15E)
+SH( ;Write)
+4200 W( another sector)SH
+11280 41546 MT
+(014A LXI)
+1800 W( H,FFFF)
+SH( ;Get)
+3000 W( a 16-bit Minus One)SH
+11280 42577 MT
+(014D XCHG)
+1800 W( ;into)
+6600 W( DE)SH
+11280 43608 MT
+(014E LHLD)
+1800 W( 200)
+SH( ;Get)
+4200 W( 256-byte counter)SH
+11280 44639 MT
+(0151 DAD)
+1800 W( D)
+SH( ;Decrement)6000 W
+11280 45670 MT
+(0152 SHLD)
+1800 W( 200)
+SH( ;and)
+4200 W( store back)SH
+11280 46701 MT
+(0155 MVI)
+1800 W( A,2)
+SH( ;Check)
+4800 W( if)SH
+11280 47732 MT
+(0157 CMP)
+1800 W( L)
+SH( ;)
+6000 W( 256-byte counter down to offset)SH
+11280 48763 MT
+(0158 JZ)
+1800 W( 183)
+SH( ;Yes,)
+5400 W( we're done)SH
+11280 49794 MT
+(015B JMP)
+1800 W( 144)
+SH( ;Keep)
+4800 W( writing..)SH
+11280 50825 MT
+(015E LHLD)
+1800 W( 202)
+SH( ;Get)
+4200 W( file-pointer)SH
+11280 51856 MT
+(0161 XCHG)
+1800 W( ;into)
+6600 W( DE)SH
+11280 52887 MT
+(0162 MVI)
+1800 W( C,1A)
+SH( ;Set)
+4200 W( DMA-address)SH
+11280 53918 MT
+(0164 CALL)
+1800 W( 5)SH
+11280 54949 MT
+(0167 MVI)
+1800 W( C,15)
+SH( ;Write)
+4200 W( sector \050128 bytes\051)SH
+11280 55980 MT
+(0169 LXI)
+1800 W( D,5C)
+SH( ;using)
+4200 W( FCB1)SH
+11280 57011 MT
+(016C CALL)
+1800 W( 5)SH
+11280 58042 MT
+(016F LHLD)
+1800 W( 202)
+SH( ;Get)
+4200 W( file-pointer)SH
+11280 59073 MT
+(0172 LXI)
+1800 W( D,80)
+SH( ;128-bytes)4200 W
+11280 60104 MT
+(0175 DAD)
+1800 W( D)
+SH( ;added)
+6000 W( to file-pointer)SH
+11280 61135 MT
+(0176 SHLD)
+1800 W( 202)
+SH( ;and)
+4200 W( save)SH
+11280 62166 MT
+(0179 RET)
+1800 W( ;and)
+7200 W( return)SH
+11280 63197 MT
+(017A LHLD)
+1800 W( 200)
+SH( ;Get)
+4200 W( Memory-pointer)SH
+11280 64228 MT
+(017D MOV)
+1800 W( M,A)
+SH( ;Store)
+4800 W( character)SH
+11280 65259 MT
+(017E INX)
+1800 W( H)
+SH( ;Increment)
+6000 W( Pointer)SH
+11280 66290 MT
+(017F SHLD)
+1800 W( 200)
+SH( ;and)
+4200 W( save)SH
+11280 67321 MT
+(0182 RET)
+1800 W( ;and)
+7200 W( return)SH
+11280 68352 MT
+(0183 MVI)
+1800 W( C,10)
+SH( ;CLOSE)
+4200 W( file)SH
+11280 69383 MT
+(0185 LXI)
+1800 W( D,5C)
+SH( ;using)
+4200 W( FCB1)SH
+11280 70414 MT
+(0188 CALL)
+1800 W( 5)SH
+11280 71445 MT
+(018B JMP)
+1800 W( 0)
+SH( ;Force)
+6000 W( WARM BOOT)SH
+ES
+%%Page: 22 23
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 22)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.7.2)SH
+46800 50 6120 5709 UL
+10 /Courier AF
+9120 7824 MT
+(0179)SH
+9120 8855 MT
+(-^C ;\050Type)
+12000 W( Control-C\051 Return to CP/M)SH
+9120 9886 MT
+(A>SAVE 1 FETCH.COM)
+SH( ;Save)
+3000 W( program, we need to run it twice.)SH
+/Times-Bold SF
+15591 11496 MT
+(Figure 1-1:)SH
+/Times-Roman SF
+20840 XM
+(Bootstrap program for Kermit-80 and CP/M Version 2.2)SH
+46800 50 6120 13306 UL
+9120 14823 MT
+(Alternatively, an assembler source file for this program is distributed with)
+374 W( CP/M Kermit as)373 W
+/Courier SF
+9120 15928 MT
+(CPKFET.ASM)SH
+/Times-Roman SF
+(. You)
+478 W( might prefer to type the assembler)
+114 W( version in and assemble and load it \050ASM)115 W
+9120 17033 MT
+(CPKFET, LOAD CPKFET, or MASM CPKFET,)
+43 W( MLOAD CPKFET\051, to let the assembler and loader)42 W
+9120 18138 MT
+(catch any typing errors.)SH
+8120 20348 MT
+(2.)SH
+9120 XM
+(Connect to your host using a terminal or a terminal emulation program.  Ensure that your host does)
+6 W( not)7 W
+9120 21453 MT
+(have your terminal in "page mode" \050does not pause at the end of each screenful\051.)SH
+8120 23663 MT
+(3.)SH
+9120 XM
+(Tell the host to display the first hex file \050the)
+38 W( system-independent module\051 at your terminal, e.g. give a)37 W
+9120 24768 MT
+(command like)SH
+/Courier SF
+15064 XM
+(TYPE CPSKER.HEX)SH
+/Times-Roman SF
+(,)SH
+/Times-Italic SF
+24564 XM
+(without a terminating carriage return)SH
+/Times-Roman SF
+(.)SH
+3001 50 24564 24968 UL
+8120 26978 MT
+(4.)SH
+9120 XM
+(Return to your micro by switching the cable from the terminal to the micro, or by terminating)
+142 W( the)143 W
+9120 28083 MT
+(micro's terminal program.)SH
+8120 30293 MT
+(5.)SH
+9120 XM
+(Make sure your IOBYTE is set so that)17 W
+/Courier SF
+24864 XM
+(RDR:)SH
+/Times-Roman SF
+27530 XM
+(and)SH
+/Courier SF
+29240 XM
+(PUN:)SH
+/Times-Roman SF
+31906 XM
+(correspond to the I/O port that is connected to)16 W
+9120 31398 MT
+(the host \050this would normally be the case unless you have done something special to change things\051.)SH
+8120 33608 MT
+(6.)SH
+9120 XM
+(Load the program you entered in the first step with DDT, and use it to capture the first hex file:)SH
+/Courier SF
+11520 35263 MT
+(DDT FETCH.COM)SH
+11520 36294 MT
+(-icpsker.hex ;Setup)
+6600 W( FCB for file CPSKER.HEX)SH
+11520 37325 MT
+(-g100,179 ;Execute)
+8400 W( the program.)SH
+/Times-Roman SF
+9120 39042 MT
+(Now there should be a file)SH
+/Courier SF
+19951 XM
+(CPSKER.HEX)SH
+/Times-Roman SF
+26201 XM
+(on your connected disk.)SH
+8120 41252 MT
+(7.)SH
+9120 XM
+(Return to the host, and tell it)
+112 W( to display the second hex file \050the system-dependent module for your)113 W
+9120 42357 MT
+(configuration\051. Again,)
+250 W( do not type the terminating carriage return.)SH
+8120 44567 MT
+(8.)SH
+9120 XM
+(Return to your micro, and run the capture program again:)SH
+/Courier SF
+11520 46222 MT
+(DDT FETCH.COM)SH
+11520 47253 MT
+(-icpxovl.hex ;Setup)
+6600 W( FCB to create CPXOVL.HEX)SH
+11520 48284 MT
+(-g100,179 ;Execute)
+8400 W( the program.)SH
+/Times-Roman SF
+9120 50001 MT
+(Now there should be a file)132 W
+/Courier SF
+20743 XM
+(CPXOVL.HEX)SH
+/Times-Roman SF
+27124 XM
+(on your connected disk.  Replace)131 W
+/Courier SF
+41435 XM
+(CPXOVL.HEX)SH
+/Times-Roman SF
+47816 XM
+(in this)131 W
+9120 51106 MT
+(example with the appropriate overlay file for your system.)SH
+6120 52897 MT
+(Merging the files:)SH
+8120 54688 MT
+(1.)SH
+9120 XM
+(For purposes of illustration, we will assume the system-dependent overlay is called "cpxovl)162 W
+/Courier SF
+(.)SH
+/Times-Roman SF
+(hex".)SH
+9120 55793 MT
+(The two hex)
+1 W( files may be combined with MLOAD or DDT.  If you already have a running Kermit, you)SH
+9120 56898 MT
+(can transfer)208 W
+/Courier SF
+14478 XM
+(MLOAD.HEX)SH
+/Times-Roman SF
+20337 XM
+(to your system and create)209 W
+/Courier SF
+31852 XM
+(MLOAD.COM)SH
+/Times-Roman SF
+37711 XM
+(by running LOAD.  If you're)209 W
+9120 58003 MT
+(bootstrapping Kermit, you could transfer)27 W
+/Courier SF
+25864 XM
+(MLOAD.HEX)SH
+/Times-Roman SF
+31541 XM
+(to your system the same way you got the)
+27 W( other)26 W
+9120 59108 MT
+(two)SH
+/Courier SF
+10910 XM
+(.HEX)SH
+/Times-Roman SF
+13601 XM
+(files, but it's probably simpler to use DDT to get Kermit running, and get MLOAD later if)41 W
+9120 60213 MT
+(you need it.)SH
+8120 62423 MT
+(2.)SH
+9120 XM
+(Using MLOAD, the two pieces may be easily merged:)SH
+/Courier SF
+11520 64078 MT
+(A>mload kerm411=cpsker,cpxovl)SH
+16200 50 12720 64278 UL
+/Courier-Oblique SF
+11520 65109 MT
+(\050Some messages about program size, etc...\051)SH
+/Courier SF
+11520 66140 MT
+(A>)SH
+/Times-Roman SF
+8120 68350 MT
+(3.)SH
+9120 XM
+(If you don't have MLOAD running, it's a bit more complex:)SH
+ES
+%%Page: 23 24
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.7.2. Downloading Kermit-80)SH
+10 /Times-Italic AF
+51775 XM
+(Page 23)SH
+46800 50 8280 5709 UL
+/Courier SF
+13680 7824 MT
+(A>ddt cpsker.hex)SH
+8400 50 14880 8024 UL
+13680 8855 MT
+(NEXT PC)600 W
+13680 9886 MT
+(3500 0100)SH
+13680 10917 MT
+(-icpxovl.hex)SH
+6600 50 14280 11117 UL
+13680 11948 MT
+(-r)SH
+600 50 14280 12148 UL
+13680 12979 MT
+(NEXT PC)600 W
+13680 14010 MT
+(xxxx 0000)SH
+13680 15041 MT
+(-^C)SH
+1200 50 14280 15241 UL
+13680 16072 MT
+(A>save)SH
+/Courier-Oblique SF
+17880 XM
+(dd)SH
+/Courier SF
+19680 XM
+(kerm411.com)SH
+11400 50 14880 16272 UL
+/Times-Roman SF
+11280 17789 MT
+(The page count)
+50 W( \050"dd"\051 used in the SAVE command is calculated from the last address \050"xxxx"\051 given)49 W
+11280 18894 MT
+(by DDT in)
+48 W( response to the R command: drop the last two digits and add 1 if they were not zero, then)49 W
+11280 19999 MT
+(convert from hexadecimal \050base 16\051 to decimal \050base 10\051: 684F)
+11 W( becomes 69 hex, which is 105 decimal)10 W
+11280 21104 MT
+(\0505 times 16 plus 9\051)
+89 W( -- but 6700 becomes 67 hex, or 103 decimal \050consult an introductory computing)90 W
+11280 22209 MT
+(book if you don't understand number base conversion\051.)SH
+10280 24419 MT
+(4.)SH
+11280 XM
+(If you are using the Z80MU)
+53 W( CP/M and Z80 development toolkit on an IBM PC or clone, then follow)52 W
+11280 25524 MT
+(the same instructions as for a genuine CP/M system.  When you have loaded your file, you will)
+57 W( have)58 W
+11280 26629 MT
+(to ship the .COM or two .HEX files to the target CP/M system. \050Possibly)
+108 W( using a previous issue of)107 W
+11280 27734 MT
+(Kermit?\051)SH
+10280 29944 MT
+(5.)SH
+11280 XM
+(Note that CP/M hex files have checksums on each line.  If there were any transmission)
+67 W( errors during)68 W
+11280 31049 MT
+(the downloading process, MLOAD or DDT will)
+210 W( notice a bad checksum and will report an error)209 W
+11280 32154 MT
+(\050something like "Illegal Format"\051.  If you get any errors during loading, either fix the hex)
+63 W( file locally)64 W
+11280 33259 MT
+(with an editor, or repeat the transfer.)SH
+8280 35651 MT
+(You now should have a running version of Kermit-80, called)SH
+/Courier SF
+32915 XM
+(KERM411.COM)SH
+/Times-Roman SF
+(.)SH
+8280 38043 MT
+(Test your new Kermit by running it.  If)
+96 W( it gives you a prompt, it might be OK. \050don't delete your old one yet...\051.)95 W
+8280 39239 MT
+(Instead of a prompt, you could get one of two messages indicating that the configuration information is invalid:)SH
+/Courier SF
+10680 40894 MT
+(?Kermit has not been configured for a target system)SH
+/Times-Roman SF
+8280 42611 MT
+(or)SH
+/Courier SF
+10680 44266 MT
+(?Consistency check on configuration failed)SH
+/Times-Roman SF
+8280 45983 MT
+(Of course, neither of these messages should appear)
+109 W( if you're building Kermit from the distribution kit.  The first)110 W
+8280 47179 MT
+(message indicates that)
+1 W( the overlay was not found where the system-independent module expected to find it, probably)SH
+8280 48375 MT
+(because the overlay address is incorrect; the second indicates that the version of CPXLNK used in the system-)157 W
+8280 49571 MT
+(dependent module is incompatible with the system-independent module.)SH
+8280 51963 MT
+(Once you are satisfied that KERMIT40 works correctly, you should rename your old)76 W
+/Courier SF
+43484 XM
+(KERMIT.COM)SH
+/Times-Roman SF
+49810 XM
+(to something)75 W
+8280 53159 MT
+(else, like)SH
+/Courier SF
+12085 XM
+(OKERMIT.COM)SH
+/Times-Roman SF
+(, and rename)SH
+/Courier SF
+24072 XM
+(KERMIT40.COM)SH
+/Times-Roman SF
+31522 XM
+(to)SH
+/Courier SF
+32550 XM
+(KERMIT.COM)SH
+/Times-Roman SF
+(.)SH
+12 /Times-Bold AF
+8280 56275 MT
+(1.7.3. Assembling Kermit-80 from the sources)SH
+10 /Times-Roman AF
+8280 58217 MT
+(Kermit-80 is built in two pieces from the following files:)SH
+/Times-Italic SF
+8280 60006 MT
+(The system-independent files:)SH
+/Courier SF
+9480 61111 MT
+(CPSKER.ASM)SH
+/Times-Roman SF
+16280 XM
+(header file)SH
+/Courier SF
+9480 62216 MT
+(CPSDEF.ASM)SH
+/Times-Roman SF
+16280 XM
+(definitions for both KERMIT and KERSYS)SH
+/Courier SF
+9480 63321 MT
+(CPSMIT.ASM)SH
+/Times-Roman SF
+16280 XM
+(initialization, main loop, miscellaneous commands \050BYE, EXIT, LOG, SET,)
+30 W( SHOW, STATUS,)31 W
+16280 64426 MT
+(and VERSION\051)SH
+/Courier SF
+9480 65531 MT
+(CPSCOM.ASM)SH
+/Times-Roman SF
+16280 XM
+(second part of commands, status and set file)SH
+/Courier SF
+9480 66636 MT
+(CPSPK1.ASM)SH
+/Times-Roman SF
+16280 XM
+(part 1 of the KERMIT protocol handler \050SEND, RECEIVE, LOGOUT,and FINISH commands\051)SH
+/Courier SF
+9480 67741 MT
+(CPSPK2.ASM)SH
+/Times-Roman SF
+16280 XM
+(part 2 of the KERMIT protocol handler)SH
+/Courier SF
+9480 68846 MT
+(CPSREM.ASM)SH
+/Times-Roman SF
+16280 XM
+(REMOTE routines \050FINISH, BYE and LOGOUT in CPXPK*.ASM\051)SH
+/Courier SF
+9480 69951 MT
+(CPSSER.ASM)SH
+/Times-Roman SF
+16280 XM
+(SERVER routines \050for the future\051)SH
+/Courier SF
+9480 71056 MT
+(CPSTT.ASM)SH
+/Times-Roman SF
+16280 XM
+(the transparent commands \050TRANSMIT, CONNECT\051)SH
+ES
+%%Page: 24 25
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 24)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.7.3)SH
+46800 50 6120 5709 UL
+10 /Courier AF
+7320 7886 MT
+(CPSCPM.ASM)SH
+/Times-Roman SF
+14120 XM
+(CP/M commands \050DIR, ERA, USER, TYPE, PRINT, COPY\051)SH
+/Courier SF
+7320 8991 MT
+(CPSWLD.ASM)SH
+/Times-Roman SF
+14120 XM
+(the wildcard handler)SH
+/Courier SF
+7320 10096 MT
+(CPSCMD.ASM)SH
+/Times-Roman SF
+14120 XM
+(the command parser)SH
+/Courier SF
+7320 11201 MT
+(CPSUTL.ASM)SH
+/Times-Roman SF
+14120 XM
+(utility routines and data)SH
+/Courier SF
+7320 12306 MT
+(CPSDAT.ASM)SH
+/Times-Roman SF
+14120 XM
+(data space and the overlay definitions)SH
+/Courier SF
+7320 13411 MT
+(CPXLNK.ASM)SH
+/Times-Roman SF
+14120 XM
+(linkage area description)SH
+/Times-Italic SF
+6120 15840 MT
+(The system-dependent files:)SH
+/Courier SF
+7320 16945 MT
+(CPXTYP.ASM)SH
+/Times-Roman SF
+14120 XM
+(system selection)SH
+/Courier SF
+7320 18050 MT
+(CPXLNK.ASM)SH
+/Times-Roman SF
+14120 XM
+(system overlay specification and jump table)SH
+/Courier SF
+7320 19155 MT
+(CPXCOM.ASM)SH
+/Times-Roman SF
+14120 XM
+(common routines for all systems)SH
+/Courier SF
+7320 20260 MT
+(CPXSWT.ASM)SH
+/Times-Roman SF
+14120 XM
+(system selector or switcher)SH
+6120 22689 MT
+(One of:)SH
+/Courier SF
+7320 23794 MT
+(CPXSYS.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for some system-specific code)SH
+/Courier SF
+7320 24899 MT
+(CPXTOR.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Torch, Superbrain, PCI2651 etc)SH
+/Courier SF
+7320 26004 MT
+(CPXNOR.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Northstar and Comart machines)SH
+/Courier SF
+7320 27109 MT
+(CPXMRL.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for British Telecom Merlin/Rair Black Box)SH
+/Courier SF
+7320 28214 MT
+(CPXSB.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Micromint SB-180 systems)SH
+/Courier SF
+7320 29319 MT
+(CPXCIF.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Cifer systems)SH
+/Courier SF
+7320 30424 MT
+(CPXHEA.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Heath/Zenith systems)SH
+/Courier SF
+7320 31529 MT
+(CPXAPP.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Apple II systems)SH
+/Courier SF
+7320 32634 MT
+(CPXPCW.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Amstrad PCW 8256/8512 machines)SH
+/Courier SF
+7320 33739 MT
+(CPXBBI.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for BigBoard, Kaypro and Xerox 820 systems)SH
+/Courier SF
+7320 34844 MT
+(CPXBEE.ASM)SH
+/Times-Roman SF
+14120 XM
+(Microbee)SH
+/Courier SF
+7320 35949 MT
+(CPXSYO.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Sanyo MBS-1100 systems)SH
+/Courier SF
+7320 37054 MT
+(CPXTM4.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Tandy Model 4 with CP/M systems)SH
+/Courier SF
+7320 38159 MT
+(CPXGNI.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Video Genie systems)SH
+/Courier SF
+7320 39264 MT
+(CPXPRO.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for Compupro systems)SH
+/Courier SF
+7320 40369 MT
+(CPXZ80.ASM)SH
+/Times-Roman SF
+14120 XM
+(family file for the Z80MU development system)SH
+6120 42798 MT
+(and if you use a terminal,)SH
+/Courier SF
+7320 43903 MT
+(CPXVDU.ASM)SH
+/Times-Roman SF
+14120 XM
+(display codes for VDUs etc.  Not always required)SH
+6120 45694 MT
+(The system-independent module contains all of the system-independent files)
+135 W( except for)134 W
+/Courier SF
+42791 XM
+(CPXLNK.ASM)SH
+/Times-Roman SF
+(, which is)134 W
+6120 46890 MT
+(assembled into the system-dependent module to provide the structures needed to connect the)
+156 W( two modules.  As)157 W
+6120 48086 MT
+(distributed, the system-independent module is named)28 W
+/Courier SF
+27870 XM
+(CPSKER.HEX)SH
+/Times-Roman SF
+(. If)
+306 W( you have a)
+28 W( copy of)27 W
+/Courier SF
+43616 XM
+(CPSKER.HEX)SH
+/Times-Roman SF
+(, you do)27 W
+6120 49282 MT
+(not need to reassemble the system-independent module to configure Kermit for your system.)SH
+6120 51674 MT
+(The system-dependent module consists of)503 W
+/Courier SF
+25661 XM
+(CPXTYP.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+32664 XM
+(CPSDEF.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+39667 XM
+(CPXLNK.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+46670 XM
+(CPXSWT.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+6120 52870 MT
+(CPSCOM.ASM)SH
+/Times-Roman SF
+(, one of)
+675 W( the family files)674 W
+/Courier SF
+25748 XM
+(CPXSYS.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+32922 XM
+(CPXTOR.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+40096 XM
+(CPXMRL.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+47270 XM
+(CPXSB.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+6120 54066 MT
+(CPXCIF.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+12878 XM
+(CPXHEA.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+19636 XM
+(CPXBBI.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+26394 XM
+(CPXTM4.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+33152 XM
+(CPXGNI.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+39911 XM
+(CPXNOR.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+46670 XM
+(CPXAPP.ASM)SH
+/Times-Roman SF
+(,)SH
+/Courier SF
+6120 55262 MT
+(CPXPCW.ASM)SH
+/Times-Roman SF
+(, or)23 W
+/Courier SF
+13749 XM
+(CPXPRO.ASM)SH
+/Times-Roman SF
+(, and possibly)23 W
+/Courier SF
+25596 XM
+(CPXVDU.ASM)SH
+/Times-Roman SF
+(, if your)
+23 W( system uses a terminal for the console.  One)22 W
+6120 56458 MT
+(copy of the)
+1 W( system-dependent module is supplied already assembled for each supported system; the filename may be)2 W
+6120 57654 MT
+(obtained from tables 1-2 and 1-3.  If a terminal is)
+170 W( required for a system, a CRT \050glass TTY device\051 has been)169 W
+6120 58850 MT
+(selected.)SH
+6120 61242 MT
+(After assembling the two pieces separately, they are combined with DDT or MLOAD into a system-specific Kermit.)SH
+6120 63634 MT
+(If you want to rebuild the system-independent module, the only change you may)
+159 W( need to make is to select the)160 W
+6120 64830 MT
+(assembler to be used, in)182 W
+/Courier SF
+16862 XM
+(CPSKER.ASM)SH
+/Times-Roman SF
+(. Define)
+614 W( one of MAC80, M80, or LASM to TRUE to select)
+182 W( it as the)181 W
+6120 66026 MT
+(assembler; the others should be defined FALSE.)SH
+6120 68418 MT
+(Assuming you have the Microsoft Macro Assembler package \050M80/L80\051, you'll need to do the following:)SH
+/Courier SF
+8520 70073 MT
+(A>m80 cpsker=cpsker.asm)SH
+12600 50 9720 70273 UL
+8520 71104 MT
+(A>l80 /p:100,cpsker,cpsker/n/e)SH
+16800 50 9720 71304 UL
+ES
+%%Page: 25 26
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.7.3. Assembling Kermit-80 from the sources)SH
+10 /Times-Italic AF
+51775 XM
+(Page 25)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+8280 7886 MT
+(This will produce)SH
+/Courier SF
+15585 XM
+(CPSKER.COM)SH
+/Times-Roman SF
+(.)SH
+8280 10278 MT
+(If you are using LASM instead, do this:)SH
+/Courier SF
+10680 11933 MT
+(A>lasm cpsker)SH
+6600 50 11880 12133 UL
+/Times-Roman SF
+8280 13650 MT
+(LASM will generate)53 W
+/Courier SF
+16910 XM
+(CPSKER.HEX)SH
+/Times-Roman SF
+23214 XM
+(and)SH
+/Courier SF
+24962 XM
+(CPSKER.PRN)SH
+/Times-Roman SF
+(. LASM)
+358 W( allows options to be specified in the same way as)54 W
+8280 14846 MT
+(the standard assembler, ASM, so the command)SH
+/Courier SF
+10680 16501 MT
+(A>lasm cpsker.abz)SH
+9000 50 11880 16701 UL
+/Times-Roman SF
+8280 18218 MT
+(will read the source files from drive A, send the)SH
+/Courier SF
+27637 XM
+(.HEX)SH
+/Times-Roman SF
+30287 XM
+(file to drive B, and suppress the listing file.)SH
+8280 20610 MT
+(If you are using)
+128 W( the Z80MU development system on an IBM PC or clone, then assemble your files using either)127 W
+8280 21806 MT
+(LASM and MLOAD or M80 and L80, as)
+3 W( if you were using a genuine CP/M-80 system.  Note that you will still have)4 W
+8280 23002 MT
+(the problem of transferring your assembled files to the target CP/M system.)SH
+8280 25394 MT
+(If you want to generate a system-dependent overlay for a particular system, or want to change the terminal)247 W
+8280 26590 MT
+(supported, you'll need to check three areas in)SH
+/Courier SF
+26692 XM
+(CPXTYP.ASM)SH
+/Times-Roman SF
+(:)SH
+8280 28982 MT
+(First, the overlay start ADDRESS.  The symbol)
+83 W( "ovladr" is EQUated to the address of "LNKFLG" in the system-)84 W
+8280 30178 MT
+(independent module, as the starting address of the overlay \0507000H for version)109 W
+/Courier SF
+40999 XM
+(4.11)SH
+/Times-Roman SF
+(\051. You'll)
+468 W( need to know this)109 W
+8280 31374 MT
+(value if you're building the overlay with M80/L80.  You won't normally need to change this value.)SH
+8280 33766 MT
+(Second, the assembler being used.  Again, define one of MAC80, M80, and LASM to be TRUE to)
+104 W( select it, and)105 W
+8280 34962 MT
+(define the others to be FALSE.  The two modules \050system-independent and system-dependent\051)
+100 W( do not need to be)99 W
+8280 36158 MT
+(built with the same assembler.)SH
+8280 38550 MT
+(Third, the system configuration.  Locate your system in)
+158 W( tables 1-2 and 1-3, then define the appropriate symbol)159 W
+8280 39746 MT
+(TRUE, and the rest FALSE.)
+84 W( If)
+417 W( the system comes with a builtin console terminal, define all the terminal switches)83 W
+8280 40942 MT
+(FALSE. If)
+558 W( the system uses an external terminal as the console, locate the terminal in)
+154 W( table 1-5 and define the)155 W
+8280 42138 MT
+(appropriate symbol TRUE, and the remainder FALSE.)
+20 W( If)
+289 W( the terminal is not listed in table 1-5, use the CRT switch;)19 W
+8280 43334 MT
+(in this case, VT52 emulation is not supported.)SH
+8280 45726 MT
+(In addition, there are a few general and system-specific symbols which may be altered to fit your system:)SH
+8280 47517 MT
+(APSLOT)SH
+16280 XM
+(For Apple with 6551 ACIA, defines the slot number of the serial card)SH
+8280 49094 MT
+(CPUSPD)SH
+16280 XM
+(Processor speed in units of 100KHz \050currently used only for bbII and kpII for timing loops\051)SH
+8280 50671 MT
+(TAC)SH
+16280 XM
+(For users connecting through ARPAnet TACs: set to TRUE if you)
+53 W( wish the default TACTRAP)54 W
+16280 51776 MT
+(status to be ON. \050This may be overridden with the SET TACTRAP command\051.  If)
+99 W( you're not)98 W
+16280 52881 MT
+(connecting through a TAC, set tac to FALSE and ignore tacval.)SH
+8280 54458 MT
+(TACVAL)SH
+16280 XM
+(For ARPANET TAC users: defines the default TAC)
+4 W( intercept character \050may be overridden with)5 W
+16280 55563 MT
+(the SET TACTRAP command\051.)SH
+8280 57955 MT
+(If you are just assembling an existing configuration,)
+141 W( you'll need to edit)140 W
+/Courier SF
+38603 XM
+(CPXTYP.ASM)SH
+/Times-Roman SF
+44993 XM
+(only. If)
+530 W( you are adding)140 W
+8280 59151 MT
+(support for a new)
+16 W( system, you should not modify)17 W
+/Courier SF
+28318 XM
+(CPSDEF.ASM)SH
+/Times-Roman SF
+34585 XM
+(or)SH
+/Courier SF
+35685 XM
+(CPXLNK.ASM)SH
+/Times-Roman SF
+(; if you do, you'll have to change)17 W
+8280 60347 MT
+(the system-independent module also.  Eventually,)28 W
+/Courier SF
+28613 XM
+(CPXSYS.ASM)SH
+/Times-Roman SF
+34891 XM
+(will be split into separate)
+28 W( files, each of which will)27 W
+8280 61543 MT
+(generate one or more related systems.  When this happens, you'll want to pick the one closest to your)
+29 W( system to use)30 W
+8280 62739 MT
+(as a starting point.)SH
+8280 65131 MT
+(After editing)SH
+/Courier SF
+13668 XM
+(CPXTYP.ASM)SH
+/Times-Roman SF
+19918 XM
+(as necessary, assemble and link the overlay as follows:)SH
+/Symbol SF
+10070 67036 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(With M80 \050where "xxxx" is the hex value of ovladr from)SH
+/Courier SF
+33842 XM
+(CPXLNK.ASM)SH
+/Times-Roman SF
+(\051:)SH
+/Courier SF
+13180 68691 MT
+(A>m80 cpxtyp=cpxtyp.asm)SH
+12600 50 14380 68891 UL
+13180 69722 MT
+(A>l80 /p:xxxx,cpxtyp,cpxtyp/n/x/e)SH
+18600 50 14380 69922 UL
+/Symbol SF
+10070 71711 MT
+(\267)SH
+/Times-Roman SF
+10780 XM
+(With LASM:)SH
+ES
+%%Page: 26 27
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 26)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.7.3)SH
+46800 50 6120 5709 UL
+10 /Courier AF
+11020 7824 MT
+(A>lasm cpxtyp)SH
+6600 50 12220 8024 UL
+/Times-Roman SF
+6120 10216 MT
+(With an IBM PC or clone using the Z80MU softwrae, follow the instructions as if)
+128 W( you were using a real CP/M)127 W
+6120 11412 MT
+(system.)SH
+6120 13804 MT
+(The overlay \050)6 W
+/Courier SF
+(CPXTYP.HEX)SH
+/Times-Roman SF
+(\051 may then be merged with the system-independent module as)
+6 W( described above \050creating)7 W
+6120 15000 MT
+(a runnable Kermit from the distribution kit\051.)SH
+6120 17392 MT
+(If you are using the Z80MU development system on a PC, and already have a running)
+42 W( Kermit-80 v3.9 or later, you)41 W
+6120 18588 MT
+(can merge the)
+1 W( two)2 W
+/Courier SF
+13735 XM
+(.HEX)SH
+/Times-Roman SF
+16387 XM
+(files into a)2 W
+/Courier SF
+20865 XM
+(.COM)SH
+/Times-Roman SF
+23517 XM
+(file with LINK80 \050TOPS 10/20\051, MLOAD \050Z80MU\051, L80 \050Z80MU\051, and)2 W
+6120 19784 MT
+(transfer the new)SH
+/Courier SF
+12812 XM
+(.COM)SH
+/Times-Roman SF
+15462 XM
+(file to your micro with Kermit:)SH
+/Symbol SF
+7910 21689 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Z80MU on a PC and MLOAD:)SH
+/Courier SF
+11020 23344 MT
+(@MLOAD KERNEW=CPSKER,CPXTYP)SH
+15600 50 11620 23544 UL
+/Symbol SF
+7910 25333 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Z80MU on a PC and C80:)SH
+/Courier SF
+11020 26988 MT
+(@L80 /P:xxxx,CPXTYP,CPXTYP/N/X/E)SH
+18600 50 11620 27188 UL
+/Times-Roman SF
+6120 28779 MT
+(producing)SH
+/Courier SF
+10425 XM
+(KERNEW.COM)SH
+/Times-Roman SF
+(.)SH
+46800 50 6120 30589 UL
+6120 32818 MT
+(Symbol)SH
+16920 XM
+(Terminal description)SH
+3112 50 6120 33018 UL
+8360 50 16920 33018 UL
+6120 33923 MT
+(crt)SH
+16920 XM
+(Basic CRT, no cursor positioning)SH
+6120 35028 MT
+(adm3a)SH
+16920 XM
+(ADM3A Display or lookalike)SH
+6120 36133 MT
+(adm22)SH
+16920 XM
+(ADM22 Display or lookalike)SH
+6120 37238 MT
+(am230)SH
+16920 XM
+(Ampro 230)SH
+6120 38343 MT
+(h1500)SH
+16920 XM
+(Hazeltine 1500)SH
+6120 39448 MT
+(smrtvd)SH
+16920 XM
+(Netronics Smartvid-80)SH
+6120 40553 MT
+(soroq)SH
+16920 XM
+(Soroq IQ-120)SH
+6120 41658 MT
+(tvi912)SH
+16920 XM
+(TVI 912)SH
+6120 42763 MT
+(tvi925)SH
+16920 XM
+(TVI 925, Freedom 100)SH
+6120 43868 MT
+(vt52)SH
+16920 XM
+(VT 52 or VT52 emulator such as Heath H19, H29, etc.)SH
+6120 44973 MT
+(vt100)SH
+16920 XM
+(VT 100 or emulator \050most ANSI terminals should work\051)SH
+6120 46078 MT
+(wyse)SH
+16920 XM
+(Wyse 100)SH
+/Times-Bold SF
+20854 47688 MT
+(Table 1-5:)SH
+/Times-Roman SF
+25715 XM
+(Terminals known to Kermit-80)SH
+46800 50 6120 49498 UL
+14 /Times-Bold AF
+6120 52900 MT
+(1.8. Adding Support For A New System)SH
+10 /Times-Roman AF
+6120 55018 MT
+(Kermit-80 is built from a common set of source files; the system-dependent module makes heavy use)
+23 W( of conditional)22 W
+6120 56214 MT
+(assembly \050this complication will be removed in future releases\051.  The)
+90 W( system dependencies arise from attempts to)91 W
+6120 57410 MT
+(answer some questions:)SH
+8120 59201 MT
+(1.)SH
+/Times-Italic SF
+9120 XM
+(What kind of terminal is to be supported?)SH
+/Times-Roman SF
+9120 61630 MT
+(For many micros, the console is an integral part of the system, but others)
+25 W( can use an external terminal.)24 W
+9120 62735 MT
+(In either case, the commands to manipulate the screen \050position)
+38 W( the cursor, erase the screen, etc\051 must)39 W
+9120 63840 MT
+(be defined.)SH
+8120 66050 MT
+(2.)SH
+/Times-Italic SF
+9120 XM
+(How is the serial line accessed?)SH
+/Times-Roman SF
+9120 68479 MT
+(For systems supporting the IOBYTE function,)
+38 W( this is straightforward; the symbol "IOBYT" is defined)37 W
+9120 69584 MT
+(TRUE. If)
+554 W( the serial line is accessed with IN and OUT instructions, it may be possible to use the)152 W
+9120 70689 MT
+(simple I/O routines provided.  In this case, the symbol "INOUT" is)
+36 W( defined TRUE, the MNPORT and)35 W
+9120 71794 MT
+(MNPRTS are defined to be the data and control addresses, respectively, and)
+64 W( bit masks for testing for)65 W
+ES
+%%Page: 27 28
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.8. Adding Support For A New System)SH
+10 /Times-Italic AF
+51775 XM
+(Page 27)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+11280 7886 MT
+("input data available")
+123 W( and "output buffer empty" must be defined.  If the interface is strange, leave)122 W
+11280 8991 MT
+(IOBYT and INOUT set to FALSE, and provide the I/O routines.)SH
+10280 11201 MT
+(3.)SH
+/Times-Italic SF
+11280 XM
+(What initialization is necessary?)SH
+/Times-Roman SF
+11280 13630 MT
+(You may wish to set the baud rate or configure the serial line at startup.  Examples)
+86 W( for a number of)87 W
+11280 14735 MT
+(devices are present.)SH
+10280 16945 MT
+(4.)SH
+/Times-Italic SF
+11280 XM
+(What special features are to be supported?)SH
+/Times-Roman SF
+11280 19374 MT
+(You may want to provide the capability to select one of several serial lines with the SET)
+183 W( PORT)182 W
+11280 20479 MT
+(command, or to change the speed)
+24 W( of the serial line with the SET SPEED command.  To do this, you'll)25 W
+11280 21584 MT
+(need to build a command table, using the systems already)
+2 W( supported as examples.  The ability to send a)1 W
+11280 22689 MT
+(BREAK signal is desirable.  Again, examples for several different interfaces \050ACIA, SIO,)
+149 W( etc\051 are)150 W
+11280 23794 MT
+(present.)SH
+10280 26004 MT
+(5.)SH
+/Times-Italic SF
+11280 XM
+(Do you want to design an external terminal type?)SH
+/Times-Roman SF
+11280 28433 MT
+(There is a jump entry in the overlay file to allow users to add their own termainl emulator.)
+114 W( If)
+477 W( you)113 W
+11280 29538 MT
+(write the code for)
+223 W( such an emulator, you must load this jump address with the address of your)224 W
+11280 30643 MT
+(emulator, and SET)
+106 W( TERMINAL EXTERNAL from within Kermit.  All characters will be passed to)105 W
+11280 31748 MT
+(this routine during connect mode.)SH
+14 /Times-Bold AF
+8280 35350 MT
+(1.9. Notes on New Features in Kermit-80 Version 4)SH
+10 /Symbol AF
+10070 37582 MT
+(\267)SH
+/Times-Italic SF
+10780 XM
+(Debugging aids:)218 W
+/Times-Roman SF
+18628 XM
+(SET DEBUG ON will add two fields to the SEND/RECEIVE display, labelled)218 W
+10780 38687 MT
+("Spack" and)
+40 W( "Rpack".  These display the last packet sent and received.  Of course, this slows down the)39 W
+10780 39792 MT
+(transfer, especially if the console is an external)
+24 W( terminal.  SET DEBUG OFF removes these fields.  The)25 W
+10780 40897 MT
+(VERSION command)
+27 W( displays the name, edit number, and edit date of several of the modules that make)26 W
+10780 42002 MT
+(up Kermit.)SH
+/Symbol SF
+10070 43991 MT
+(\267)SH
+/Times-Italic SF
+10780 XM
+(TAC support:)32 W
+/Times-Roman SF
+16567 XM
+(ARPAnet TACs \050and many other communication devices)
+32 W( such as terminal concentrators,)33 W
+10780 45096 MT
+(modems, port contention units, network PADs, etc\051 use a printing character \050like)
+79 W( "@"\051 as an intercept)78 W
+10780 46201 MT
+(character, to allow commands to be issued to the TAC, or modem, etc.  In order to send this character)
+7 W( to)8 W
+10780 47306 MT
+(the host, it must be typed)
+163 W( twice.  The command "SET TAC CHARACTER" to Kermit enables the)162 W
+10780 48411 MT
+("TACtrap" and asks the)
+358 W( user to specify the TAC intercept character.  This character will be)359 W
+10780 49516 MT
+(automatically doubled when it)
+94 W( appears in Kermit protocol messages \050sent by the SEND or RECEIVE)93 W
+10780 50621 MT
+(commands\051 or when it appears in a)
+295 W( file being sent with the TRANSMIT command.  It is not)296 W
+10780 51726 MT
+(automatically doubled when typed by the user in CONNECT mode.  "SET TAC)
+192 W( ON" enables the)191 W
+10780 52831 MT
+(TACtrap but does not change the TAC intercept character, which)
+109 W( is initially "@".  "SET TAC OFF")110 W
+10780 53936 MT
+(disables the TACtrap.)SH
+/Symbol SF
+10070 55925 MT
+(\267)SH
+/Times-Italic SF
+10780 XM
+(File buffering:)96 W
+/Times-Roman SF
+17429 XM
+(Previous versions of Kermit-80 buffered only)
+96 W( one sector \050128 bytes\051 at a time during)95 W
+10780 57030 MT
+(file transfer operations.  This version buffers 16Kbytes at a time, reducing the number of)
+151 W( times the)152 W
+10780 58135 MT
+(floppy drive must be)
+33 W( spun up and down, and increasing the effective throughput of the link.  If the disk)32 W
+10780 59240 MT
+(transfer rate is)
+89 W( too slow, however, the remote Kermit may time out and retransmit packets.  This will)90 W
+10780 60345 MT
+(show up on the screen in the "Retries:" field; if this occurs after disk activity, you)
+26 W( may want to increase)25 W
+10780 61450 MT
+(the timeout value on the remote Kermit,)
+135 W( SET BUFFER <new value> while in Kermit,or reassemble)136 W
+10780 62555 MT
+(Kermit with a smaller value for MAXSEC \050in)304 W
+/Courier SF
+31821 XM
+(CPSDEF.ASM)SH
+/Times-Roman SF
+(\051 This)
+304 W( buffer is also used by the)303 W
+10780 63660 MT
+(TRANSMIT command; the log file enabled by the LOG command is still written a sector at a time.)SH
+8280 66052 MT
+(This section is intended for people wanting to implement their own versions)
+16 W( of Kermit-80 for computers not already)17 W
+8280 67248 MT
+(defined.)SH
+8280 69640 MT
+(The system independent code communicates to routines for a specific system through a set of tables.)
+62 W( These)
+372 W( tables)61 W
+8280 70836 MT
+(are defined in CPXLNK.ASM, and)
+106 W( should not be modified between revisions of Kermit.  If an entry is added or)107 W
+ES
+%%Page: 28 29
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 28)SH
+12 /Times-Bold AF
+30586 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.9)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+6120 7886 MT
+(deleted, then)
+199 W( the whole of Kermit-80 needs reassembling.  Make sure that the changes to CPXLNK.ASM are)198 W
+6120 9082 MT
+(duplicated in CPSUTL.ASM, which has the system independent equivalent of CPXLNK.ASM.)SH
+6120 11474 MT
+(The following entries/definitions apply)
+140 W( to revision 4.09.  There have been three additional entries since revision)141 W
+6120 12670 MT
+(4.05.)SH
+6120 15062 MT
+(The table)
+56 W( is split into three sectors; The first section defines two byte "words" giving 16 bits of interface data; The)55 W
+6120 16258 MT
+(second set is a set of jumps to various functions, and finally the third set a set of pure data bytes.)SH
+12 /Times-Bold AF
+6120 19374 MT
+(1.9.1. Interface Data.)SH
+10 /Times-Roman AF
+10120 21316 MT
+(LNKFLG)SH
+14120 XM
+(Must be first entry in overlay at overlay address.  Is a two byte address giving the size of the)98 W
+3944 50 10120 21516 UL
+14120 22421 MT
+(linkage table.  This is used to check for consistency of overlay's)SH
+10120 24850 MT
+(ENTSIZE)SH
+4055 50 10120 25050 UL
+14120 25955 MT
+(Length of entry table, also used for consistency checking after the overlay.  Currently 6)SH
+10120 28384 MT
+(SYSEDT)SH
+14120 XM
+(The address of a dollar-terminated string giving the overlay revision level and date.  Points)
+45 W( to a)46 W
+3778 50 10120 28584 UL
+14120 29489 MT
+(string like:  CPXSYS.ASM\05033\051 4-JUN-1986$)SH
+10120 31918 MT
+(FAMILY)SH
+14120 XM
+(The address of a dollar-terminated string giving the Family overlay revision)
+80 W( level and date.  If)79 W
+3833 50 10120 32118 UL
+14120 33023 MT
+(the system is in CPXSYS.ASM rather than a)
+46 W( particular Family overlay, it is simply a pointer to)47 W
+14120 34128 MT
+($)SH
+12 /Times-Bold AF
+6120 39454 MT
+(1.9.2. Jump Table.)SH
+10 /Times-Roman AF
+6120 41396 MT
+(This is split into three main sectors-)SH
+8120 44511 MT
+(1.)SH
+9120 XM
+(Input/Output routines)SH
+8120 46721 MT
+(2.)SH
+9120 XM
+(Screen formatting routines)SH
+8120 48931 MT
+(3.)SH
+9120 XM
+(other system dependent routines)SH
+7120 52246 MT
+(SELMDM)SH
+4278 50 7120 52446 UL
+/Times-Italic SF
+7120 53351 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 54456 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 55561 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(selects the modem port.  Most)
+56 W( systems do nothing and simply return.  HL,DE and BC registers)55 W
+14120 56666 MT
+(preserved.)SH
+7120 59095 MT
+(OUTMDM)SH
+4555 50 7120 59295 UL
+/Times-Italic SF
+7120 60200 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 61305 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 62410 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Output the character in E register to the communications line.  BC,DE,HL registers preserved.)SH
+7120 64839 MT
+(INPMDM)SH
+4111 50 7120 65039 UL
+/Times-Italic SF
+7120 65944 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 67049 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(Accumulator either 0 or character from comms line if available)SH
+/Times-Italic SF
+7120 68154 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Check modem)
+90 W( for character and if so, return it in A. HL,DE,BC registers preserved, flags and)91 W
+14120 69259 MT
+(accumulator lost.)SH
+7120 71688 MT
+(FLSMDM)SH
+4223 50 7120 71888 UL
+ES
+%%Page: 29 30
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.9.2. Jump Table.)SH
+10 /Times-Italic AF
+51775 XM
+(Page 29)SH
+46800 50 8280 5709 UL
+9280 7886 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 8991 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 10096 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Clear any pending characters in the input buffer from the modem.  No registers are preserved.)SH
+9280 12525 MT
+(SELCON)SH
+3889 50 9280 12725 UL
+/Times-Italic SF
+9280 13630 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 14735 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 15840 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Select the console.)
+44 W( This)
+337 W( is a null subroutine for most systems, but for IOBYTE systems selects)43 W
+16280 16945 MT
+(the console.)SH
+9280 19374 MT
+(OUTCON)SH
+4166 50 9280 19574 UL
+/Times-Italic SF
+9280 20479 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Character in E)SH
+/Times-Italic SF
+9280 21584 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 22689 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Send the character in E to the console.  Any quirks)
+145 W( of system responding in an odd manner)146 W
+16280 23794 MT
+(should be handled.  No registers preserved.)SH
+9280 26223 MT
+(INPCON)SH
+3722 50 9280 26423 UL
+/Times-Italic SF
+9280 27328 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 28433 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(Zero or character in A.)SH
+/Times-Italic SF
+9280 29538 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Get a character from the console or return a null if no character to be read.)
+119 W( No)
+486 W( registers are)118 W
+16280 30643 MT
+(preserved.)SH
+9280 33072 MT
+(OUTLPT)SH
+3833 50 9280 33272 UL
+/Times-Italic SF
+9280 34177 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Character in E)SH
+/Times-Italic SF
+9280 35282 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 36387 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Send the character in E to the printer.  The console is selected.  Only DE registers are preserved)SH
+9280 38816 MT
+(LPTSTAT)SH
+4278 50 9280 39016 UL
+/Times-Italic SF
+9280 39921 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 41026 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(00H or 0FFH in A register)SH
+/Times-Italic SF
+9280 42131 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Test the printer to see if it is ready to receive a character to)
+20 W( be printed.  If a 00H is returned then)21 W
+16280 43236 MT
+(the printer is ready to receive a character.)SH
+9280 45665 MT
+(EXTTER)SH
+3833 50 9280 45865 UL
+/Times-Italic SF
+9280 46770 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Character to be sent to the user supplied terminal emulator in the E register)SH
+/Times-Italic SF
+9280 47875 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 48980 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(If the user has supplied a terminal emulator in)
+67 W( the overlay code, EXTTER will be a JMP <non)66 W
+16280 50085 MT
+(zero address>.  If SET TERMINAL EXTERNAL has been)
+148 W( set, all caharcters will be passed)149 W
+16280 51190 MT
+(verbatim to this terminal emulator.  If there is)
+155 W( no external emulator, this code will never be)154 W
+16280 52295 MT
+(called. The)
+320 W( user should reset terminal conditions on initialisation of both the system and)
+35 W( before)36 W
+16280 53400 MT
+(CONNECT. All)
+250 W( registers should be preserved.)SH
+9280 55829 MT
+(XBDOS)SH
+3389 50 9280 56029 UL
+/Times-Italic SF
+9280 56934 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Any required for calling BDOS)SH
+/Times-Italic SF
+9280 58039 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(Any expected from the called BDOS routine)SH
+/Times-Italic SF
+9280 59144 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(This is an alternative entry to BDOS.  This entry will)
+53 W( also check the printer status etc.  For full)52 W
+16280 60249 MT
+(details see the code for the BDOS trap in CPSUTL.ASM.)SH
+16280 62678 MT
+(2b\051)SH
+16280 65107 MT
+(CLRLIN)SH
+3611 50 16280 65307 UL
+/Times-Italic SF
+9280 66212 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 67317 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 68422 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Clear the current line on the terminal)SH
+9280 70851 MT
+(CLRSPC)SH
+3724 50 9280 71051 UL
+/Times-Italic SF
+9280 71956 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+ES
+%%Page: 30 31
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 30)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.9.2)SH
+46800 50 6120 5709 UL
+10 /Times-Italic AF
+7120 7886 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 8991 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Erase the current position \050after a backspace\051)SH
+7120 11420 MT
+(DELCHR)SH
+4000 50 7120 11620 UL
+/Times-Italic SF
+7120 12525 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 13630 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 14735 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Make delete \0507FH\051 look like a backspace.  Some systems do a backspace, space, backspace)163 W
+14120 15840 MT
+(automatically others have to simulate it)SH
+7120 18269 MT
+(CLRTOP)SH
+3834 50 7120 18469 UL
+/Times-Italic SF
+7120 19374 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 20479 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 21584 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Clear the screen and place the cursor at the top LH corner)SH
+7120 24013 MT
+(SCREND)SH
+3945 50 7120 24213 UL
+/Times-Italic SF
+7120 25118 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 26223 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 27328 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Place the cursor on the line for the Kermit-80 prompt after a file transfer.  \050Usually line 13\051)SH
+7120 29757 MT
+(SCRERR)SH
+3835 50 7120 29957 UL
+/Times-Italic SF
+7120 30862 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 31967 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 33072 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move cursor to the error message field on the file transfer format screen)SH
+7120 35501 MT
+(SCRFLN)SH
+3779 50 7120 35701 UL
+/Times-Italic SF
+7120 36606 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 37711 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 38816 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move the cursor to the filename field)SH
+7120 41245 MT
+(SCRNP)SH
+3168 50 7120 41445 UL
+/Times-Italic SF
+7120 42350 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 43455 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 44560 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move the cursor to the packet count field)SH
+7120 46989 MT
+(SCRNRT)SH
+3890 50 7120 47189 UL
+/Times-Italic SF
+7120 48094 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 49199 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 50304 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move cursor to the retry count field)SH
+7120 52733 MT
+(SCRST)SH
+3057 50 7120 52933 UL
+/Times-Italic SF
+7120 53838 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 54943 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 56048 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move cursor to the status field)SH
+7120 58477 MT
+(RPPOS)SH
+3057 50 7120 58677 UL
+/Times-Italic SF
+7120 59582 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 60687 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 61792 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move to the receive packet field \050debugging use\051)SH
+7120 64221 MT
+(SPPOS)SH
+2946 50 7120 64421 UL
+/Times-Italic SF
+7120 65326 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 66431 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 67536 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move to the send packet field \050for debugging use\051)SH
+14120 69965 MT
+(2c\051)SH
+14120 72394 MT
+(SYSINIT)SH
+3833 50 14120 72594 UL
+ES
+%%Page: 31 32
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.9.2. Jump Table.)SH
+10 /Times-Italic AF
+51775 XM
+(Page 31)SH
+46800 50 8280 5709 UL
+9280 7886 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 8991 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 10096 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Initialize the system specific)
+49 W( items.  No registers are preserved.  Any initialization is done once)48 W
+16280 11201 MT
+(only when Kermit-80 is first loaded.)SH
+9280 13630 MT
+(SYSEXIT)SH
+4111 50 9280 13830 UL
+/Times-Italic SF
+9280 14735 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 15840 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 16945 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Program termination.  De-initialize anything in preparation for a return to CP/M)SH
+9280 19374 MT
+(SYSCON)SH
+3945 50 9280 19574 UL
+/Times-Italic SF
+9280 20479 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 21584 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 22689 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Initialize anything before entering the connect state.)SH
+9280 25118 MT
+(SYSCLS)SH
+3668 50 9280 25318 UL
+/Times-Italic SF
+9280 26223 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 27328 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 28433 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(System dependent close routine when exiting connect state)SH
+9280 30862 MT
+(SYSINH)SH
+3611 50 9280 31062 UL
+/Times-Italic SF
+9280 31967 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 33072 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 34177 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Help routine to test for any extensions to the escape menu during the connect state.)
+40 W( If)
+331 W( a system)41 W
+16280 35282 MT
+(has any special feature it)
+499 W( can use during connect mode, then it can be tested as)498 W
+16280 36387 MT
+(<escape-character>xxx. This)
+1370 W( entry)
+560 W( is a string for printing to the console for an)561 W
+16280 37492 MT
+(<escape-character>? Often)
+250 W( used for generating breaks or controlling a modem.)SH
+9280 39921 MT
+(SYSINT)SH
+3500 50 9280 40121 UL
+/Times-Italic SF
+9280 41026 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 42131 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 43236 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(This is a test-and-jump on receipt of an escape sequence not understood by Kermit-80.)
+94 W( If)
+437 W( the)93 W
+16280 44341 MT
+(character in A is not recognized by your version of Kermit=80, do a rskip)SH
+9280 46770 MT
+(SYSFLT)SH
+3612 50 9280 46970 UL
+/Times-Italic SF
+9280 47875 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Character in E)SH
+/Times-Italic SF
+9280 48980 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(Character in E. Either a 00H or anything else in A)SH
+/Times-Italic SF
+9280 50085 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(Test the character in E. If it may not be printed to the console, set A to zero.)
+33 W( All)
+317 W( other registers)34 W
+16280 51190 MT
+(preserved.)SH
+16280 52295 MT
+(NB <XON>,<XOFF>,<DEL>,<NULL> are always rejected.)SH
+9280 54724 MT
+(SYSBYE)SH
+3834 50 9280 54924 UL
+/Times-Italic SF
+9280 55829 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 56934 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 58039 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(System dependent processing for the BYE command.  \050eg hang up the phone\051)SH
+9280 60468 MT
+(SYSSPD)SH
+3668 50 9280 60668 UL
+/Times-Italic SF
+9280 61573 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Value from table in DE)SH
+/Times-Italic SF
+9280 62678 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 63783 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(The system dependent code for baud rate)
+9 W( change.  DE contains the two byte value from the baud)8 W
+16280 64888 MT
+(rate table.  This value is also stored in "SPEED")SH
+9280 67317 MT
+(SYSPRT)SH
+3668 50 9280 67517 UL
+/Times-Italic SF
+9280 68422 MT
+(Parameters)SH
+/Times-Roman SF
+16280 XM
+(Value in DE)SH
+/Times-Italic SF
+9280 69527 MT
+(Returns)SH
+/Times-Roman SF
+16280 XM
+(None)SH
+/Times-Italic SF
+9280 70632 MT
+(Description)SH
+/Times-Roman SF
+16280 XM
+(The system dependent code for setting the port.  The parameters are passed in DE,)
+106 W( which are)107 W
+16280 71737 MT
+(obtained from the port tables)SH
+ES
+%%Page: 32 33
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 32)SH
+12 /Times-Bold AF
+29686 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.9.2)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+7120 9410 MT
+(SYSSCR)SH
+3724 50 7120 9610 UL
+/Times-Italic SF
+7120 10515 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(String pointer in DE)SH
+/Times-Italic SF
+7120 11620 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 12725 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Setup the screen display for file transfer.  The Kermit version string is pointed to by DE.  If)
+41 W( the)40 W
+14120 13830 MT
+(terminal is not capable of cursor addressing \050eg dumb glass TTY\051 then)
+12 W( only the screen is cleared)13 W
+14120 14935 MT
+(and the version string is printed.)SH
+7120 17364 MT
+(CSRPOS)SH
+3724 50 7120 17564 UL
+/Times-Italic SF
+7120 18469 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(Row number in B, column number in C)SH
+/Times-Italic SF
+7120 19574 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 20679 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move the cursor to)
+74 W( row B, column C where B=1,C=1 is top LH corner of screen.  The routine)73 W
+14120 21784 MT
+(should first end a)
+19 W( "cursor position" leading string \050up to four characters\051 then use the parameters)20 W
+14120 22889 MT
+(given to complete the versions cursor position function)SH
+7120 25318 MT
+(SYSSPC)SH
+3613 50 7120 25518 UL
+/Times-Italic SF
+7120 26423 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 27528 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(K bytes free in HL)SH
+/Times-Italic SF
+7120 28633 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Get the amount of free disk space on the selected disk drive.  This could be in the system)179 W
+14120 29738 MT
+(independent code.  Automatically detects CP/M V2.2 or V3.0.  No registers saved.)SH
+7120 32167 MT
+(MOVER)SH
+3611 50 7120 32367 UL
+/Times-Italic SF
+7120 33272 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+(Source Pointer in HL)SH
+14120 34377 MT
+(Destination Pointer in DE)SH
+14120 35482 MT
+(Byte count in BC)SH
+/Times-Italic SF
+7120 36587 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 37692 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Move \050BC\051 bytes from \050HL\051 to \050DE\051 Z80 based)
+50 W( systems do an LDIR, while 8080 systems do it)51 W
+14120 38797 MT
+(as a loop.  All registers destroyed)SH
+7120 41226 MT
+(PRTSTR)SH
+3668 50 7120 41426 UL
+/Times-Italic SF
+7120 42331 MT
+(Parameters)SH
+/Times-Roman SF
+14120 XM
+($ terminated string pointed to by DE)SH
+/Times-Italic SF
+7120 43436 MT
+(Returns)SH
+/Times-Roman SF
+14120 XM
+(None)SH
+/Times-Italic SF
+7120 44541 MT
+(Description)SH
+/Times-Roman SF
+14120 XM
+(Print the string onto the console.)SH
+14120 46970 MT
+(3\051)SH
+7120 50504 MT
+(PTTAB)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Points to VT52 equivalent escape sequences.)SH
+3167 50 7120 50704 UL
+7120 52933 MT
+(SPDTAB)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Address of baud-rate command table, or 0 if table does not exist)SH
+3834 50 7120 53133 UL
+7120 55362 MT
+(SPDHLP)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Address of baud-rate help table, or 0 if SET SPEED is not supported.)SH
+3723 50 7120 55562 UL
+7120 57791 MT
+(PRTTAB)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Address of port command table or 0 if SET PORT is not supported.)SH
+3834 50 7120 57991 UL
+7120 60220 MT
+(PRTHLP)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Address of port help table or 0 if SET PORT is not supported)SH
+3723 50 7120 60420 UL
+7120 62649 MT
+(TIMOUT)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(FUZZY-TIMER. Set)
+582 W( to value suitable to your system \050depends largely)
+166 W( on)165 W
+3888 50 7120 62849 UL
+14120 63754 MT
+(CPU speed\051)SH
+7120 66183 MT
+(VTFLG)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(VT52 emulation flag.  Set to 0 if terminal)
+23 W( emulates a VT52, 01 if emulation is)24 W
+3222 50 7120 66383 UL
+14120 67288 MT
+(required, or 0FFH if emulations not possible \050eg for "CRT"\051)SH
+7120 69717 MT
+(ESCCHR)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(default escape character-usually control-] but sometimes control-\134)SH
+3890 50 7120 69917 UL
+7120 72146 MT
+(SPEED)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Storage space for baud-rate.  Set to 0FFFFH as)
+303 W( baud rates are initially)302 W
+3056 50 7120 72346 UL
+ES
+%%Page: 33 34
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(1.9.2. Jump Table.)SH
+10 /Times-Italic AF
+51775 XM
+(Page 33)SH
+46800 50 8280 5709 UL
+/Times-Roman SF
+16280 7886 MT
+(unknown. Note)
+250 W( that the STATUS routine only looks at the first \050least significant\051 byte.)SH
+9280 10315 MT
+(PORT)SH
+16280 XM
+(WORD)SH
+23480 XM
+(Storage space for port.  Set to 0FFFFH as ports may not be implemented, and)43 W
+2556 50 9280 10515 UL
+16280 11420 MT
+(is initially unknown)SH
+9280 13849 MT
+(PRNFLG)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Printer copy flag-if O no copy.  Anything else => copy to printer)SH
+3834 50 9280 14049 UL
+9280 16278 MT
+(DBGFLG)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Debugging flag.  If O then no debugging to be)
+24 W( done.  \050ie writing of debugging)23 W
+4000 50 9280 16478 UL
+16280 17383 MT
+(info during a file transfer\051)SH
+9280 19812 MT
+(ECOFLG)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Local ECHO flag \050default is off\051)SH
+3889 50 9280 20012 UL
+9280 22241 MT
+(FLWFLG)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(File warning flag.  If set to 1 will not overwrite files already existing)
+66 W( on disk)67 W
+4000 50 9280 22441 UL
+16280 23346 MT
+(with some-named files being transferred)SH
+9280 25775 MT
+(IBMFLG)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(IBM system is the host-assume IBM file transfers etc)SH
+3778 50 9280 25975 UL
+9280 28204 MT
+(CPMFLG)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Flag indicating)
+322 W( type of CP/M files to be transferred.  Default setting -)321 W
+4001 50 9280 28404 UL
+16280 29309 MT
+(DEFAULT)SH
+9280 31738 MT
+(PARITY)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Type of parity in use)SH
+3611 50 9280 31938 UL
+16280 32843 MT
+(0 = Even parity)SH
+16280 33948 MT
+(3 = Mark parity)SH
+16280 35053 MT
+(6 = No parity \0508th bit is data\051)SH
+16280 36158 MT
+(9 = Odd parity)SH
+16280 37263 MT
+(12 = Space parity)SH
+9280 39692 MT
+(SPSIZ)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Size of send packet)SH
+2612 50 9280 39892 UL
+9280 42121 MT
+(RPSIZ)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Size of receive packet)SH
+2723 50 9280 42321 UL
+9280 44550 MT
+(STIME)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Send timer \050time-out\051)SH
+3000 50 9280 44750 UL
+9280 46979 MT
+(RTIME)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Receive timer \050time-out\051)SH
+3111 50 9280 47179 UL
+9280 49408 MT
+(SPAD)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Send Padding \050default=0\051)SH
+2556 50 9280 49608 UL
+9280 51837 MT
+(RPAD)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Receive Padding \050default=0\051)SH
+2667 50 9280 52037 UL
+9280 54266 MT
+(SPADCH)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Send Padding character \050default=NULL\051)SH
+3945 50 9280 54466 UL
+9280 56695 MT
+(RPADCH)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Receive Padding character \050default=NULC\051)SH
+4056 50 9280 56895 UL
+9280 59124 MT
+(SEOL)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Send EOL character \050default=CR\051)SH
+2500 50 9280 59324 UL
+9280 61553 MT
+(REOL)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Receive EOL character \050default=CR\051)SH
+2611 50 9280 61753 UL
+9280 63982 MT
+(SQUOTE)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Send quote character \050default=#\051)SH
+3944 50 9280 64182 UL
+9280 66411 MT
+(RQUOTE)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Receive quote character \050default=#\051)SH
+4055 50 9280 66611 UL
+9280 68840 MT
+(CHKTYP)SH
+16280 XM
+(BYTE)SH
+23480 XM
+(Ascii value of checktype)SH
+4000 50 9280 69040 UL
+16280 69945 MT
+(31H="1"=checktype1 \0506bits\051)SH
+16280 71050 MT
+(32H="2"=checktype2 \05012bits\051)SH
+ES
+%%Page: 34 35
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 34)SH
+12 /Times-Bold AF
+29986 XM
+(Kermit User Guide: CP/M-80 KERMIT 1.10)SH
+46800 50 6120 5709 UL
+10 /Times-Roman AF
+14120 7886 MT
+(33H="3"=CCITT checksum \050CRC\051)SH
+14120 8991 MT
+(Default is 31H\050"1"\051)SH
+7120 11420 MT
+(TACFLG)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(If set to on \050non zero\051 send the TACCHR twice.  This is for ARPA TAC users,)3 W
+3889 50 7120 11620 UL
+14120 12525 MT
+(where the TAC swallows one "wakeup" character.)
+11 W( If)
+271 W( sent twice the TAC will pas one on and go)10 W
+14120 13630 MT
+(back to normal mode.)SH
+7120 16059 MT
+(TACCHR)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(Desired TAC character.  It is ignored if TAC trapping is turned off. Value)
+71 W( to)72 W
+4056 50 7120 16259 UL
+14120 17164 MT
+(send twice if TAC interception is set on.  Default=0, but set to commercial)
+16 W( AT if the conditional)15 W
+14120 18269 MT
+(assembly flag TAC is set true)SH
+7120 20698 MT
+(BUFADR)SH
+14120 XM
+(WORD)SH
+21320 XM
+(Address of Multi-Sector buffering for I/O)SH
+4056 50 7120 20898 UL
+7120 23127 MT
+(BUFSEC)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(The number of bytes the big buffers can hold.  Default is 1. \0500=256 sectors\051.)SH
+3779 50 7120 23327 UL
+7120 25556 MT
+(FFUSSY)SH
+14120 XM
+(BYTE)SH
+21320 XM
+(Indicates if)
+491 W( funny characters may be used in CP/M file names \050eg)492 W
+3668 50 7120 25756 UL
+/Courier SF
+14120 26661 MT
+(<>.,;?#[])SH
+/Times-Roman SF
+(\051 If zero, allow anything.  Default is nonzero.)SH
+7120 29090 MT
+(BMAX)SH
+14120 XM
+(SPACE:\0502bytes\051 Highest block number on selected disk drive)SH
+3000 50 7120 29290 UL
+7120 31519 MT
+(BMASK)SH
+14120 XM
+(SPACE:\0501byte\051 \050Records/block\051-1)SH
+3556 50 7120 31719 UL
+7120 33948 MT
+(BSHIFTF)SH
+14120 XM
+(SPACE:\0501byte\051 Number of shifts to multiply by rec.block)SH
+4001 50 7120 34148 UL
+7120 36377 MT
+(NNAMS)SH
+14120 XM
+(SPACE:\0501byte\051 Counter for file-names per line)SH
+3611 50 7120 36577 UL
+14 /Times-Bold AF
+6120 39979 MT
+(1.10. Future Work)SH
+10 /Times-Roman AF
+6120 42097 MT
+(Work that needs to be done in future releases includes:)SH
+/Symbol SF
+7910 44002 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Merge in support for additional CP/M-80 systems, particularly)
+135 W( those for which support was recently)134 W
+8620 45107 MT
+(added to the monolithic v3.x source.)SH
+/Symbol SF
+7910 47096 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Break up)89 W
+/Courier SF
+12686 XM
+(CPXSYS)SH
+/Times-Roman SF
+16625 XM
+(into discrete source files, one for each system.  These source files should serve)
+89 W( as)90 W
+8620 48201 MT
+(simple models for adding support for new)
+308 W( systems to Kermit-80 -- only the very basic screen)307 W
+8620 49306 MT
+(definitions, flags, i/o primitives,)
+131 W( initializations, and so forth should appear in each system-dependent)132 W
+8620 50411 MT
+(file.)SH
+/Symbol SF
+7910 52400 MT
+(\267)SH
+/Times-Roman SF
+8620 XM
+(Addition of missing)
+352 W( features -- compression of repeated characters during packet transmission,)351 W
+8620 53505 MT
+(transmission of file attributes \050particularly size, so that "percent done")
+243 W( can be displayed for both)244 W
+8620 54610 MT
+(incoming and outbound files\051, command macros, more advanced login scripts, remote operation)
+139 W( and)138 W
+8620 55715 MT
+(server mode, etc etc.  Any offers??)SH
+ES
+%%Page: 35 36
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(CP/M-80 Kermit)SH
+10 /Times-Italic AF
+51775 XM
+(Page 35)SH
+46800 50 8280 5709 UL
+16 /Times-Bold AF
+8280 8272 MT
+(Index)SH
+8 /Times-Roman AF
+12280 10429 MT
+(8080 12,)
+400 W( 16)SH
+31720 XM
+(Parity 9)400 W
+31720 11353 MT
+(Pause 6)400 W
+12280 12277 MT
+(Append 6)400 W
+31720 XM
+(Port 9)400 W
+12280 13201 MT
+(ARPAnet 27)400 W
+31720 XM
+(Print 6)400 W
+12280 14125 MT
+(Attention Character)
+SH( 27)400 W
+31720 XM
+(PRINTER 9)400 W
+12280 15049 MT
+(Autoreceive 7)400 W
+31720 15973 MT
+(RECEIVE 6)400 W
+12280 16897 MT
+(Baud 10)400 W
+31720 XM
+(REMOTE 6)400 W
+12280 17821 MT
+(BIOS 12)400 W
+12280 18745 MT
+(Block Check)
+SH( 8)400 W
+31720 XM
+(SEND 7)400 W
+12280 19669 MT
+(Bootstrapping CP/M Kermit)
+SH( 20)400 W
+31720 XM
+(SET 7)400 W
+12280 20593 MT
+(Break 5)400 W
+31720 XM
+(Set padding)
+SH( 9,)
+400 W( 10)SH
+12280 21517 MT
+(Buffer size)
+SH( 8)400 W
+31720 XM
+(Set Receive)
+SH( 9)400 W
+12280 22441 MT
+(Bye 5)400 W
+31720 XM
+(Set Send)
+SH( 10)400 W
+31720 23365 MT
+(Set Start of packet)
+SH( 10)400 W
+12280 24289 MT
+(Carriage Return)
+SH( 4)400 W
+31720 XM
+(Show 11)400 W
+12280 25213 MT
+(COLLISION 8)400 W
+31720 XM
+(Status 11)400 W
+12280 26137 MT
+(Connect 5)400 W
+12280 27061 MT
+(Control-C 4)400 W
+31720 XM
+(TAC 27)400 W
+12280 27985 MT
+(Control-X 4)400 W
+31720 XM
+(TacTrap 10)400 W
+12280 28909 MT
+(Control-Z 4)400 W
+31720 XM
+(Take 11)400 W
+12280 29833 MT
+(Copy 5)400 W
+31720 XM
+(Terminal Emulation)
+SH( 10)400 W
+12280 30757 MT
+(CP/M 16)400 W
+31720 XM
+(Timeout 4,)
+400 W( 17)SH
+12280 31681 MT
+(CP/M-80 Kermit)
+SH( 1)400 W
+31720 XM
+(TIMER 10)400 W
+12280 32605 MT
+(CR 4)400 W
+31720 XM
+(TRANSMIT 11)400 W
+31720 33529 MT
+(Type 11)400 W
+12280 34453 MT
+(Debug 8)400 W
+12280 35377 MT
+(Default Disk)
+SH( 8)400 W
+31720 XM
+(USER 11)400 W
+12280 36301 MT
+(Directory 5)400 W
+12280 37225 MT
+(Directory file size)
+SH( 8)400 W
+31720 XM
+(VERSION 11)400 W
+12280 38149 MT
+(Downloading 20)400 W
+31720 XM
+(Virtual Terminal)
+SH( 5)400 W
+31720 39073 MT
+(VT100 Emulation)
+SH( 10)400 W
+12280 39997 MT
+(Eighth-Bit Prefix)
+SH( 9)400 W
+31720 XM
+(VT52 Emulation)
+SH( 10)400 W
+12280 40921 MT
+(Erase 5)400 W
+12280 41845 MT
+(Escape Character)
+SH( 5,)
+400 W( 8)SH
+31720 XM
+(Warning 11)400 W
+12280 42769 MT
+(Exit 5)400 W
+12280 43693 MT
+(External Terminal Emulation)
+SH( 10)400 W
+31720 XM
+(XON/XOFF 6)400 W
+12280 45541 MT
+(File Copying)
+SH( 5)400 W
+31720 XM
+(Z80 16)400 W
+12280 46465 MT
+(File-mode 8)400 W
+12280 47389 MT
+(File-Warning 6)400 W
+12280 48313 MT
+(FINISH 5)400 W
+12280 49237 MT
+(Flow Control)
+SH( 9)400 W
+12280 51085 MT
+(Generic Kermit-80)
+SH( 12)400 W
+12280 52009 MT
+(GET 6)400 W
+12280 53857 MT
+(Help 6)400 W
+12280 55705 MT
+(IBM 9)400 W
+12280 56629 MT
+(Input 6)400 W
+12280 57553 MT
+(Intercept Character)
+SH( 27)400 W
+12280 59401 MT
+(Local 4)400 W
+12280 60325 MT
+(Local-Echo 9)400 W
+12280 61249 MT
+(LOG 6)400 W
+12280 62173 MT
+(Logging 9)400 W
+12280 63097 MT
+(LOGOUT 6)400 W
+12280 64945 MT
+(NAK 4)400 W
+12280 65869 MT
+(No-exit 9)400 W
+12280 67717 MT
+(OUTPUT 6,)
+400 W( 9)SH
+12280 69565 MT
+(Pad character)
+SH( 9,)
+400 W( 10)SH
+ES
+%%Page: 36 37
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page 36)SH
+12 /Times-Bold AF
+43052 XM
+(Kermit User Guide)SH
+46800 50 6120 5709 UL
+ES
+%%Page: i 38
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(CP/M-80 Kermit)SH
+10 /Times-Italic AF
+52497 XM
+(Page i)SH
+46800 50 8280 5709 UL
+16 /Times-Bold AF
+25591 8272 MT
+(Table of Contents)SH
+12 SS 
+8280 10684 MT
+(1. CP/M-80 KERMIT)SH
+54480 XM
+(1)SH
+10 SS 
+9780 12074 MT
+(1.1. Credits)SH
+54580 XM
+(1)SH
+9780 13154 MT
+(1.2. What's New)SH
+54580 XM
+(2)SH
+9780 14234 MT
+(1.3. Overview of Kermit Operation)SH
+54580 XM
+(2)SH
+9780 15314 MT
+(1.4. Summary of CP/M)SH
+54580 XM
+(3)SH
+9780 16394 MT
+(1.5. Kermit-80 Description)SH
+54580 XM
+(4)SH
+9780 17474 MT
+(1.6. Kermit-80 Flavors)SH
+54080 XM
+(12)SH
+11780 18554 MT
+(1.6.1. Generic Kermit-80)SH
+54080 XM
+(12)SH
+11780 19634 MT
+(1.6.2. CP/M 3 Kermit)SH
+54080 XM
+(12)SH
+11780 20714 MT
+(1.6.3. System-Specific Versions)SH
+54080 XM
+(13)SH
+9780 21794 MT
+(1.7. Installation of Kermit-80)SH
+54080 XM
+(16)SH
+11780 22874 MT
+(1.7.1. Organization of Kermit-80)SH
+54080 XM
+(17)SH
+11780 23954 MT
+(1.7.2. Downloading Kermit-80)SH
+54080 XM
+(20)SH
+11780 25034 MT
+(1.7.3. Assembling Kermit-80 from the sources)SH
+54080 XM
+(23)SH
+9780 26114 MT
+(1.8. Adding Support For A New System)SH
+54080 XM
+(26)SH
+9780 27194 MT
+(1.9. Notes on New Features in Kermit-80 Version 4)SH
+54080 XM
+(27)SH
+11780 28274 MT
+(1.9.1. Interface Data.)SH
+54080 XM
+(28)SH
+11780 29354 MT
+(1.9.2. Jump Table.)SH
+54080 XM
+(28)SH
+9780 30434 MT
+(1.10. Future Work)SH
+54080 XM
+(34)SH
+12 SS 
+8280 31958 MT
+(Index)SH
+53880 XM
+(35)SH
+ES
+%%Page: ii 39
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page ii)SH
+12 /Times-Bold AF
+43052 XM
+(Kermit User Guide)SH
+46800 50 6120 5709 UL
+ES
+%%Page: iii 40
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(CP/M-80 Kermit)SH
+10 /Times-Italic AF
+51941 XM
+(Page iii)SH
+46800 50 8280 5709 UL
+16 /Times-Bold AF
+26702 8272 MT
+(List of Figures)SH
+10 SS 
+9780 10550 MT
+(Figure 1-1:)
+SH( Bootstrap)
+500 W( program for Kermit-80 and CP/M Version 2.2)SH
+54080 XM
+(22)SH
+ES
+%%Page: iv 41
+BS
+0 SI
+10 /Times-Italic AF
+6120 4404 MT
+(Page iv)SH
+12 /Times-Bold AF
+43052 XM
+(Kermit User Guide)SH
+46800 50 6120 5709 UL
+ES
+%%Page: v 42
+BS
+0 SI
+12 /Times-Bold AF
+8280 4404 MT
+(CP/M-80 Kermit)SH
+10 /Times-Italic AF
+52331 XM
+(Page v)SH
+46800 50 8280 5709 UL
+16 /Times-Bold AF
+27013 8272 MT
+(List of Tables)SH
+10 SS 
+9780 10550 MT
+(Table 1-1:)
+SH( Kermit-80)
+500 W( SET PORT Options)SH
+54080 XM
+(12)SH
+9780 11630 MT
+(Table 1-2:)
+SH( Systems)
+500 W( supported by Kermit-80 \050Part 1\051)SH
+54080 XM
+(18)SH
+9780 12710 MT
+(Table 1-3:)
+SH( Systems)
+500 W( supported by Kermit-80 \050Part 2\051)SH
+54080 XM
+(19)SH
+9780 13790 MT
+(Table 1-4:)
+SH( Terminals)
+500 W( supported by Kermit-80)SH
+54080 XM
+(20)SH
+9780 14870 MT
+(Table 1-5:)
+SH( Terminals)
+500 W( known to Kermit-80)SH
+54080 XM
+(26)SH
+ES
+%%Trailer
+%%Pages: 42
+%%DocumentFonts: Times-Roman Times-Bold Times-Italic Courier Symbol Courier-Oblique

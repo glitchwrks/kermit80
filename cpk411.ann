@@ -1,0 +1,90 @@
+Date:  24-May-1991
+
+Announcing:  CP/M Kermit Version 4.11
+
+Just to prove that the CP/M world still exists, here is CP/M Kermit -80 
+Version 4.11.
+
+Features added since version 4.09 include:
+
+o	SET COLLISION {BACKUP/DISCARD/OVERWRITE/RENAME}
+o	SET INCOMPLETE-FILES {DISCARD/KEEP}
+O	Many REMOTE commands, including some REMOTE SET commands
+o	RENAME command to rename CP/M files from within Kermit-80
+o	SET RECEIVE/SEND PACKET-LENGTH nn (nn <= 94)
+o	SET AUTORECEIVE ON now implies that Kermit-80 ALWAYS tries to
+	receive more files when a RECEIVE transaction has completed.  The
+	user can abort with ^C.
+o	QUIT is now a synonym for EXIT.
+o	STAY is now a synonym for SET NO-EXIT.
+o	CONNECT, RECEIVE and SEND may be abbreviated to C, R and S,
+	respectively.
+o	Processing of commands from a file via a TAKE command may now be
+	aborted by entering a Control-C at the console.
+o	The TYPE and PRINT commands are now immediately aborted if a
+	Control-C is entered at the console. If a Control-X is entered at
+	the console, typeout/printout of the current file is aborted and
+	typeout/printout of the next file, if any, begins. These actions
+	also occur if any other key has been pressed to halt typeout/printout
+	and Control-C or Control-X is pressed. Pressing any other key resumes
+	the typeout/printout.
+o	Many bug fixes
+o	Kermit-80 Version 4.11 now supports the Microbee family of
+		computers (56K, 64K, 128K and 256K) manufactured by
+		Microbee Systems, Ltd, of Australia.
+o	Kermit-80 now supports the Ampro Little Board system.
+
+Technical changes:
+
+o	An "I" packet is now tried before the request for files is sent
+		in a GET command
+o	The overlay address is now 7000H
+o	The overlay (CPXLNK.ASM) has an added INCFLG variable to handle
+		INCOMPLETE-FILES status
+o	The COPY, TYPE and PRINT commands now use the large buffer
+		(8K bytes default size) for file I/O
+
+Syntax hints:
+
+In REMOTE commands such as REMOTE COPY, REMOTE MESSAGE, REMOTE RENAME,
+REMOTE WHO etc., where two arguments are required, the syntax is as for Vax
+VMS Kermit, i.e.,
+REMOTE <command> <argument 1>
+Prompt:  <argument 2>
+For example:
+REMOTE COPY <old-file>
+New file: <new-file>
+
+The REMOTE LOGIN command has three arguments, of which the last two are
+prompted for an entered on new lines.  Arguments are optional.
+
+In commands such as REMOTE SET FILE BLOCK-SIZE which take a numeric
+argument, Kermit-80 does not check the argument for validity.  Whatever is
+typed is what the host sees.
+
+The FCOPY command has been renamed to COPY.
+
+The syntax for the RENAME command is as for the COPY command, that is:
+RENAME <old-filespec> <new-filespec>
+
+More rigorous checking for wildcards is now done by both of these
+commands.
+
+The STRING command has been renamed to OUTPUT.
+
+SET BAUD-RATE is now SET SPEED.
+
+The option SET FILE DEFAULT has ben re-enabled.  Use a TAKE-file to set the
+initial file-mode to ASCII or BINARY.
+
+Building Kermit-80 ver. 4.11:
+
+Kermit-80 ver. 4.11 is built using the same procedure as for ver. 4.09.
+
+
+Many thanks to those who have contributed bug fixes, and, in particular,
+to Mr. Russell Lang of Monash University, Australia, for contributing
+a bug-fix and the family file for the Microbee systems and to Mr.
+Jay S. Rouman of Mt. Pleasant, MI for contributing the code for the Ampro
+Little Board. Thanks are also due to Lance Tagliapietra of the University
+of Wisconsin at Platteville for finding several bugs.

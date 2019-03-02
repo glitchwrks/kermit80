@@ -25,6 +25,8 @@ ENDIF	; NOT lasm
 ;
 ; revision history:
 ;
+;2019-02-28: Glitch Works addition of MITS boards
+;
 ;edit 10, 7-Jan-1991 by MF. Added code by Jay S. Rouman to support the
 ;	Ampro Little Board (see CPXBBI.ASM) and PRINTX for the HP-125.
 ; edit 9, 1st September 1990 by Russell Lang, rjl@monu1.cc.monash.edu.au.
@@ -60,7 +62,7 @@ ENDIF	; NOT lasm
 ;	a family file.  Hopefully, this file will go alltogether in time.
 ;
 ; Keep module name, edit number, and last revision date in memory.
-swtver:	db	'CPXSWT.ASM (10)  7-Jan-1991 $'
+swtver:	db	'CPXSWT.ASM (10)  2019-02-28 $'
 ;
 ; Assembly time message to let me know I'm building the right version.
 ; LASM generates an 'S' error along with the message, which is messy, but
@@ -152,6 +154,11 @@ IF (beefam AND lasm)
 .printx * linking to the Microbee family file *
 LINK CPXBEE.ASM
 ENDIF	; (beefam AND lasm) - m80 use: INCLUDE from CPXTYP.ASM
+
+IF (mitsfam AND lasm); Link to the MITS family
+.printx * linking to the MITS family file *
+LINK CPXMIT.ASM
+ENDIF; (mits AND lasm) - m80 use: INCLUDE from CPXTYP.ASM
 
 
 ; If we have come here, we are assembling the CPXSYS.ASM file

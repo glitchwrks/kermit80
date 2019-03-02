@@ -25,6 +25,8 @@
 ;
 ; revision history:
 ;
+;2019-02-28: Glitch Works addition of MITS serial boards
+;
 ;edit 34, 10-Jan-1991 by MF. Put in "terminal required" notation for
 ;	more machines that need terminals.
 ;edit 33, 9-Jan-1991 by MF. Put in "terminal required" notation for Access
@@ -315,6 +317,7 @@ kpII	EQU	FALSE		;Kaypro-II
 horizon	EQU	FALSE		;[10] North Star Horizon (mother-board)
 				; (terminal required)
 m2215	EQU	FALSE		; BT Merlin [23] - uses 2651, Terminal rqd
+m2sio	EQU	TRUE		;MITS 88-2SIO serial board, terminal required
 mmate	EQU	FALSE		; PMC - 101 MicroMate (Crt required)
 mmdI	EQU	FALSE		;Morrow Micro Decision I (terminal required)
 mdI	EQU	FALSE		;Morrow Decision I (the big sucker)
@@ -367,7 +370,7 @@ mbee	EQU	FALSE		; Microbee Systems - Microbee
 ;.. and for Micros, like the MDI, which have "terminals of choice", you must
 ;select one of these in addition to selecting the micro itself.
 ;Also select a terminal for "gener" and "cpm3": use "crt" for the TRUE generic.
-crt	EQU	FALSE		;Basic CRT, no cursor positioning
+crt	EQU	TRUE		;Basic CRT, no cursor positioning
 adm3a	EQU	FALSE		;Adm3a Display (or CPT built-in display)
 adm22	EQU	FALSE		;ADM 22 terminal
 h1500	EQU	FALSE		;Hazeltine 1500
@@ -438,6 +441,10 @@ ENDIF ; access OR basicns OR s1008 OR mmate OR disc [12]
 IF genie OR trsm4 OR ampro
 inout	SET	TRUE		;Short conditional for above
 ENDIF ; genie OR trsm4 OR ampro
+
+IF m2sio
+inout	SET	TRUE		;Short conditional for above
+ENDIF ;m2sio
 
 
 ; Toad Hall TAC Trap:  If you're going through a TAC, it will
@@ -512,6 +519,11 @@ IF mbee
 cpuspd	SET	33		; Microbee has 3.375MHz Z80
 ENDIF; mbee
 
+IF m2sio
+cpuspd	SET	20		; Assume 2.0 MHz 8080 CPU board
+z80	SET	FALSE		
+ENDIF ;m2sio
+
 ; Set Z80 flag FALSE for non Z80 or unknown CPU systems
 IF	FALSE			; assume all systems are not z80 based
 ;z80	SET	FALSE
@@ -535,6 +547,7 @@ genfam	SET	FALSE		; not a genie
 trsfam	SET	FALSE		; not a trs-80 Model 4
 z80fam	SET	FALSE		; not z80mu system
 beefam	SET	FALSE		; not a Microbee system
+mitsfam SET	FALSE		; not a MITS serial board(s)
 sysfam	SET	TRUE		; ... but assume the worst, and its in
 				; the CPXSYS.ASM file
 
@@ -615,6 +628,11 @@ beefam	SET	TRUE		; doing a Microbee system
 .printx * beefam set TRUE *
 ENDIF	; mbee
 
+IF m2sio
+mitsfam	SET	TRUE		; system with MITS serial board(s)
+.printx * mitsfam set TRUE *
+ENDIF	;m2sio
+
 ; Now, if none of the above, then its the older CPXSYS.ASM file we want
 
 IF (torfam OR ciffam OR appfam OR norfam OR sanfam OR comfam) AND sysfam
@@ -631,6 +649,11 @@ IF (genfam OR trsfam OR z80fam OR beefam) AND sysfam
 sysfam	SET	FALSE		; Were not doing the CPXSYS.ASM file
 .printx * sysfam set FALSE *
 ENDIF	; (genfam OR trsfam OR z80fam OR mbeefam) AND sysfam
+
+IF (mitsfam) AND sysfam
+sysfam	SET	FALSE		; Were not doing the CPXSYS.ASM file
+.printx * sysfam set FALSE *
+ENDIF	; (mitsfam) AND sysfam
 
 IF sysfam
 .printx * sysfam set TRUE *
@@ -715,6 +738,10 @@ ENDIF	;z80fam
 IF	beefam
 	INCLUDE CPXBEE.ASM
 ENDIF	;beefam
+
+IF	mitsfam
+	INCLUDE CPXMIT.ASM
+ENDIF	;mitsfam
 
 IF termin			; any terminal selected?
         INCLUDE CPXVDU.ASM      ;[15] Just in case we need a VDU...

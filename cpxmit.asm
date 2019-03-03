@@ -1,9 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;CPXMIT.ASM -- KERMIT-80 Routines for MITS Interfaces
 ;
-;This file contains system-dependent code for various MITS
-;serial interface boards. These have the family name of
-;CPXMIT.
+;This file contains system-dependent code for MITS 88-2SIO
+;serial boards. It allows use of either port for
+;situations when the 88-2SIO is not the system console.
 ;
 ;Written for CP/M-80 KERMIT 4.11. KERMIT is:
 ;
@@ -19,30 +19,20 @@
 ;information.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-IF m2sio
 .printx	* Assembling for MITS 88-2SIO board *
-ENDIF ;m2sio
-
-IF m2sio ;MITS 88-2SIO at default addressing
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Basic 2SIO Equates
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-port0d	equ	011h		;Channel 0 data (console)
 port0s	equ	010h		;Channel 0 status
-port1d	equ	013h		;Channel 1 data (printer)
+port0d	equ	011h		;Channel 0 data
 port1s	equ	012h		;Channel 1 status
+port1d	equ	013h		;Channel 1 data
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Setup to use 2SIO Channel 1 by default
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-mnport	equ	port1d		;Data port
-mnprts	equ	port1s		;Status port
-output	EQU	02h		;Bit of 6850 ACIA status for TX empty
-input	EQU	01h		;Bit of 6850 ACIA status for RX full
-z80	EQU	FALSE		;Assume original 8080 CPU board
+output	equ	02h		;Bit of 6850 ACIA status for TX empty
+input	equ	01h		;Bit of 6850 ACIA status for RX full
 
-ENDIF ;m2sio
+z80	equ	FALSE		;Assume original 8080 CPU board
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Family string, used to idenfity system-dependent module
@@ -51,17 +41,27 @@ family:	db	'CPXMITS.ASM  (1)  2019-02-28$'    ; Used for family versions....
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSXIN -- System-dependent initialization code
+;
+;Falls through to ACIARS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sysxin:	
+	mvi	a, port1s	;Set up default port to Channel 1
+	sta	port		;I/O address of status register in PORT
+	mvi	a, port1d
+	sta	port+1		;I/O address of data register in PORT+1
 
-IF m2sio
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;ACIARS -- Reset the selected 6850 ACIA
+;
+;This code is self-modifying, the I/O addresses will be
+;dynamically updated when SET PORT is issued. It starts out
+;defaulted to Channel 1.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+aciars:	
 	mvi	a, 03h		;6850 ACIA reset
-	out	mnprts
+aciar1:	out	port1s		;Reset Channel 1 ACIA
 	mvi	a, 015h		;8N1
-	out	mnprts
-
-ENDIF ;m2sio
-
+aciar2:	out	port1s		;Configure Channel 1 ACIA
 	ret			;return from SYSXIN
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -150,7 +150,7 @@ mdmflt:
 ;post: A = 0 if character should not be printed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prtflt:
-	mov	a,e		; [30] get character to test
+	mov	a,e		;get character to test
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -166,30 +166,88 @@ sysbye:
 ;post: bitrate is set
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sysspd:
-	ret
+	ret			;SET SPEED not supported
 
-;The following equates are legacy leftovers from a very
-;large bitrate table. Set both to 0 to show SET BAUD is not
-;supported.
-spdtbl	EQU	0		;SET BAUD not supported
-sphtbl	EQU	0		;Legacy split conditional
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;SPDTBL -- SET SPEED options table
+;
+;This table specifies bitrates available for the SET SPEED
+;command. Set to 0 if SET SPEED is not supported.
+;
+;Note that SPDTBL *MUST* be in alphabetical order for
+;later lookup procedures.
+;
+;First byte of SPDTBL is the number of bitrates available
+;
+;Subsequent entries are:
+;	* byte count of option string
+;	* $-terminated option string (what the user types)
+;	* E register value
+;	* D register value
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+spdtbl	EQU	0		;SET SPEED not supported
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;SPHTBL -- SET SPEED help text
+;
+;This table pairs with SPDTBL to provide information on
+;SET SPEED bitrates available. Set to 0 if SET SPEED is 
+;not supported.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+sphtbl	EQU	0		;SET SPEED not supported
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSPRT -- System-dependent command to set the port used
 ;
-;Not currently implemented for 2SIO as Channel 0 is almost
-;always the console port.
+;This code modifies defaults in OUTMDM, INPMDM, and ACIARS
+;due to the lack of an 8080 opcode with I/O port address
+;specification.
 ;
-;pre: HL contains the argument from the command table
+;pre: HL contains the two-byte value from the command table
+;pre: PRTTBL is set up
 ;post: specified port is selected
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-sysprt:
+sysprt:	
+	mov	a,l		;Get the channel status register address
+	sta	outmdm+1	;Dynamically modify status port addresses
+	sta	inpmdm+1
+	sta	aciar1+1
+	sta	aciar2+1
+	mov	a,h		;Get the channel data register address
+	sta	outmd1+1	;Dynamically modify data port addresses
+	sta	inpmd1+1
+	call	aciars		;Reset the selected channel
 	ret
 
-;The following equates should both be set to 0 to show
-;SET PORT is not supported.
-prttbl	equ	0		; SET PORT not supported
-prhtbl	equ	0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PRTTBL -- SET PORT options table
+;
+;This table specifies which devices are available for the
+;SET PORT command. Set to 0 if SET PORT is not supported.
+;
+;First byte of PRTTBL is the number of devices available
+;
+;Subsequent entries are:
+;	* byte count of option string
+;	* $-terminated option string (what the user types)
+;	* port control/status address (in L when SYSPRT 
+;	  called)
+;	* port data address (in H when SYSPRT called)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+prttbl:	db	02H
+	db	01H, '0$', port0s, port0d
+	db	01H, '1$', port1s, port1d
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PRHTBL -- SET PORT help text
+;
+;This table pairs with PRTTBL to provide information on
+;SET PORT options available. Set to 0 if SET PORT is not
+;supported.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+prhtbl:	db	cr, lf, '0 for 88-2SIO Channel 0'
+	db	cr, lf, '1 for 88-2SIO Channel 1$'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SELMDM -- Select modem port
@@ -244,15 +302,19 @@ outcon:
 ;
 ;Preserves BC, DE, HL
 ;
+;This code is self-modifying, the I/O addresses will be
+;dynamically updated when SET PORT is issued. It comes up
+;defaulted to use Channel 1.
+;
 ;pre: E register contains character to output
 ;post: character output to modem port
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 outmdm:
-	in	mnprts		;Get the output done flag.
+	in	port1s		;Get the output done flag.
 	ani	output		;Is it set?
 	jz	outmdm		;If not, loop until it is.
 	mov	a,e
-	out	mnport		;Output it.
+outmd1:	out	port1d		;Output it.
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -260,15 +322,19 @@ outmdm:
 ;
 ;May destroy BC, DE, HL
 ;
+;This code is self-modifying, the I/O addresses will be
+;dynamically updated when SET PORT is issued. It comes up
+;defaulted to use Channel 1.
+;
 ;pre: modem port is initialized and selected
 ;post: A = result if byte available
 ;      A = 0 if no byte available
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 inpmdm:
-	in	mnprts		;Get the port status into A.
+	in	port1s		;Get the port status into A.
 	ani	input		;See if the input ready bit is on.
 	rz			;If not then return.
-	in	mnport		;If so, get the char.
+inpmd1:	in	port1d		;If so, get the char.
 	ret			; return with character in A
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -277,7 +343,8 @@ inpmdm:
 ;pre: modem is initialized and selected
 ;post: no characters remain in receiver register
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-flsmdm:	call	inpmdm		; Try to get a character
+flsmdm:	
+	call	inpmdm		; Try to get a character
 	ora	a		; Got one?
 	jnz	flsmdm		; If so, try for another
 	ret			; Receiver is drained.  Return.
@@ -322,7 +389,8 @@ delchr:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;CLRSPC -- Erase the character at the current position
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-clrspc:	mvi	e,' '
+clrspc:	
+	mvi	e,' '
 	call	outcon
 	mvi	e,bs		;get a backspace
 	jmp	outcon
@@ -330,7 +398,8 @@ clrspc:	mvi	e,' '
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;CLRLIN -- Erase the current line
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-clrlin:	lxi	d,eralin
+clrlin:	
+	lxi	d,eralin
 	jmp	prtstr
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -338,15 +407,14 @@ clrlin:	lxi	d,eralin
 ;
 ;Preserves B, destroys C
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-clrtop:	lxi	d,erascr
+clrtop:	
+	lxi	d,erascr
 	jmp	prtstr
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSVER -- Version information string
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-IF m2sio
-sysver:	db	'MITS 88-2SIO channel 1$'
-ENDIF ; m2sio
+sysver:	db	'MITS 88-2SIO$'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Link in terminal routines

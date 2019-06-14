@@ -119,6 +119,8 @@ syscls:
 ;          system-independent escape sequences
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sysinh:
+	lxi	d,inhlps	;Pointer to help messages
+	call	prtstr		;Print it
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

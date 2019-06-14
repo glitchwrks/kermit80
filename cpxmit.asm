@@ -19,7 +19,30 @@
 ;information.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-.printx	* Assembling for MITS 88-2SIO board *
+	print	"* Assembling for MITS 88-2SIO board *"
+
+	INCLUDE "cpxdef.asm"	;Overlay definitions
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Set up Terminal Parameters
+;
+;Replace 'crt SET TRUE' with your selection of terminal. A
+;list is available in CPXDEF.ASM or you can search through
+;CPXVDU.ASM.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+termin	SET	TRUE
+crt	SET	TRUE
+
+	INCLUDE "cpxvdu.asm"	;Terminal/emulation code
+	INCLUDE "cpxcom.asm"	;Common code, must come after CPXVDU
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;CPU Specific Equates
+;
+;Assume original 8080 board at 2 MHz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+cpuspd	SET	20		; Assume 2.0 MHz 8080 CPU board
+z80	SET	FALSE	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Basic 2SIO Equates
@@ -37,7 +60,7 @@ z80	equ	FALSE		;Assume original 8080 CPU board
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Family string, used to idenfity system-dependent module
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-family:	db	'CPXMITS.ASM  (1)  2019-02-28$'    ; Used for family versions....
+family:	db	'CPXMIT.ASM  (1)  2019-06-14$'    ; Used for family versions....
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSXIN -- System-dependent initialization code
@@ -103,6 +126,7 @@ sysinh:
 ;          mode, two-character escape sequences
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 inhlps:
+	db	cr,lf,'B  Transmit a BREAK'
 	db	'$'		; Table terminator for INHLPS
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -114,7 +138,28 @@ inhlps:
 ;post: skip:     sequence was not recognized
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sysint:	
-	jmp	rskp		; take skip return - command not recognized.
+	ani	5Fh		;Convert to uppercase
+	cpi	'B'		;Send BREAK?
+	jz	sendbr		;Yes, go send BREAK
+	jmp	rskp		;Take skip return - command not recognized.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;SENDBR -- Send a BREAK condition
+;
+;pre: none
+;post: BREAK sent, line returned to normal operation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+sendbr:
+	in	port1s		;Get status register
+	ani	output		;Transmit register empty?
+	jz	sendbr		;No, wait for line to clear
+	mvi	a,75h		;8N1, send BREAK, CTS high
+sendb1:	out	port1s
+	mvi	a,25		;Delay time in 10s of milliseconds
+	call	delay		;Execute the delay
+	mvi	a,15h		;8N1, no BREAK, CTS high
+sendb2:	out	port1s
+	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSFLT -- System-dependent filter
@@ -200,9 +245,9 @@ sphtbl	EQU	0		;SET SPEED not supported
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSPRT -- System-dependent command to set the port used
 ;
-;This code modifies defaults in OUTMDM, INPMDM, and ACIARS
-;due to the lack of an 8080 opcode with I/O port address
-;specification.
+;This code modifies defaults in OUTMDM, INPMDM, ACIARS, and
+;SENDBR due to the lack of an 8080 opcode with I/O port
+;address specification.
 ;
 ;pre: HL contains the two-byte value from the command table
 ;pre: PRTTBL is set up
@@ -214,6 +259,9 @@ sysprt:
 	sta	inpmdm+1
 	sta	aciar1+1
 	sta	aciar2+1
+	sta	sendbr+1
+	sta	sendb1+1
+	sta	sendb2+1
 	mov	a,h		;Get the channel data register address
 	sta	outmd1+1	;Dynamically modify data port addresses
 	sta	inpmd1+1
@@ -281,7 +329,7 @@ selcon:
 inpcon:
 	mvi	c,dconio	;Direct console I/O BDOS call.
 	mvi	e,0FFH		;Input.
-	call	BDOS
+	call	bdos
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -417,13 +465,15 @@ clrtop:
 sysver:	db	'MITS 88-2SIO$'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Link in terminal routines
+;The following is included to keep the linkage section
+;happy. We can't change the format as the main KERMIT
+;module depends on it for now.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-IF lasm
-LINK CPXVDU.ASM
-ENDIF   ;lasm - m80 will INCLUDE CPXVDU.ASM
+swtver:	db	'CPXSWT.ASM (-1)  2019-06-14 $'
 
-IF lasm	; here if not a terminal selected and in LASM
-ovlend	equ	$
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;OVLEND -- Mark the end of the system-dependent overlay
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ovlend	equ	$	; End of overlay
+
 	END
-ENDIF	;lasm

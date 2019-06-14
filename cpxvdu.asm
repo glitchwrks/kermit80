@@ -1,6 +1,3 @@
-IF NOT lasm
-.printx * CPXVDU.ASM *
-ENDIF	;NOT lasm
 ;       KERMIT - (Celtic for "FREE")
 ;
 ;       This is the CP/M-80 implementation of the Columbia University
@@ -40,53 +37,53 @@ ENDIF	;NOT lasm
 ;	in Glasgow.
 ; edit 1 ???  date. Split the terminal codes off from the CPXSYS.ASM file
 ;
-vduver:	db	'CPXVDU.ASM  (6)  12-Oct-1990 $' ;file, edit version,, date.
+	print	"* CPXVDU.ASM *"
+
+vduver:	db	'CPXVDU.ASM  (7)  2019-06-14 $' ;file, edit version,, date.
 
 
 ; First, print out what terminal (if any) we are assembling for
 
-IF crt
-.printx	* generic CRT selected *
-ENDIF
+	IF crt
+	print	"* generic CRT selected *"
+	ENDIF
 
-IF adm3a
-.printx	* ADM3A	selected *
-ENDIF
+	IF adm3a
+	print	"* ADM3A selected *"
+	ENDIF
 
-IF adm22
-.printx	* ADM22 selected *
-ENDIF
+	IF adm22
+	print	"* ADM22 selected *"
+	ENDIF
 
-IF smrtvd	;[7]
-.printx	* Netronics Smartvid-80	selected *
-ENDIF		;[7]
+	IF smrtvd
+	print	"* Netronics Smartvid-80 selected *"
+	ENDIF
 
-IF tvi912
-.printx	* TVI912/920 selected *
-ENDIF
+	IF tvi912
+	print	"* TVI912/920 selected *"
+	ENDIF
 
-IF tvi925
-.printx	* TVI925 selected *
-ENDIF
+	IF tvi925
+	print	"* TVI925 selected *"
+	ENDIF
 
-IF vt52
-.printx	* VT52 selected	*
-ENDIF
+	IF vt52
+	print	"* VT52 selected *"
+	ENDIF
 
-IF vt100
-.printx	* VT100	selected *
-ENDIF
+	IF vt100
+	print	" * VT100 selected * "
+	ENDIF
 
-IF am230
-.printx * Ampro 230 terminal selected *
-ENDIF
+	IF am230
+	print	" * Ampro 230 terminal selected * "
+	ENDIF
 
-IF wyse
-.printx * Wyse 100 terminal selected *
-ENDIF
-;
+	IF wyse
+	print	" * Wyse 100 terminal selected * "
+	ENDIF
 
-;
 ; If we need cursor positioning, here is the code to do it 
 ;
 ;       Screen manipulation routines
@@ -95,71 +92,71 @@ ENDIF
 ;       csrpos for terminals that use a leadin sequence followed
 ;        by (row + 31.) and (column + 31.)
 ;
-IF NOT (vt100 OR crt OR h1500)
+	IF NOT (vt100 OR crt OR h1500)
 csrpos: push    b               ; save coordinates
-        lxi     d,curldn        ; get cursor leadin sequence
-        call    prtstr          ; print it
-        pop     h               ; restore coordinates
-        mov     a,h             ; get row
-        adi     (' '-1)         ; space is row one
-        mov     e,a
-        push    h
-        call    outcon          ; output row
-        pop     h
-        mov     a,l             ; get column
-        adi     (' '-1)         ; space is column one
-        mov     e,a
-        jmp     outcon          ; output it and return
-ENDIF;NOT (vt100 OR crt OR h1500)
+	lxi     d,curldn        ; get cursor leadin sequence
+	call    prtstr          ; print it
+	pop     h               ; restore coordinates
+	mov     a,h             ; get row
+	adi     (' '-1)         ; space is row one
+	mov     e,a
+	push    h
+	call    outcon          ; output row
+	pop     h
+	mov     a,l             ; get column
+	adi     (' '-1)         ; space is column one
+	mov     e,a
+	jmp     outcon          ; output it and return
+	ENDIF;NOT (vt100 OR crt OR h1500)
 ;
 ;
 ;
 ;
 ;       csrpos for ANSI terminals
 ;
-IF vt100
+	IF vt100
 csrpos: push    b               ; save coordinates
-        lxi     d,curldn        ; get cursor leadin sequence
-        call    prtstr          ; print it
-        pop     h               ; peek at coordinates
-        push    h               ;  then save away again
-        mov     l,h             ; l = row
-        mvi     h,0             ; hl = row
-        call    nout            ; output in decimal
-        mvi     e,';'           ; follow with semicolon
-        call    outcon          ; print it
-        pop     h               ; restore column
-        mvi     h,0             ; hl = column
-        call    nout
-        mvi     e,'H'           ; terminate with 'move cursor' command
-        jmp     outcon          ; output it and return
-ENDIF;vt100
+	lxi     d,curldn        ; get cursor leadin sequence
+	call    prtstr          ; print it
+	pop     h               ; peek at coordinates
+	push    h               ;  then save away again
+	mov     l,h             ; l = row
+	mvi     h,0             ; hl = row
+	call    nout            ; output in decimal
+	mvi     e,';'           ; follow with semicolon
+	call    outcon          ; print it
+	pop     h               ; restore column
+	mvi     h,0             ; hl = column
+	call    nout
+	mvi     e,'H'           ; terminate with 'move cursor' command
+	jmp     outcon          ; output it and return
+	ENDIF;vt100
 
 ;Definition for Hazeltine 1500  does things a little strange.
 ;
-IF h1500
+	IF h1500
 csrpos: push    b               ; save coordinates
-        lxi     d,curldn        ; get cursor leadin sequence
-        call    prtstr          ; print it
-        pop     h               ; restore coordinates
-        mov     a,l             ; get col
-        nop
+	lxi     d,curldn        ; get cursor leadin sequence
+	call    prtstr          ; print it
+	pop     h               ; restore coordinates
+	mov     a,l             ; get col
+	nop
 	nop
 ;	adi     (' '-1)         ; space is row one
-        mov     e,a
-        push    h
-        call    outcon          ; output row
-        pop     h
-        mov     a,h             ; get row
-        adi     (' '-1)         ; space is column one
-        mov     e,a
-        jmp     outcon          ; output it and return
-ENDIF; h1500
+	mov     e,a
+	push    h
+	call    outcon          ; output row
+	pop     h
+	mov     a,h             ; get row
+	adi     (' '-1)         ; space is column one
+	mov     e,a
+	jmp     outcon          ; output it and return
+	ENDIF; h1500
 
 
-IF crt				; systems without cursor positioning
+	IF crt				; systems without cursor positioning
 csrpos: ret			; dummy routine referenced by linkage section
-ENDIF;crt
+	ENDIF;crt
 ;
 ;
 ;
@@ -167,19 +164,17 @@ ENDIF;crt
 ;
 ;
 ;
-IF crt 	;Set flags etc for systems with CRT selected
+	IF crt 	;Set flags etc for systems with CRT selected
 defesc  EQU     '\'-100O        ;Still Control-\ (just ran out of room...)
 vtval   EQU     0FFH            ;  we can't support VT52 emulation
 ttytyp:	db	'Generic (Dumb) CRT Terminal type selected $'
-ENDIF;crt
+	ENDIF;crt
 
-;
-
-IF vt52		; DEC VT52
+	IF vt52		; DEC VT52
 ttytyp:	db	'VT52$'
-ENDIF;vt52
+	ENDIF;vt52
 
-IF vt52
+	IF vt52
 vtval	EQU	0	; we don't need VT52 emulation
 defesc	EQU	'\'-100O        ;Still Control-\ (just ran out of room...)
 outlin:	db	esc,'H',esc,'J',cr,lf,tab,tab,'$'
@@ -198,10 +193,9 @@ th:	db	esc,'H$',0              ;Cursor home.
 ti:	db	esc,'I$',0              ;Reverse linefeed.
 tj:	db	esc,'J$',0              ;Clear to end of screen.
 tk:	db	esc,'K$',0              ;Clear to end of line.
-ENDIF;vt52
-;
+	ENDIF;vt52
 
-IF adm22
+	IF adm22
 vtval	EQU	1		; we can do VT52 emulation
 defesc	EQU	'\'-100O        ;Still Control-\ (just ran out of room...)
 ttytyp:	db	'ADM22$'
@@ -221,10 +215,9 @@ th:	db	1EH,'$',0,0             ;Cursor home.
 ti:	db	0BH,'$',0,0             ;Reverse linefeed.
 tj:	db	esc,'Y$',0              ;Clear to end of screen.
 tk:	db	esc,'T$',0              ;Clear to end of line.
-ENDIF;adm22
-;
+	ENDIF;adm22
 
-IF am230
+	IF am230
 ; Select initial setting for VT-52 emulation flag.
 vtval	EQU	1
 defesc	EQU	'\'-100O	;The default is Control-\ -- it's easier 
@@ -245,17 +238,14 @@ th:	db	1EH,'$',0,0		;Cursor home
 ti:	db	esc,'j$',0		;Reverse linefeed, scroll
 tj:	db	esc,'Y$',0		;Clear to end of sreen
 tk:	db	esc,'T$',0		;Clear to end of line
-ENDIF
-;
-;
+	ENDIF
 
-
-IF vt100
+	IF vt100
 ttytyp:	db	'VT100$'
-ENDIF;vt100
+	ENDIF;vt100
 
 
-IF vt100
+	IF vt100
 ; Note that we cannot support Graphics Mode or the H19 erase-screen command
 ; (<esc>E), because the sequences are more than three bytes.
 defesc	EQU	'\'-100O        ;Still Control-\ (just ran out of room...)
@@ -276,15 +266,14 @@ th:	db	esc,'[H$'               ; Cursor home.
 ti:	db	esc,'M$',0              ; Reverse linefeed.
 tj:	db	esc,'[J$'               ; Clear to end of screen.
 tk:	db	esc,'[K$'               ; Clear to end of line.
-ENDIF;vt100
-;
+	ENDIF;vt100
 
-IF gener or cpm3
+	IF gener or cpm3
 sysver:	db	'Generic CP/M-80$'
-ENDIF;gener or cpm3
+	ENDIF;gener or cpm3
 
 
-IF soroq			;[29]  Should this not be with terminals.....
+	IF soroq			;[29]  Should this not be with terminals.....
 ttytyp:	db	'Soroc IQ-120$'
 outlin:	db	1EH,esc,'Y',cr,lf,tab,tab,'$'
 erascr:	db	1EH,esc,'Y$'  ;clear screen and home cursor
@@ -303,19 +292,18 @@ th:	db	01EH,'$',0              ;home cursor
 ti:	db	0BH,'$',0               ;reverse linefeed (insert line)
 tj:	db	esc,'Y$',0              ;clear to end of screen
 tk:	db	esc,'T$',0              ;clear to end of line
-ENDIF;soroq
+	ENDIF;soroq
 
-IF crt
+	IF crt
 outlin:	db	cr,lf,'Starting ...$'
-erascr	equ	crlf			;"Home & clear" (best we can do).
+erascr	db	cr,lf,'$'			;"Home & clear" (best we can do).
 eralin:	db	'^U',cr,lf,'$'          ;Clear line.
 prpack:	db	cr,lf,'RPack: $'
 pspack:	db	cr,lf,'SPack: $'
 ttab	equ	0			; no VT52 table
-ENDIF;crt
-;
+	ENDIF;crt
 
-IF tvi912
+	IF tvi912
 vtval	EQU	1		; we do emulation
 defesc  EQU     '\'-100O        ;Still Control-\ (just ran out of room...)
 ttytyp:	db	'TVI912/920$'
@@ -335,11 +323,9 @@ th:	db	1EH,'$',0,0             ;Cursor home
 ti:	db	esc,'j$',0              ;Reverse linefeed, scroll
 tj:	db	esc,'Y$',0              ;Clear to end of sreen
 tk:	db	esc,'T$',0              ;Clear to end of line
-ENDIF;tvi912
-;
-;
+	ENDIF;tvi912
 
-IF tvi925
+	IF tvi925
 ;(incidentally, works fine for Freedom 100 also  [Toad Hall])
 ;adm3a entry and tvi925 entry separated to remove warning message.
 vtval	EQU	1		; we VT52 emulation
@@ -361,11 +347,9 @@ th:	db	1EH,'$',0,0             ;Cursor home
 ti:	db	esc,'j$',0              ;Reverse linefeed, scroll
 tj:	db	esc,'Y$',0              ;Clear to end of sreen
 tk:	db	esc,'T$',0              ;Clear to end of line
-ENDIF;tvi925
-;
-;
+	ENDIF;tvi925
 
-IF adm3a
+	IF adm3a
 defesc  EQU     '\'-100O        ;Still Control-\ (just ran out of room...)
 ttytyp:	db	'ADM3A$'
 outlin:	db	'Z'-64,0,0,cr,lf,'$'
@@ -384,10 +368,10 @@ th:	db	1EH,'$',0,0             ;Cursor home
 ti:	db	'K'-64,'$',0,0          ;Reverse linefeed
 tj:	db	'$',0,0,0               ;(can't) Clear to end of screen
 tk:	db	'$',0,0,0               ;(can't) Clear to end of line
-ENDIF;adm3a
+	ENDIF;adm3a
 
 
-IF smrtvd	; [7] new terminal
+	IF smrtvd	; [7] new terminal
 vtval	EQU	1		; we do VT52 emulation
 defesc	EQU	'\'-100O	; escpae character, ok?
 ttytyp:	db	'Smartvid-80$'
@@ -407,9 +391,9 @@ th:	db	('Z'-100O),'$',0,0      ;Cursor home.
 ti:	db	('K'-100O),'$',0,0      ;Reverse linefeed.
 tj:	db	esc,'Y$',0              ;Clear to end of screen.
 tk:	db	esc,'T$',0              ;Clear to end of line.
-ENDIF;smrtvd
+	ENDIF;smrtvd
 
-IF h1500
+	IF h1500
 vtval	EQU	1		; we can do VT52 emulation
 defesc	EQU	'\'-100O        ;Still Control-\ (just ran out of room...)
 ttytyp:	db	'Hazeltine$'
@@ -429,9 +413,9 @@ th:	db	7eh,0ch,'$',0		;Cursor home
 ti:	db	7eh,0ch,'$',0		;Reverse linefeed
 tj:	db	'$',0,0,0               ;(can't) Clear to end of screen
 tk:	db	7eh,0fh,'$',0		;Clear to end of line
-ENDIF;h1500
+	ENDIF;h1500
 
-IF wyse ;[gv]
+	IF wyse ;[gv]
 vtval	equ	1		; we can do VT52 emulation
 defesc	EQU	'\'		;Still Control-\ (just ran out of room...)
 ttytyp:	db	' [Wyse 100]',cr,lf,'$'
@@ -451,12 +435,4 @@ th:     db      1eh,'$',0,0             ;Cursor home
 ti:     db      esc,'v$',0              ;Reverse linefeed, scroll ???
 tj:     db      esc,'Y$',0              ;Clear to end of sreen
 tk:     db      esc,'T$',0              ;Clear to end of line
-ENDIF;wyse
-
-
-
-ovlend	equ	$	; End of overlay
-
-IF lasm		;Not really needed, as M80 ignores END in include files
-	END
-ENDIF	;lasm
+	ENDIF;wyse

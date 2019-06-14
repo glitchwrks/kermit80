@@ -1,6 +1,3 @@
-IF NOT lasm
-.printx * CPXCOM.ASM *
-ENDIF	; NOT lasm
 ;       KERMIT - (Celtic for "FREE")
 ;
 ;       This is the CP/M-80 implementation of the Columbia University
@@ -29,6 +26,9 @@ ENDIF	; NOT lasm
 ;	here means simpler family files later on. (Regrettably, the delay
 ;	loop for APMMDM differs too.)
 ;
+
+        PRINT   "* CPXCOM.ASM *"
+
 ; Set the fuzzy timeout value.  Range is 1 (VERY short) through 0ffffH to zero
 ; (maximum).  The actual duration is a function of the loop length and the
 ; processor speed.  For now, we'll make it zero for everybody, but feel free
@@ -59,12 +59,12 @@ sysinit:
 ;
 ;       If we're set up to do special terminal handling, say what kind
 ;       of terminal we expect... (unless it's the generic 'crt')
-IF termin
+        IF termin
 	lxi	d,witmsg	; " with "
 	call	prtstr
 	lxi	d,ttytyp	; terminal type
 	call	prtstr
-ENDIF;termin
+        ENDIF;termin
 	call	prcrlf		; print CR/LF
 ;
 ; now, to work...
@@ -89,10 +89,10 @@ maxsec	EQU	(8*1024)/bufsiz	; 8K / number of bytes per sector
 	ret			; return from system-dependent routine
 
 bdosvr:	ds	1		; space to save the BDOS version number
-IF NOT iobyt
+        IF NOT iobyt
 coniob:	ds	1		; space to save copy of IO byte
-ENDIF	;NOT iobyt
-;
+        ENDIF	;NOT iobyt
+
 ;       This one is hopefully the last "improvement" in view of GENERIC
 ;Kermit. It uses for Character-I/O the BIOS-routines ( instead of the
 ;"normal" BDOS routines. What does it give us (hopefully) : More speed,
@@ -134,7 +134,7 @@ blsout:	jmp	$-$		; ....
 
 bprtst:	jmp	$-$		; Call BIOS directly for printer status
 
-IF NOT apmmdm	; Shame about this, but the Apple needs a different delay
+        IF NOT apmmdm	; Shame about this, but the Apple needs a different delay
 ;
 ;[cjc]  Delay routine.  Called with time (hundredths of seconds) in A.
 ;       The inner loop delays 1001 T-states, assuming no wait states are
@@ -162,9 +162,8 @@ delay3:	dcr	b		; 4 T-states (* 70 * cpuspd)
 	dcr	a		; 4 T-states
 	jnz	delay		; 10 T-states
 	ret			; grand total: ((1001 * cpuspd) + 14) * a
-ENDIF	; NOT apmmdm
-;
-;
+        ENDIF	; NOT apmmdm
+
 ;       Set up screen display for file transfer
 ;       called with kermit version in DE
 ;
@@ -172,7 +171,8 @@ sysscr: push    d               ; save version for a bit
         lxi     d,outlin        ; clear screen, position cursor
         call    prtstr          ; do it
         pop     d               ; get Kermit's version
-IF NOT (osi OR crt)             ; got cursor control?
+        
+        IF NOT (osi OR crt)             ; got cursor control?
         call    prtstr          ; print it
         mvi     e,'['           ; open bracket
         call    outcon          ; print it (close bracket is in outln2)
@@ -185,9 +185,10 @@ IF NOT (osi OR crt)             ; got cursor control?
         rz                      ; finished if no debugging
         lxi     d,outln3        ; set up debugging fields
         call    prtstr
-ENDIF;NOT (osi OR crt)
+        ENDIF;NOT (osi OR crt)
+        
         ret
-;
+
 ;       Calculate free space for current drive
 ;       returns value in HL
 sysspc:
@@ -288,7 +289,7 @@ dir22:  dad     h               ;Multiply blocks by 'K per Block'
 ;    9 |Kermit-80 A:> (when finished)
 ;
 
-IF NOT px8 ; [29]
+        IF NOT px8 ; [29]
 nppos   EQU     4*100h+20
 rtpos   EQU     5*100h+20
 fnpos   EQU     6*100h+12
@@ -297,9 +298,9 @@ stlin   EQU     8
 rplin   EQU     9
 splin   EQU     11
 prplin  EQU     13
-ENDIF ; NOT px8
+        ENDIF ; NOT px8
 
-IF px8
+        IF px8
 nppos   EQU     2*100h+20
 rtpos   EQU     1*100h+59
 fnpos   EQU     2*100h+51
@@ -308,10 +309,10 @@ stlin   EQU     4
 rplin   EQU     5
 splin   EQU     7
 prplin  EQU     9
-ENDIF ; px8 [29]
+        ENDIF ; px8 [29]
 
 
-IF NOT (osi OR crt );[26]
+        IF NOT (osi OR crt );[26]
 scrnp:  lxi     b,nppos
         jmp     csrpos
 
@@ -357,10 +358,10 @@ clreos: lxi     d,tj
 ;       call    csrpos
 ;clreos:        lxi     d,tj
 ;       jmp     prtstr
-ENDIF;NOT (osi OR crt ) [26]
+        ENDIF;NOT (osi OR crt ) [26]
 
 
-IF osi OR crt   ; no cursor control
+        IF osi OR crt   ; no cursor control
 scrnp:  mvi     e,' '
         jmp     outcon
 
@@ -379,7 +380,7 @@ rppos:  lxi     d,prpack
 
 sppos:  lxi     d,pspack
         jmp     prtstr
-ENDIF;osi OR crt
+        ENDIF;osi OR crt
 
 ; Some frequently-used routines (duplicates of those in CPSMIT):
 ;       prcrlf - output a CR/LF
@@ -389,7 +390,7 @@ prcrlf: lxi     d,crlf
 prtstr:
 ;  [17] added this  to avoid prtstr.. emulate function 9 call.
 ;	Works on most machines.
-IF (torch OR px8 OR z80mu)
+        IF (torch OR px8 OR z80mu)
 ;
 ;       Modified print string as the CP/N (for Nut) system traps control
 ;       characters in a function 9 call.. rot its cotton socks.
@@ -412,9 +413,9 @@ prtst2: pop     b
         pop     d
         pop     h
         ret                     ; regs restored.. just in case
-ENDIF	;(torch OR px8 OR z80mu)
+        ENDIF	;(torch OR px8 OR z80mu)
 
-IF NOT (torch OR px8 or z80mu)		;ie any machine that can send ctrl chrs via dos call 9
+        IF NOT (torch OR px8 or z80mu)		;ie any machine that can send ctrl chrs via dos call 9
 	PUSH	H
 	PUSH	D
         push    b
@@ -424,7 +425,7 @@ IF NOT (torch OR px8 or z80mu)		;ie any machine that can send ctrl chrs via dos 
 	POP	D
 	POP	H
         ret             ; all done for good machines
-ENDIF   ;NOT (torch OR px8 OR z80mu)
+        ENDIF   ;NOT (torch OR px8 OR z80mu)
 
 ;
 ;	rskp - return to calling address + 3.
@@ -462,25 +463,20 @@ crlf:   db      cr,lf,'$'
 cfgmsg: db      'configured for $'
 witmsg:	db	' with $'	; Its included if we get here ('with terminal')
 
-IF NOT (osi OR crt OR px8)	; [29] got cursor control?
+        IF NOT (osi OR crt OR px8)	; [29] got cursor control?
 outln2:	db	']',cr,lf,cr,lf,'Number of packets:'
 	db	cr,lf,'Number of retries:'
 	db	cr,lf,'File name:$'
-ENDIF;NOT (osi OR crt OR px8)
+        ENDIF;NOT (osi OR crt OR px8)
 
-IF px8	; [29]
+        IF px8	; [29]
 outln2:	db	']           Number of retries:', cr, lf
 	db	'Number of packets:                     File name:$'
-ENDIF ; px8 [29]
+        ENDIF ; px8 [29]
 
-IF NOT (osi OR crt) ; [29]
+        IF NOT (osi OR crt) ; [29]
 outln3:	db	cr,lf,cr,lf	; debugging messages
 	db	cr,lf,'Rpack:'
 	db	cr,lf		; Blank line in case of long packet
 	db	cr,lf,'Spack:$'
-ENDIF ; NOT (osi OR crt) [29]
-
-IF lasm
-LINK CPXSWT.ASM
-ENDIF	;lasm
-
+        ENDIF ; NOT (osi OR crt) [29]

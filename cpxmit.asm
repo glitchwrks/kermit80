@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;CPXMIT.ASM -- KERMIT-80 Routines for MITS Interfaces
+;CPXMIT.ASM -- KERMIT-80 Overlay for MITS 88-2SIO Board
 ;
 ;This file contains system-dependent code for MITS 88-2SIO
 ;serial boards. It allows use of either port for
@@ -55,12 +55,10 @@ port1d	equ	013h		;Channel 1 data
 output	equ	02h		;Bit of 6850 ACIA status for TX empty
 input	equ	01h		;Bit of 6850 ACIA status for RX full
 
-z80	equ	FALSE		;Assume original 8080 CPU board
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Family string, used to idenfity system-dependent module
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-family:	db	'CPXMIT.ASM  (1)  2019-06-14$'    ; Used for family versions....
+family:	db	'CPXMIT.ASM  (1)  2019-06-14$'    ; Used for family versions
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSXIN -- System-dependent initialization code
@@ -85,7 +83,7 @@ aciars:
 aciar1:	out	port1s		;Reset Channel 1 ACIA
 	mvi	a, 015h		;8N1
 aciar2:	out	port1s		;Configure Channel 1 ACIA
-	ret			;return from SYSXIN
+	ret			;return from ACIARS
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SYSEXIT -- System-dependent termination processing

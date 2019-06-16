@@ -34,15 +34,18 @@ termin	SET	TRUE
 crt	SET	TRUE
 
 	INCLUDE "cpxvdu.asm"	;Terminal/emulation code
-	INCLUDE "cpxcom.asm"	;Common code, must come after CPXVDU
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;CPU Specific Equates
 ;
+;These values must be set before CPXCOM is included.
+;
 ;Assume original 8080 board at 2 MHz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 cpuspd	SET	20		; Assume 2.0 MHz 8080 CPU board
-z80	SET	FALSE	
+z80	SET	FALSE
+
+	INCLUDE "cpxcom.asm"	;Common code, must come after CPXVDU
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Basic 2SIO Equates

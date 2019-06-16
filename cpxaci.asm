@@ -34,15 +34,18 @@ termin	SET	TRUE
 crt	SET	TRUE
 
 	INCLUDE "cpxvdu.asm"	;Terminal/emulation code
-	INCLUDE "cpxcom.asm"	;Common code, must come after CPXVDU
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;CPU Specific Equates
+;
+;These values must be set before CPXCOM is included.
 ;
 ;The ACI-2 comes with a 4 MHz Z80.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 cpuspd	SET	40		;4.0 MHz CPU
 z80	SET	TRUE		;Always a Z80
+
+	INCLUDE "cpxcom.asm"	;Common code, must come after CPXVDU
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Basic 2SIO Equates

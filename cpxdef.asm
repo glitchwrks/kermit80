@@ -62,16 +62,6 @@ vt52	SET	FALSE		;VT52 or equivalent (or H19)
 vt100	SET	FALSE		;VT100 or equivalent
 wyse	SET	FALSE		;Wyse 100 terminal
 
-; Toad Hall TAC Trap:  If you're going through a TAC, it will
-; cough on its Intercept Character (usually a @ (* - 40H)).  Sending it
-; twice forces the TAC to recognize it as a valid ASCII character,
-; and it'll send only one on to the host.  If you've SET the TACTrap
-; to OFF, it will be a null character, and nothing will happen.  If you
-; set it on, it will be your selected TAC intercept character (or will
-; default to the common intercept char, '@'.
-; If you never expect to have to work through such a beastie, just set
-; TAC to false and forget all this mess.  [Toad Hall]
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Equates for Toad Hall TAC Trap
 ;

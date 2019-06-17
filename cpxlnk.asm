@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; CPXLNK.ASM -- Linkage between KERMIT and overlays
+;CPXLNK.ASM -- Linkage between KERMIT and overlays
 ;
 ;This file describes the areas used to communicate between
 ;KERMIT and the customizing overlay.  It is included by the 
@@ -33,16 +33,6 @@ entry	equ	105H	; start of entry section
 kermit	equ	entry+0	; reentry address
 nout	equ	entry+3	; output HL in decimal
 entsiz	equ	2*3	; 2 entries, so far.
-;
-;       End of entry section.
-;
-;       Linkage section.  This block (through the definition of lnksiz)
-;       is used by Kermit to reach the routines and data in the overlay.
-;       The section length is stored at the beginning of the overlay
-;       area so Kermit can verify that the overlay section is (a) present,
-;       (b) in the right place, and (c) the same size as (and therefore
-;       presumably the same as) the linkage section Kermit is expecting.
-;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Linkage Section Equates
@@ -171,8 +161,12 @@ tacchr:	db	tacval	; Desired TAC intercept character (even when off)
 bufadr:	dw	buff	; Address of possibly multi-sector buffer for I/O
 bufsec:	db	1	; Number of sectors big buffer can hold (0 means 256)
 ffussy:	db	1	; if nonzero, don't permit <>.,;?*[] in CP/M filespec.
-; space used by directory command; here because space calculation is
-;  (operating) system-dependent
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Space Allocations for Directory Command
+;
+;This space is allocated here because it is OS dependent.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 bmax:	ds	2	; highest block number on drive
 bmask:	ds	1	; (records/block)-1
 bshiftf: ds	1	; number of shifts to multiply by rec/block

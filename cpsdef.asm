@@ -1,6 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; CPXDEF.ASM -- Common definitions for system-dependent
-;               overlays
+;CPSDEF.ASM -- Common definitions for KERMIT
 ;
 ;This file contains common equates used for both the main
 ;KERMIT program and the system-dependent modules. This is
@@ -44,6 +43,8 @@ del     EQU	177O	;ASCII DELete (rubout)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;BDOS Call Equates
+;
+;All function numbers are passed in the C register
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	IF NOT cpsker
@@ -52,7 +53,6 @@ bdos    EQU     0005H   ;BDOS entry point, for the following functions:
 
 ;Function Name          Function        Input Parameters Output Parameter
 ;=============          ========        ================ ================
-;       (ALL Function Numbers are passed in Register C)
 conin   EQU     01H     ;Read Console   NONE             ASCII Char in A
 conout  EQU     02H     ;Write Console  ASCII Char in E  NONE
 auxin   EQU     03H     ;Auxiliary input
